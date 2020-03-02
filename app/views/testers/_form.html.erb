@@ -1,0 +1,14 @@
+<%= simple_form_for(@tester) do |f| %>
+          <div class="form-group">
+          <%= f.input :education, collection: EDUCATION_LEVELS %>
+          <%= f.input :age %>
+          <%= f.input :profession, collection: PROFESSION %>
+          <%= f.input :sex, collection: SEX %>
+          <%= f.input :nationality, collection: NATIONALITY %>
+
+          <%#= f.input :photo, as: :file %>
+<!--           f.input :photo, as: :file -->
+<!--           f.input :availability -->
+          <%= f.button :submit, "Submit", {class: "btn btn-primary"} %>
+          </div>
+        <% end %>

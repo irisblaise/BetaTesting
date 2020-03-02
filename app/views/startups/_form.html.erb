@@ -2,9 +2,9 @@
 <div class="form-group">
   <%= f.input :company_name%>
   <%= f.input :url %>
-  <%= f.input :descripion %>
-  <%= f.input :sector %>
+  <%= f.input :description %>
+  %= f.input :sector, collection: SECTOR %>
   <%= f.input :photo, as: :file %>
-  <%= f.sumbit :submit {class: "btn btn-primary"} %>
+ <%= f.button :submit, { class: "btn btn-primary" } %>
 </div>
 <% end %>
