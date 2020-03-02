@@ -1,14 +1,19 @@
-<%= simple_form_for(@tester) do |f| %>
-          <div class="form-group">
-          <%= f.input :education, collection: EDUCATION_LEVELS %>
-          <%= f.input :age %>
-          <%= f.input :profession, collection: PROFESSION %>
-          <%= f.input :sex, collection: SEX %>
-          <%= f.input :nationality, collection: NATIONALITY %>
+<%= form_tag user_registration_path do %>
+  <div class="form-group">
+    <%= select_tag "education", options_for_select(EDUCATION_LEVELS, EDUCATION_LEVELS.first) %>
+    <%= number_field_tag "age" %>
 
-          <%#= f.input :photo, as: :file %>
-<!--           f.input :photo, as: :file -->
-<!--           f.input :availability -->
-          <%= f.button :submit, "Submit", {class: "btn btn-primary"} %>
-          </div>
-        <% end %>
+    <%= select_tag "profession", options_for_select(PROFESSION, PROFESSION.first) %>
+    <%= select_tag "nationality", options_for_select(NATIONALITY, NATIONALITY.first) %>
+    <%= select_tag "sex", options_for_select(SEX, SEX.first) %>
+    <%= hidden_field_tag "user_type"%>
+    <%#= f.input :photo, as: :file %>
+    <!--           f.input :photo, as: :file -->
+    <!--           f.input :availability -->
+    <%= submit_tag "Submit" %>
+
+  </div>
+<% end %>
+
+<!-- 1. Convert simple_form_for to form_tag (this file) -->
+<!-- 2. Override devise registrations_controller -> https://stackoverflow.com/questions/3546289/override-devise-registrations-controller -->
