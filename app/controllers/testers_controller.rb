@@ -12,4 +12,9 @@ class TestersController < ApplicationController
 
   def update
   end
+
+  private
+  def request_params
+    params.require(:tester).permit()
+  end
 end
