@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :startups
 
 
+
   resources :feedbacks do
     resources :questions do
       resources :answers
