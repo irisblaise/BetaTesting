@@ -1,19 +1,13 @@
 <div class="container">
   <div class="row">
     <div class="col-6 offset-3">
-
-       <h1>Facebook Startup</h1>
-       <p>Description</p> <br>
-
-       <h1>Twitter Startup</h1>
-       <p>Description</p> <br>
-
-       <h1>Botify Startup</h1>
-       <p>Description</p> <br>
-
-       <h1>LinkedIn Startup</h1>
-       <p>Description</p> <br>
-
+       <% @startups.each do |startup| %>
+         <h1> <%= startup.company_name %></h1>
+         <p>  <%= startup.description %></p>
+         <p> <strong>Sector:</strong> <%= startup.sector %></p>
+         <p> <strong>URL:</strong> <%= startup.url %></p>
+         <p> <%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
+       <% end %>
     </div>
   </div>
 </div>
