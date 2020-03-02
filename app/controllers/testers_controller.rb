@@ -8,6 +8,7 @@ class TestersController < ApplicationController
   end
 
   def edit
+    @tester = Tester.find(params[:id])
   end
 
   def update
