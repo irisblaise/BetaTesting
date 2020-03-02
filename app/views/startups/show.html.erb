@@ -3,7 +3,9 @@
     <div class="col-6 offset-3">
        <h1>Facebook Startup</h1>
        <p> Description</p>
-       <h5>Photo</h5>
+       <h5>
+        <%= cl_image_tag @startup.photo.attached? ? @startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%>
+       </h5>
     </div>
   </div>
 </div>
