@@ -12,10 +12,19 @@ class TestersController < ApplicationController
   end
 
   def update
+    @tester = Tester.find(params[:id])
+    @tester.update(tester_params)
+
+    if @tester.save
+      redirect_to tester_path(@tester)
+    else
+      # show errors
+    end
   end
 
+
   private
-  def request_params
-    params.require(:tester).permit()
+  def tester_params
+    params.require(:tester).permit(:education, :profession, :nationality, :sex, :age)
   end
 end
