@@ -1,5 +1,5 @@
 class Tester < ApplicationRecord
-  belongs_to :user
+  belongs_to :user, dependent: :destroy
 
   enum education: EDUCATION_LEVELS
   enum profession: PROFESSION
