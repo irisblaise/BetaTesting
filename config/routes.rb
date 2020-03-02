@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'registrations/create'
   get 'testers/index'
   get 'testers/show'
   get 'testers/edit'
