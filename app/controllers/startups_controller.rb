@@ -17,7 +17,7 @@ class StartupsController < ApplicationController
       @startup = Startup.new(startup_params)
       @startup.user = current_user
       if @startup.save
-        redirect_to startup_path(@startup.user)
+        redirect_to startup_path(@startup)
       else
 
         render :new
