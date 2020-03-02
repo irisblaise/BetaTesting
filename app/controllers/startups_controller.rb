@@ -1,5 +1,5 @@
 class StartupsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  #skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
       @startups = Startup.all
@@ -17,7 +17,7 @@ class StartupsController < ApplicationController
       @startup = Startup.new(startup_params)
       @startup.user = current_user
       if @startup.save
-        redirect_to user_startup_path(@startup.user)
+        redirect_to startup_path(@startup.user)
       else
         render :new
       end
@@ -44,6 +44,6 @@ class StartupsController < ApplicationController
     private
 
     def startup_params
-      params.require(:startup).permit(:company_name, :url, :description, :sector)
+      params.require(:startup).permit(:company_name, :url, :description, :sector, :photo)
     end
 end
