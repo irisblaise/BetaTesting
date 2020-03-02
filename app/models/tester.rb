@@ -7,9 +7,9 @@ class Tester < ApplicationRecord
   enum sex: SEX
 
 
-  validates :education, presence: true
-  validates :age, presence: true
-  validates :profession, presence: true
-  validates :nationality, presence: true
-  validates :sex, presence: true
+  # validates :education, presence: true
+  # validates :age, presence: true
+  # validates :profession, presence: true
+  # validates :nationality, presence: true
+  # validates :sex, presence: true
 end
