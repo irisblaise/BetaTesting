@@ -8,11 +8,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :testers
-  # update "/testers/:id", to:"testers#update", as: :update_tester
-  resources :startup
+  resources :startups
 
 
-  resources :feedback do
+
+  resources :feedbacks do
     resources :questions do
       resources :answers
     end

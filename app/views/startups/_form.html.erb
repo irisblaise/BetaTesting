@@ -1,0 +1,9 @@
+<%= simple_form_for [@startup] do |f| %>
+<div class="form-group">
+  <%= f.input :company_name%>
+  <%= f.input :url %>
+  <%= f.input :description %>
+  <%= f.input :sector, collection: SECTOR %>
+  <%= f.button :submit, { class: "btn btn-primary" } %>
+</div>
+<% end %>
