@@ -19,6 +19,7 @@ class StartupsController < ApplicationController
       if @startup.save
         redirect_to startup_path(@startup.user)
       else
+
         render :new
       end
     end

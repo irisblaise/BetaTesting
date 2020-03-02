@@ -3,8 +3,8 @@
   <%= f.input :company_name%>
   <%= f.input :url %>
   <%= f.input :description %>
-  %= f.input :sector, collection: SECTOR %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :sector, collection: SECTOR %>
+  <%= f.input :photo, label: "logo", as: :file %>
  <%= f.button :submit, { class: "btn btn-primary" } %>
 </div>
 <% end %>
