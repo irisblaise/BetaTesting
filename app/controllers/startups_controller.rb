@@ -17,7 +17,7 @@ class StartupsController < ApplicationController
       @startup = Startup.new(startup_params)
       @startup.user = current_user
       if @startup.save
-        #redirect_to dashboard_owner_path(@startup.user)
+        redirect_to user_startup_path(@startup.user)
       else
         render :new
       end
@@ -32,7 +32,7 @@ class StartupsController < ApplicationController
       @startup = Startup.find(params[:id])
       @startup.update(startup_params)
       @startup.save
-      # redirect_to car_path(@startup)
+      redirect_to user_startup_path(@startup.user)
     end
 
     def destroy
