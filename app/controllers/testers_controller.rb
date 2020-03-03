@@ -25,11 +25,8 @@ class TestersController < ApplicationController
   end
 
   def new
-    if current_user.tester
-       redirect_to dashboard_path
-    else
-    @tester = Tester.new
-    end
+    tester = Tester.find_or_create_by! user_id: current_user.id
+    redirect_to edit_tester_path tester
   end
 
   def create
