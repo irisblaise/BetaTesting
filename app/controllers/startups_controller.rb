@@ -9,15 +9,19 @@ class StartupsController < ApplicationController
       @startup = Startup.find(params[:id])
     end
 
-    def new
-      @startup = Startup.new
+      def new
+    if current_user.startup
+       redirect_to dashboard_path
+    else
+    @startup = Startup.new
     end
+  end
 
     def create
       @startup = Startup.new(startup_params)
       @startup.user = current_user
       if @startup.save
-        redirect_to startup_path(@startup)
+        redirect_to dashboard_path
       else
 
         render :new

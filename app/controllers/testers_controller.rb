@@ -1,5 +1,5 @@
 class TestersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @testers = Tester.all
@@ -25,18 +25,19 @@ class TestersController < ApplicationController
   end
 
   def new
+    if current_user.tester
+       redirect_to dashboard_path
+    else
     @tester = Tester.new
+    end
   end
 
   def create
     @tester = Tester.new(tester_params)
     @tester.user = current_user
 
-    byebug
-
     if @tester.save
-      # redirect_to dashboard_tester_path(@tester.user)
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       render "new"
     end
