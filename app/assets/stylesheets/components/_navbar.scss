@@ -1,12 +1,17 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  z-index: 1;
+  background: transparent;
 }
 
 .navbar-lewagon .navbar-collapse {
   display: flex;
   flex-grow: 0;
   justify-content: space-between;
+}
+
+.navbar-lewagon .navbar-brand img, a {
+  z-index: 3;
 }
 
 .navbar-lewagon .navbar-brand img {
@@ -18,7 +23,8 @@ color:white ;
 transition: all 0.2s ease;
   &:hover {
   color: rgba(0, 0, 0, 0.9);
-  border-bottom: 1mm ridge rgba(247, 176, 91, 1);
+  color: white;
+  border-bottom: 0.51mm solid;
   transition: all 0.2s ease;
   }
 }
@@ -26,8 +32,4 @@ transition: all 0.2s ease;
 .navbar img {
   width: 45px;
   height: 45px;
-}
-
-.navbar {
-  background-image: url(leaves.jpg);
 }
