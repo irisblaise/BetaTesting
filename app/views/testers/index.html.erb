@@ -4,6 +4,8 @@
        <% @testers.each do |tester| %>
        <div class="d-flex justify-content-around align-items-center">
          <div class="mr-5">
+           <p>Name: <%= tester.user.first_name %> <%= tester.user.last_name %></p>
+
            <p>Age: <%= tester.age %></p>
            <p>Age: <%= tester.sex %></p>
            <p>Profession: <%= tester.profession %></p>
