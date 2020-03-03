@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboards/startup'
+  get 'dashboards/tester'
   get 'registrations/create'
   get 'testers/index'
   get 'testers/show'
