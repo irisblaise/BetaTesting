@@ -1,6 +1,14 @@
+<div class="banner2">
+  <h1> what do you feel like testing today?</h1>
+</div>
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
+      <!-- search form 3 -->
+    <div class="search-box">
+      <input type="text" placeholder=" " />
+      <span></span>
+    </div>
       <% @startups.each do |startup| %>
       <div class="card-product">
         <p><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
@@ -10,6 +18,7 @@
                  <p> <strong>Sector:</strong> <%= startup.sector %></p>
                  <p> <strong>URL:</strong> <%= startup.url %></p>
         </div>
+                 <button type="button" class="btn btn-outline-success"> Test me! </button>
       </div>
       <% end %>
     </div>
