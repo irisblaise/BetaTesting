@@ -1,5 +1,5 @@
 class StartupsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new]
 
     def index
       @startups = Startup.all

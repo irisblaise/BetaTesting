@@ -8,9 +8,9 @@
       <%= select_tag "sex", options_for_select(SEX, SEX.first) %>
     <% elsif action_name == 'new' %>
 
-      <%= number_field_tag "email" %>
-      <%= number_field_tag "password" %>
-      <%= number_field_tag "password_confirmation" %>
+      <%= text_field_tag "email" %>
+      <%= text_field_tag "password" %>
+      <%= text_field_tag "password_confirmation" %>
       <%= hidden_field_tag "user_type", "tester" %>
     <%#= f.input :photo, as: :file %>
     <!--           f.input :photo, as: :file -->
