@@ -9,5 +9,7 @@ class RegistrationsController < Devise::RegistrationsController
     else
       user.startup = Startup.create
     end
+
+    sign_in(user, scope: :user)
   end
 end

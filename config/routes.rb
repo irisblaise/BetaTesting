@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'dashboards/startup'
+  get 'dashboards/tester'
   get 'registrations/create'
   get 'testers/index'
   get 'testers/show'
@@ -19,11 +21,9 @@ Rails.application.routes.draw do
     end
   end
 
- # routes for testing / feedback
+  # routes for testing / feedback
 
-
-  get "/dashboard/tester", to: "dashboards#tester"
-  get "/dashboard/startup", to: "dashboards#startup"
+  get "/dashboard", to: "dashboards#show"
 end
 
 
