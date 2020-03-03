@@ -14,7 +14,7 @@
 }
 
 .toplinks {
-color:black ;
+color:white ;
 transition: all 0.2s ease;
   &:hover {
   color: rgba(0, 0, 0, 0.9);
@@ -26,4 +26,8 @@ transition: all 0.2s ease;
 .navbar img {
   width: 45px;
   height: 45px;
+}
+
+.navbar {
+  background-image: url(leaves.jpg);
 }
