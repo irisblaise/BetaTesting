@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_145502) do
+ActiveRecord::Schema.define(version: 2020_03_03_124917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,15 +41,15 @@ ActiveRecord::Schema.define(version: 2020_03_02_145502) do
     t.string "answer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "feedback_id"
+    t.index ["feedback_id"], name: "index_answers_on_feedback_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
   create_table "feedbacks", force: :cascade do |t|
-    t.bigint "startup_id"
     t.bigint "tester_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["startup_id"], name: "index_feedbacks_on_startup_id"
     t.index ["tester_id"], name: "index_feedbacks_on_tester_id"
   end
 
@@ -58,7 +58,9 @@ ActiveRecord::Schema.define(version: 2020_03_02_145502) do
     t.string "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "version_id"
     t.index ["feedback_id"], name: "index_questions_on_feedback_id"
+    t.index ["version_id"], name: "index_questions_on_version_id"
   end
 
   create_table "startups", force: :cascade do |t|
@@ -100,11 +102,21 @@ ActiveRecord::Schema.define(version: 2020_03_02_145502) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "versions", force: :cascade do |t|
+    t.bigint "startup_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["startup_id"], name: "index_versions_on_startup_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "answers", "feedbacks"
   add_foreign_key "answers", "questions"
-  add_foreign_key "feedbacks", "startups"
   add_foreign_key "feedbacks", "testers"
   add_foreign_key "questions", "feedbacks"
+  add_foreign_key "questions", "versions"
   add_foreign_key "startups", "users"
   add_foreign_key "testers", "users"
+  add_foreign_key "versions", "startups"
 end

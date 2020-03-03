@@ -15,10 +15,8 @@ Rails.application.routes.draw do
   resources :testers
   resources :startups
 
-  resources :feedbacks do
-    resources :questions do
-      resources :answers
-    end
+  resources :versions do
+    resources :feedbacks
   end
 
   # routes for testing / feedback
