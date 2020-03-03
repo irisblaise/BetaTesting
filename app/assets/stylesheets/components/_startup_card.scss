@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 20px;
+  border-radius: 4px;
 }
 
 .card-product img {
@@ -23,7 +24,7 @@
 .card-product p {
   font-size: 12px;
   line-height: 1.4;
-  opacity: .7;
+  opacity: .9;
   margin-bottom: 0;
   margin-top: 8px;
 }
