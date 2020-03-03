@@ -3,43 +3,44 @@
 
   <div class="main-container d-flex text-center">
 
-  <!-- user profile box, same for startup and tester -->
+    <!-- user profile box, same for startup and tester -->
     <div class="user-profile">
-      <img src="" alt="">
       <div class="user-info">
-        <p>some text here</p>
-        <p>some text here</p>
-        <p>some text here</p>
-        <p>some text here</p>
-        <p>some text here</p>
-        <p>some text here</p>
+        <%= cl_image_tag current_user.tester.photo.attached? ? current_user.tester.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, :cloud_name => "dir0nw4ok"%>
+
+        <span>Name: <%= current_user.first_name %> <%= current_user.last_name %></span>
+        <span>Age: <%= current_user.tester.age %> </span>
+        <span>some text here</span>
+        <span>some text here</span>
+        <span>some text here</span>
+        <span>some text here</span>
+        <span>some text here</span>
 
       </div>
       <div class="user-contact">
-        <p>user contact info here</p>
-        <p>user contact info here</p>
+        <span>Email: <%= current_user.email %></span>
       </div>
     </div>
 
 
-    <div class="user-stats-container">
+    <div class="user-stats-container ">
 
       <div class="user-stats-1 d-flex">
         <div class="stats-card-1">
-          <p>some stats here</p>
+          <span>some stats here</span>
         </div>
         <div class="stats-card-1">
-          <p>some stats here</p>
+          <span>some stats here</span>
         </div>
       </div>
 
 
       <div class="user-stats-2 d-flex">
         <div class="stats-card-2">
-          <p>some stats here</p>
+          <span>some stats here</span>
         </div>
         <div class="stats-card-2">
-          <p>some stats here</p>
+          <span>some stats here</span>
         </div>
       </div>
 
