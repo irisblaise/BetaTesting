@@ -1,2 +1,77 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2551&q=80)">
+  <div class="container">
+    <h1>BetaTesting</h1>
+    <p>Contribute to cool ideas while making money</p>
+  </div>
+</div>
+
+
+<div class="cards d-flex justify-content-center">
+  <div class="card text-centered" style ="width:24rem;">
+    <img src="https://images.unsplash.com/photo-1460794418188-1bb7dba2720d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="card image" class="card-image-top">
+    <div class="card-body">
+      <h1>Start testing!</h1>
+      <p class="card-text"> and start earning <strong>money</strong></p>
+      <%= link_to "Start earning Money", testers_path,{class: "card_action btn btn-primary"}  %>
+    </div>
+  </div>
+
+  <div class="card text-centered" style ="width:24rem;">
+    <img src="https://images.unsplash.com/photo-1523575166472-a83a0ed1d522?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80" alt="card image" class="card-image-top">
+    <div class="card-body">
+      <h1>Sign up!</h1>
+      <p class="card-text">and start testing your <strong>startup</strong></p>
+      <%= link_to "Test your Startup", startups_path,{class: "card_action btn btn-primary"}  %>
+    </div>
+  </div>
+</div>
+
+<div class="reviews-container">
+  <h3 class="reviews-header">customer reviews</h3>
+  <div class="reviews-home d-flex justify-content-center">
+
+    <div class="review-card">
+      <div class="review-header">
+        <h4>Great Idea</h4>
+      </div>
+      <div class="review-content">
+        <p class="review-text">Great way of connecting with great ideas while earning money on the side. Will use again.</p>
+        <span class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+        <p class="review-author">Iris Blaise</p>
+        <p class="review-place">Amsterdam, NL</p>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <h4>Amazing</h4>
+      </div>
+      <div class="review-content">
+        <p class="review-text"> Was skeptical at first, but Betatesting blew me away. Was able to test my website, Vaycar, within a week! Definitely worth recommending.</p>
+        <span class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+        <p class="review-author">Theo Gilardo</p>
+        <p class="review-place">Amsterdam, NL</p>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-header">
+        <h4>Worth trying</h4>
+      </div>
+      <div class="review-content">
+        <p class="review-text"> As a freelance developer, being between jobs coud be boring. With Betatesting I can get payed even between jobs</p>
+        <span class="star-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+        <p class="review-author">Tereza Valerova</p>
+        <p class="review-place">Amsterdam, NL</p>
+      </div>
+    </div>
+
+
+
+
+
+  </div>
+</div>
+
+
+
