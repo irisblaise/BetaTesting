@@ -1,0 +1,25 @@
+<div class="container pt-5">
+  <%= @startup.company_name %>
+  <%= @startup.url %>
+
+  <%= render 'form' %>
+
+  <div id="question-list" data-version="<%= @version.id %>">
+    <% @version.questions.each do |question|%>
+      <p data-id="<%= question.id %>"> <%= question.question %> </p>
+    <% end %>
+  </div>
+
+  <form id="questions-form">
+    <div class="form-group d-flex">
+      <input type="text" class="form-control question-input">
+      <button class="add-question btn btn-primary">+</button>
+    </div>
+  </form>
+</div>
+
+<!-- 1. simple_form_for versions#create -->
+<!-- 2. List of existing questions -->
+<!-- 3. Text field and a button to add more text fields -->
+<!-- 4. Submit button to create questions -->
+

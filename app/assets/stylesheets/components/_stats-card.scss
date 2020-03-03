@@ -1,0 +1,54 @@
+.main-container {
+  padding-bottom: 100px;
+}
+
+.user-stats-container{
+ width: 65%;
+ margin: 0px 10px;
+}
+
+.user-stats-1{
+  height: 300px;
+  margin-bottom: 40px;
+
+}
+
+.user-stats-2{
+  height: 280px;
+  position: relative;
+  // margin-bottom: 40px;
+}
+
+.stats-card-1{
+  width: 50%;
+  padding: 10px;
+  // height: 100%;
+  // background-color: red;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: relative;
+
+  img{
+    width: 100%;
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  padding: 0px 20px;
+  }
+}
+
+.stats-card-2{
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+  // height: 100%;
+  // background-color: blue;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  img{
+    width: 100%;
+  }
+}

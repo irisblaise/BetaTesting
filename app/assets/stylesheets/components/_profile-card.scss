@@ -1,0 +1,43 @@
+// .container{
+//   margin-bottom: 100px;
+// }
+
+.main-container{
+  // margin-bottom: 100px;
+}
+
+.user-profile{
+  width: 35%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 0px 10px;
+}
+
+.user-contact{
+  height: 60px;
+  padding: 15px;
+}
+
+.user-info{
+  height: 150px;
+  padding: 15px;
+}
+
+.user-photo img{
+  width: 100%;
+  height: 100%;
+}
+
+
+
+
+// @media(max-width: 992px) {
+//  .main-container {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
+
+// @media(max-width: 768px) {
+//   .main-container  {
+//     grid-template-columns: 1fr;
+//   }
+// }
