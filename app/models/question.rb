@@ -1,3 +1,3 @@
 class Question < ApplicationRecord
-  belongs_to :feedback
+  belongs_to :version
 end

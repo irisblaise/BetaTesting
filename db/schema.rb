@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_03_124917) do
+ActiveRecord::Schema.define(version: 2020_03_03_150850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,16 +50,16 @@ ActiveRecord::Schema.define(version: 2020_03_03_124917) do
     t.bigint "tester_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "version_id"
     t.index ["tester_id"], name: "index_feedbacks_on_tester_id"
+    t.index ["version_id"], name: "index_feedbacks_on_version_id"
   end
 
   create_table "questions", force: :cascade do |t|
-    t.bigint "feedback_id"
     t.string "question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "version_id"
-    t.index ["feedback_id"], name: "index_questions_on_feedback_id"
     t.index ["version_id"], name: "index_questions_on_version_id"
   end
 
@@ -114,7 +114,7 @@ ActiveRecord::Schema.define(version: 2020_03_03_124917) do
   add_foreign_key "answers", "feedbacks"
   add_foreign_key "answers", "questions"
   add_foreign_key "feedbacks", "testers"
-  add_foreign_key "questions", "feedbacks"
+  add_foreign_key "feedbacks", "versions"
   add_foreign_key "questions", "versions"
   add_foreign_key "startups", "users"
   add_foreign_key "testers", "users"
