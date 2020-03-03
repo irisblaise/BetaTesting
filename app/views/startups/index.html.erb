@@ -1,17 +1,18 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
-       <% @startups.each do |startup| %>
-       <div class="d-flex justify-content-around align-items-center">
-         <div class="mr-5">
-           <h1> <%= startup.company_name %></h1>
-           <p>  <%= startup.description %></p>
-           <p> <strong>Sector:</strong> <%= startup.sector %></p>
-           <p> <strong>URL:</strong> <%= startup.url %></p>
-         </div>
-         <p> <%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
-       </div>
-           <% end %>
+      <% @startups.each do |startup| %>
+      <div class="card-product">
+        <p><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
+        <div class="card-product-infos">
+          <h2> <%= startup.company_name %></h2>
+                 <p>  <%= startup.description %></p>
+                 <p> <strong>Sector:</strong> <%= startup.sector %></p>
+                 <p> <strong>URL:</strong> <%= startup.url %></p>
+        </div>
+      </div>
+      <% end %>
     </div>
   </div>
 </div>
+
