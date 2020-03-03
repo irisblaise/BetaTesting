@@ -1,2 +1,17 @@
-<h1>Testers#index</h1>
-<p>Find me in app/views/testers/index.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+       <% @testers.each do |tester| %>
+       <div class="d-flex justify-content-around align-items-center">
+         <div class="mr-5">
+           <p>Age: <%= tester.age %></p>
+           <p>Age: <%= tester.sex %></p>
+           <p>Profession: <%= tester.profession %></p>
+           <p>Education: <%= tester.education %></p>
+         </div>
+         <p> <%= cl_image_tag tester.photo.attached? ? tester.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
+       </div>
+           <% end %>
+    </div>
+  </div>
+</div>
