@@ -4,9 +4,26 @@
 }
 
 .navbar-lewagon .navbar-collapse {
+  display: flex;
   flex-grow: 0;
+  justify-content: space-between;
 }
 
 .navbar-lewagon .navbar-brand img {
   width: 40px;
+}
+
+.toplinks {
+color:black ;
+transition: all 0.2s ease;
+  &:hover {
+  color: rgba(0, 0, 0, 0.9);
+  border-bottom: 1mm ridge rgba(247, 176, 91, 1);
+  transition: all 0.2s ease;
+  }
+}
+
+.navbar img {
+  width: 45px;
+  height: 45px;
 }
