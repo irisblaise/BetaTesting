@@ -1,4 +1,5 @@
 class Tester < ApplicationRecord
+  has_one_attached :photo
   belongs_to :user, dependent: :destroy
 
   enum education: EDUCATION_LEVELS

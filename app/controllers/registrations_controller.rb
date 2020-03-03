@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
       # 2. create a tester and assign a user_id of user.id
       user.tester = Tester.create
     else
-      # user.startup = Startup.create
+      user.startup = Startup.create
     end
   end
 end
