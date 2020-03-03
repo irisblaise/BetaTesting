@@ -1,0 +1,41 @@
+.main-container{
+  background-color: yellow;
+}
+
+.user-profile{
+  background-color: blue;
+  width: 35%;
+}
+
+.user-stats-container{
+   width: 65%;
+}
+
+.stats-card-1{
+  background-color: red;
+  width: 50%;
+}
+
+.stats-card-2{
+  background-color: green;
+  width: 50%;
+}
+
+.user-stats-1{
+  height: 40%;
+}
+
+.user-stats-2{
+  height: 60%;
+}
+// @media(max-width: 992px) {
+//  .main-container {
+//     grid-template-columns: 1fr 1fr;
+//   }
+// }
+
+// @media(max-width: 768px) {
+//   .main-container  {
+//     grid-template-columns: 1fr;
+//   }
+// }
