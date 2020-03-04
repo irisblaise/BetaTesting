@@ -1,51 +1,17 @@
-<%= form_tag dashboard_path do %>
-  <% if action_name == 'edit' %>
-    <div class="form-group">
-      <%= label_tag "Company name" %>
-      <%= text_field_tag "company_name", nil, class: 'form-control' %>
-    </div>
-    <div class="form-group">
-      <%= label_tag "your website" %>
-      <%= text_field_tag "url", nil, class: 'form-control' %>
-    </div>
+<%= simple_form_for(@startup) do |f| %>
+<div class="form-group">
+  <%= f.input :company_name, placeholder: 'Fill in your company name' %>
+  <%= f.input :url, placeholder: 'Provide your url' %>
+  <%= f.input :description, placeholder: 'fill in a short description' %>
+  <%= f.input :sector, collection: SECTOR, prompt: 'Select the sector you are in' %>
 
-    <div class="form-group">
-    <%= label_tag "Description" %>
-    <%= text_field_tag "description", nil, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-    <%= label_tag "Sector" %>
-    <%= select_tag "sector", options_for_select(SECTOR, SECTOR.first), class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-    <%= label_tag "Logo" %>
-    <%= cl_image_upload_tag(:image_id) %>
-    </div>
-
-  <% elsif action_name == 'new' %>
-    <div class="form-group">
-          <%= label_tag "Email" %>
-          <%= text_field_tag "email", nil, class: 'form-control'%>
-    </div>
-
-    <div class="form-group">
-          <%= label_tag "Password" %>
-          <%= text_field_tag "password", nil, class: 'form-control' %>
-    </div>
-
-    <div class="form-group">
-          <%= label_tag "Password confirmation" %>
-          <%= text_field_tag "password_confirmation", nil, class: 'form-control' %>
-    </div>
-
-    <%= hidden_field_tag "user_type", "startup" %>
-    <%#= f.input :photo, as: :file %>
-    <!--           f.input :photo, as: :file -->
-    <!--           f.input :availability -->
-    <% end %>
-    <%= submit_tag "Submit" %>
+  <%= f.input :photo, as: :file %>
+  <!--           f.input :photo, as: :file -->
+  <!--           f.input :availability -->
+  <div class="justify-content-between d-flex padding-top-30">
+    <%= f.button :submit, "Update Profile", {class: "btn btn-primary"} %>
+    <%= link_to "Back", dashboard_path, {class: "card_action btn btn-primary"}  %>
   </div>
-<% end %>
+</div>
 
+<% end %>
