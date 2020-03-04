@@ -26,6 +26,7 @@ class StartupsController < ApplicationController
 
     def edit
       @startup = current_user.startup
+
     end
 
     def update
