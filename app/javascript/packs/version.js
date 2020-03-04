@@ -22,11 +22,11 @@ const newQuestion = () => {
             }
           })
         })
-          .then(response => response.json())
-          .then(data => {
-            list.insertAdjacentHTML('beforeend', `<li> ${ data.question } <button class="btn btn-danger delete-button">Delete</button></li>`)
-            input.value = ''
-          })
+        .then(response => response.json())
+        .then(data => {
+          list.insertAdjacentHTML('beforeend', `<p> ${ data.question } <button class="btn btn-danger delete-button">Delete</button></p>`)
+          input.value = ''
+        })
       }
     })
   }
@@ -35,9 +35,14 @@ const newQuestion = () => {
 const deleteQuestion = () => {
   document.addEventListener('click',function(e){
     if(e.target && e.target.classList.contains('delete-button')){
-      console.log('click')
-      //delete request api
-      //make end point for api
+      const id = e.target.parentNode.dataset.id
+
+      fetch(`/api/v1/questions/${id}`, {
+        method: 'DELETE'
+      })
+        .then(() => {
+          e.target.parentNode.remove()
+        })
     }
   })
 }
