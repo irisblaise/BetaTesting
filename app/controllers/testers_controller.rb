@@ -32,11 +32,9 @@ class TestersController < ApplicationController
     @tester = Tester.new(tester_params)
     @tester.user = current_user
 
-    byebug
-
     if @tester.save
       # redirect_to dashboard_tester_path(@tester.user)
-      redirect_to root_path
+      redirect_to dashboard_path
     else
       render "new"
     end
