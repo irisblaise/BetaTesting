@@ -1,5 +1,7 @@
 <div class="container">
   <h1 class="h1-header">Dashboard#tester</h1>
+  <%= link_to "Find Tests", startups_path, {class: "card_action btn btn-primary"}  %>
+
 
   <div class="main-container d-flex text-center">
 
@@ -21,31 +23,21 @@
       <div class="user-contact">
         <span>Email: <%= current_user.email %></span>
       </div>
+      <%= link_to "Edit Profile", testers_edit_path, {class: "card_action btn btn-primary"}  %>
+    </div>
+
+    <div class="stats-card-1" id="card-1">
+      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
+
+    </div>
+    <div class="stats-card-1">
+      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
     </div>
 
 
-    <div class="user-stats-container ">
-
-      <div class="user-stats-1 d-flex">
-        <div class="stats-card-1" id="card-1">
-          <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-
-        </div>
-        <div class="stats-card-1">
-          <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-        </div>
-      </div>
 
 
-      <div class="user-stats-2 d-flex">
-        <div class="stats-card-2">
-       <img src="https://www.investopedia.com/thmb/JEVi7j7Or6I5od0x1zXLDW8gPiU=/1806x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/bargraphexample-0f58c4489f3343b48fc6128b97153f35.jpg" alt="">
 
-        </div>
-
-      </div>
-
-    </div>
 
   </div>
 </div>

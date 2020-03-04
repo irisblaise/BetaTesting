@@ -10,7 +10,7 @@ class TestersController < ApplicationController
   end
 
   def edit
-    @tester = Tester.find(params[:id])
+    @tester = current_user.tester
   end
 
   def update
