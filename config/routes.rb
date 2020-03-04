@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'dashboards/startup'
-  get 'dashboards/tester'
   get 'version/index'
   get 'version/create'
   get 'version/new'

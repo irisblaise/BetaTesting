@@ -26,7 +26,7 @@ class TestersController < ApplicationController
 
   def new
     tester = Tester.find_or_create_by! user_id: current_user.id
-    redirect_to edit_tester_path tester
+    redirect_to dashboard_path
   end
 
   def create

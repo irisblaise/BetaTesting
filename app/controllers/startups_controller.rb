@@ -11,7 +11,7 @@ class StartupsController < ApplicationController
 
     def new
       startup = Startup.find_or_create_by! user_id: current_user.id
-      redirect_to edit_startup_path startup
+      redirect_to dashboard_path
     end
 
     def create
