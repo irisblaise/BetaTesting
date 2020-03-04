@@ -3,7 +3,7 @@ import { activateSearchBar } from './searchBar'
 
 activateSearchBar()
 
-import {newQuestion} from "./version"
+import { newQuestion, deleteQuestion } from "./version"
 
 newQuestion()
-
+deleteQuestion()

@@ -2,6 +2,7 @@ class Startup < ApplicationRecord
   has_one_attached :photo
   belongs_to :user
   has_many :feedbacks
+  has_many :versions
 
   enum sector: SECTOR
 
