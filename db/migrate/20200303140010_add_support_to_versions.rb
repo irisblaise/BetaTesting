@@ -1,4 +1,4 @@
-class Delete < ActiveRecord::Migration[5.2]
+class AddSupportToVersions < ActiveRecord::Migration[5.2]
   def change
     remove_column :feedbacks, :startup_id
     add_reference :answers, :feedback, foreign_key: true

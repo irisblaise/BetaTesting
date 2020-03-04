@@ -22,7 +22,13 @@
         <li class="nav-item dropdown">
           <%= image_tag "https://images.unsplash.com/photo-1565464027194-7957a2295fb7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=80", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+            <% if current_user.is_tester? %>
             <%= link_to "Dashboard", '#', class: "dropdown-item" %>
+            <% elsif current_user.is_startup? %>
+            <%= link_to "Dashboard", '#', class: "dropdown-item" %>
+            <%end  %>
+
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

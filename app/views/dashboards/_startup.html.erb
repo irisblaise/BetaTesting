@@ -1,2 +1,3 @@
-<h1>Dashboards#startup</h1>
-<p>Find me in app/views/dashboards/startup.html.erb</p>
+<%= simple_form_for(@version) do |f|%>
+  <%= f.button :submit, "Create version", {class: "btn btn-primary"} %>
+<% end %>

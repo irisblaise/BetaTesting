@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+
   get 'dashboards/startup'
   get 'dashboards/tester'
+  get 'version/index'
+  get 'version/create'
+  get 'version/new'
+  get 'version/edit'
+  get 'version/show'
+  get 'version/update'
+  get 'version/destroy'
   get 'registrations/create'
   get 'testers/index'
   get 'testers/show'
@@ -14,6 +22,12 @@ Rails.application.routes.draw do
 
   resources :testers
   resources :startups
+
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resources :questions, only: [:create]
+    end
+  end
 
   resources :versions do
     resources :feedbacks
