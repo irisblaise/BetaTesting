@@ -42,6 +42,6 @@ class TestersController < ApplicationController
 
   private
   def tester_params
-    params.require(:tester).permit(:education, :profession, :nationality, :sex, :age)
+    params.require(:tester).permit(:education, :profession, :nationality, :sex, :age, :photo)
   end
 end
