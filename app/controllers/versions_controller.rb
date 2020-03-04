@@ -5,7 +5,7 @@ class VersionsController < ApplicationController
 
   def show
       @version = Version.find(params[:id])
-      @question = @version.question
+      @questions = @version.questions
   end
 
   def create
@@ -19,28 +19,23 @@ class VersionsController < ApplicationController
   end
 
   def edit
-    @startup = current_user.startup
-    @version = Version.find params[:id]
+    @version = Version.find(params[:id])
+    @startup = @version.startup
   end
 
-  # def create
-  #     @version = Version.new(version_params)
+  def update
+    @version = Version.find(params[:id])
+    @startup = @version.startup
 
+      @version.update(version_params)
+      @version.save
+      redirect_to versions_path
+  end
 
-  #     @version.user = current_user
-  #     if @version.save
-  #       # redirect_to dashboard_owner_path(@version.user)
-  #     else
-  #       render :new
-  #     end
-  # end
+      private
 
-  # def edit
-  #     @ = Car.find(params[:id])
-  #     authorize_owner!(@)
-  # end
-
-  # def update
-  # end
+    def version_params
+      params.require(:version).permit(:name)
+    end
 
 end

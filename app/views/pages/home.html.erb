@@ -17,18 +17,26 @@
         <h1>Start testing!</h1>
         <p class="card-text"> and start earning <strong>money</strong></p>
 
-        <%= link_to "Start earning Money", dashboard_path,{class: "card_action btn btn-primary"}  %>
 
+<div class="cards d-flex justify-content-center">
+  <div class="card text-centered" style ="width:24rem;">
+    <img src="https://images.unsplash.com/photo-1460794418188-1bb7dba2720d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="card image" class="card-image-top">
+    <div class="card-body">
+      <h1>Start testing!</h1>
+      <p class="card-text"> and start earning <strong>money</strong></p>
+
+      <%= link_to "Start earning Money", new_tester_path,{class: "card_action btn btn-primary"}  %>
       </div>
     </div>
+
 
     <div class="card text-centered" style ="width:24rem;">
       <img src="https://images.unsplash.com/photo-1523575166472-a83a0ed1d522?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80" alt="card image" class="card-image-top">
       <div class="card-body">
         <h1>Sign up!</h1>
         <p class="card-text">and start testing your <strong>startup</strong></p>
-
-        <%= link_to "Test your Startup", dashboard_path,{class: "card_action btn btn-primary"}  %>
+        
+      <%= link_to "Test your Startup", new_startup_path,{class: "card_action btn btn-primary"}  %>
 
       </div>
     </div>

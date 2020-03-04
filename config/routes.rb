@@ -1,12 +1,7 @@
 Rails.application.routes.draw do
-
-  get 'registrations/create'
-
-
   devise_for :users #, :controllers => {:registrations => "registrations"}
-
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "/dashboard", to: "dashboards#show"
 
   resources :testers
   resources :startups do
@@ -14,17 +9,13 @@ Rails.application.routes.draw do
       resources :feedbacks
     end
   end
-
+  
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :questions, only: [:create]
+      resources :questions, only: [:create, :destroy]
     end
   end
 
-
   # routes for testing / feedback
 
-  get "/dashboard", to: "dashboards#show"
 end
-
-
