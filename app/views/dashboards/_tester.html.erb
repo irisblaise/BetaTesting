@@ -28,7 +28,7 @@
         <span>Email: <%= current_user.email %></span>
       </div>
       <div class="padding-top-30">
-      <%= link_to "Edit Profile", edit_tester_path(current_user), {class: "card_action btn btn-primary"}  %>
+        <%= link_to "Edit Profile", edit_tester_path(current_user), {class: "card_action btn btn-primary"}  %>
       </div>
     </div>
 
@@ -45,6 +45,20 @@
     <div class="col-8 offset-2">
       <!-- search form 3 -->
 
+      <%# @startups.each do |startup| %>
+      <div class="card-product">
+        <p><%#= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
+        <div class="card-product-infos">
+          <h2>Company name: <%#= startup.company_name %></h2>
+          <p>Description:  <%#= startup.description %></p>
+          <p>Sector: <strong>Sector:</strong> <%#= startup.sector %></p>
+          <p>Website: <strong>URL:</strong> <%#= startup.url %></p>
+        </div>
+        <button type="button" class="btn btn-outline-success"> Test me! </button>
+      </div>
+      <%# end %>
+    </div>
+  </div>
 
 
 </div>
