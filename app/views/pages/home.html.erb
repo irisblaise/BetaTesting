@@ -1,9 +1,21 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1512314889357-e157c22f938d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2551&q=80)">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path "Lampje.png"%>)">
   <div class="container">
     <h1>BetaTesting</h1>
     <p>Contribute to cool ideas while making money</p>
   </div>
 </div>
+
+<% if current_user && current_user.is_tester? %>
+      <%= link_to "Start testing",  startups_path, {class: "btn btn-succes"} %>
+<% elsif current_user && current_user.is_startup? %>
+      <%= link_to "Dashboard",  dashboard_path, {class: "btn btn-succes"} %>
+<% else %>
+  <div class="cards d-flex justify-content-center">
+    <div class="card text-centered" style ="width:24rem;">
+      <img src="https://images.unsplash.com/photo-1460794418188-1bb7dba2720d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80" alt="card image" class="card-image-top">
+      <div class="card-body">
+        <h1>Start testing!</h1>
+        <p class="card-text"> and start earning <strong>money</strong></p>
 
 
 <div class="cards d-flex justify-content-center">
@@ -14,20 +26,24 @@
       <p class="card-text"> and start earning <strong>money</strong></p>
 
       <%= link_to "Start earning Money", new_tester_path,{class: "card_action btn btn-primary"}  %>
-
+      </div>
     </div>
-  </div>
-  <div class="card text-centered" style ="width:24rem;">
-    <img src="https://images.unsplash.com/photo-1523575166472-a83a0ed1d522?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80" alt="card image" class="card-image-top">
-    <div class="card-body">
-      <h1>Sign up!</h1>
-      <p class="card-text">and start testing your <strong>startup</strong></p>
 
+
+    <div class="card text-centered" style ="width:24rem;">
+      <img src="https://images.unsplash.com/photo-1523575166472-a83a0ed1d522?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1275&q=80" alt="card image" class="card-image-top">
+      <div class="card-body">
+        <h1>Sign up!</h1>
+        <p class="card-text">and start testing your <strong>startup</strong></p>
+        
       <%= link_to "Test your Startup", new_startup_path,{class: "card_action btn btn-primary"}  %>
 
+      </div>
     </div>
   </div>
-</div>
+
+<% end %>
+
 <div class="reviews-container">
   <h3 class="reviews-header">customer reviews</h3>
   <div class="reviews-home d-flex justify-content-center">
