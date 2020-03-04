@@ -25,7 +25,7 @@ class StartupsController < ApplicationController
     end
 
     def edit
-      @startup = Startup.find(params[:id])
+      @startup = current_user.startup
 
     end
 

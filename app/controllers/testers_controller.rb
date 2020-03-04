@@ -10,15 +10,14 @@ class TestersController < ApplicationController
   end
 
   def edit
-    @tester = Tester.find(params[:id])
+    @tester = current_user.tester
   end
 
   def update
-    @tester = Tester.find(params[:id])
+    @tester = current_user.tester
     @tester.update(tester_params)
-
     if @tester.save
-      redirect_to tester_path(@tester)
+      redirect_to dashboard_path
     else
       render "new"
     end
@@ -43,6 +42,6 @@ class TestersController < ApplicationController
 
   private
   def tester_params
-    params.require(:tester).permit(:education, :profession, :nationality, :sex, :age)
+    params.require(:tester).permit(:education, :profession, :nationality, :sex, :age, :photo)
   end
 end
