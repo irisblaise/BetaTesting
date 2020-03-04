@@ -16,7 +16,7 @@
       </div>
 
       <div class="user-info text-left">
-        <div>Name: <%= current_user.first_name %> <%= current_user.last_name %></div>
+        <div>Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
         <div>Age: <%= current_user.tester.age %> </div>
         <div>Sex: <%= current_user.tester.sex %></div>
         <div>Nationality: <%= current_user.tester.nationality %></div>
@@ -24,7 +24,7 @@
         <div>Job: <%= current_user.tester.profession %></div>
       </div>
 
-      <div class="user-contact">
+      <div class="user-contact text-left">
         <span>Email: <%= current_user.email %></span>
       </div>
       <div class="padding-top-30">
@@ -40,6 +40,11 @@
       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
     </div>
   </div>
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <!-- search form 3 -->
+
 
 
 </div>

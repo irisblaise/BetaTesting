@@ -1,7 +1,7 @@
 <%= simple_form_for(@tester) do |f| %>
 <div class="form-group">
   <%= f.input :education, collection: EDUCATION_LEVELS, prompt: 'Select education level' %>
-  <%= f.input :age, prompt: 'Provide your age' %>
+  <%= f.input :age, placeholder: 'Provide your age', input_html: { min: '0' } %>
   <%= f.input :profession, collection: PROFESSION, prompt: 'Select your current job' %>
   <%= f.input :nationality, collection: NATIONALITY, prompt: 'Select your nationality' %>
   <%= f.input :sex, collection: SEX, prompt: 'Select your sex' %>

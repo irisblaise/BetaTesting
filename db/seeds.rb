@@ -48,7 +48,7 @@ puts "Creating testers..."
     age: rand(25..50),
     profession: PROFESSION.sample,
     nationality: NATIONALITY.sample,
-    sex: 'female',
+    sex: SEX.sample,
     user_id: user.id
   )
 
