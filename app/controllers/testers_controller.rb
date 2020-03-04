@@ -18,7 +18,7 @@ class TestersController < ApplicationController
     @tester.update(tester_params)
 
     if @tester.save
-      redirect_to tester_path(@tester)
+      redirect_to dashboard_path
     else
       render "new"
     end
