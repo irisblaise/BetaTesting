@@ -1,25 +1,18 @@
 Rails.application.routes.draw do
 
-  get 'version/index'
-  get 'version/create'
-  get 'version/new'
-  get 'version/edit'
-  get 'version/show'
-  get 'version/update'
-  get 'version/destroy'
-  get 'registrations/create'
-  get 'testers/index'
-  get 'testers/show'
-  get 'testers/edit'
-  get 'testers/update'
+
 
   devise_for :users #, :controllers => {:registrations => "registrations"}
-
   root to: 'pages#home'
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get "/dashboard", to: "dashboards#show"
 
-  resources :testers
-  resources :startups
+
+  resources :testers, only: [:new, :create, :edit, :update, :delete]
+  resources :startups do
+      resources :versions do
+        resources :feedbacks
+    end
+  end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
@@ -27,13 +20,6 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :versions do
-    resources :feedbacks
-  end
-
   # routes for testing / feedback
 
-  get "/dashboard", to: "dashboards#show"
 end
-
-
