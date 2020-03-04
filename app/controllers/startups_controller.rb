@@ -20,7 +20,6 @@ class StartupsController < ApplicationController
       if @startup.save
         redirect_to dashboard_path
       else
-
         render :new
       end
     end

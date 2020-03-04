@@ -32,8 +32,8 @@ class TestersController < ApplicationController
   def create
     @tester = Tester.new(tester_params)
     @tester.user = current_user
-
     if @tester.save
+
       redirect_to dashboard_path
     else
       render "new"

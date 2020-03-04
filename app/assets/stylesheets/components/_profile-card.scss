@@ -10,16 +10,18 @@
   width: 35%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 0px 10px;
+  height: 460px;
 }
 
 .user-contact{
-  height: 60px;
+  // height: 60px;
   padding: 15px;
 }
 
 .user-info{
-  height: 150px;
+  // height: 180px;
   padding: 15px;
+  border-bottom: 1px solid $gray;
 }
 
 .user-photo img{
