@@ -1,17 +1,23 @@
-<%= simple_form_for(@version) do |f|%>
-  <%= f.button :submit, "Create version", {class: "btn btn-primary"} %>
-<% end %>
+<div class=banner2>
+  <h1 class="h1-header">Hey <%= current_user.first_name.capitalize %></h1>
+  <h2>Welcome to your dashboard!</h2>
+    <div class="w-100 d-flex justify-content-center">
+        <button type="button" class="search-btn btn btn-outline-light">Add test</button>
+    </div>
+</div>
 
 <% if current_user.empty_profile? %>
-  <div class="alert-profile alert-warning" role="alert">
-    Your profile is not completed.
-    <%= link_to "update!",  edit_startup_path, {class: "btn btn-succes"} %>
+  <div class="w-100 d-flex justify-content-center my-3">
+    <div class="alert-profile alert-warning" role="alert">
+      Your profile is not completed.
+      <%= link_to "update!",  edit_startup_path(current_user), {class: "btn btn-succes"} %>
+    </div>
   </div>
 <% end %>
-<div class="container">
-  <h1 class="h1-header">Dashboard#startup</h1>
 
-  <div class="main-container d-flex text-center">
+<div class="container">
+
+  <div class="main-container d-flex text-center mt-5">
 
     <!-- user profile box, same for startup and tester -->
     <div class="user-profile text-left">
