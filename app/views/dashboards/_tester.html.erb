@@ -63,15 +63,19 @@
       <!-- search form 3 -->
 
       <%# @startups.each do |startup| %>
-      <div class="card-product">
-        <p><%#= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
-        <div class="card-product-infos">
-          <h2>Company name: <%#= startup.company_name %></h2>
-          <p>Description:  <%#= startup.description %></p>
-          <p>Sector: <strong>Sector:</strong> <%#= startup.sector %></p>
-          <p>Website: <strong>URL:</strong> <%#= startup.url %></p>
+      <div class="card-product justify-content-between">
+        <div class="d-flex">
+          <p><%#= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
+          <div class="card-product-infos">
+            <h2>Company: <%=  %></h2>
+            <p>Description:  <%=  %></p>
+            <p> <strong>Sector:</strong> <%#= startup.sector %></p>
+            <p> <strong>URL:</strong> <%#= startup.url %></p>
+          </div>
         </div>
-        <button type="button" class="btn btn-outline-success"> Test me! </button>
+        <div>
+          <button type="button" class="btn btn-outline-success"> Test me! </button>
+        </div>
       </div>
       <%# end %>
     </div>
