@@ -16,15 +16,15 @@
       </div>
 
       <div class="user-info text-left">
-        <div>Name: <%= current_user.first_name %> <%= current_user.last_name %></div>
+        <div>Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
         <div>Age: <%= current_user.tester.age %> </div>
-        <div>Sex: <%= current_user.tester.sex %></div>
+        <div>Sex: <%= current_user.tester.sex.capitalize %></div>
         <div>Nationality: <%= current_user.tester.nationality %></div>
-        <div>Education: <%= current_user.tester.education %></div>
-        <div>Job: <%= current_user.tester.profession %></div>
+        <div>Education: <%= current_user.tester.education.capitalize %></div>
+        <div>Job: <%= current_user.tester.profession.capitalize %></div>
       </div>
 
-      <div class="user-contact">
+      <div class="user-contact text-left">
         <span>Email: <%= current_user.email %></span>
       </div>
       <div class="padding-top-30">

@@ -1,4 +1,4 @@
-EDUCATION_LEVELS = [:high_school, :university, :college]
+EDUCATION_LEVELS = ["High School", "University", "College", "Doctorate"]
 SEX = [:female, :male, :other]
 PROFESSION = [:doctor, :dentist, :soldier, :musician, :artist, :singer, :trader, :programmer, :banker]
 NATIONALITY = [
