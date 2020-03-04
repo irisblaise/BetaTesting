@@ -7,15 +7,16 @@
 }
 
 .user-profile{
-  width: 35%;
+  width: 30%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  margin: 0px 10px;
-  height: 460px;
+  margin: 0px 5px;
+
 }
 
 .user-contact{
   // height: 60px;
   padding: 15px;
+  border-bottom: 1px solid $gray;
 }
 
 .user-info{
