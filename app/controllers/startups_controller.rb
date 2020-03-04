@@ -1,5 +1,5 @@
 class StartupsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
       @startups = Startup.all
@@ -10,14 +10,15 @@ class StartupsController < ApplicationController
     end
 
     def new
-      @startup = Startup.new
+      startup = Startup.find_or_create_by! user_id: current_user.id
+      redirect_to edit_startup_path startup
     end
 
     def create
       @startup = Startup.new(startup_params)
       @startup.user = current_user
       if @startup.save
-        redirect_to startup_path(@startup)
+        redirect_to dashboard_path
       else
 
         render :new
