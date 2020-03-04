@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="d-flex justify-content-between padding-side-30">
+  <div class="d-flex justify-content-between padding-top-30">
     <h1 class="">Dashboard#tester</h1>
     <div>
       <%= link_to "Find Tests", startups_path, {class: "card_action btn btn-primary"}  %>
@@ -19,6 +19,7 @@
         <div>Name: <%= current_user.first_name %> <%= current_user.last_name %></div>
         <div>Age: <%= current_user.tester.age %> </div>
         <div>Sex: <%= current_user.tester.sex %></div>
+        <div>Nationality: <%= current_user.tester.nationality %></div>
         <div>Education: <%= current_user.tester.education %></div>
         <div>Job: <%= current_user.tester.profession %></div>
       </div>
@@ -26,7 +27,7 @@
       <div class="user-contact">
         <span>Email: <%= current_user.email %></span>
       </div>
-      <div class="padding-side-30">
+      <div class="padding-top-30">
       <%= link_to "Edit Profile", edit_tester_path(current_user), {class: "card_action btn btn-primary"}  %>
       </div>
     </div>
