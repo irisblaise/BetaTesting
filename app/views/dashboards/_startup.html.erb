@@ -2,6 +2,12 @@
   <%= f.button :submit, "Create version", {class: "btn btn-primary"} %>
 <% end %>
 
+<% if current_user.empty_profile? %>
+  <div class="alert-profile alert-warning" role="alert">
+    Your profile is not completed.
+    <%= link_to "update!",  edit_startup_path, {class: "btn btn-succes"} %>
+  </div>
+<% end %>
 <div class="container">
   <h1 class="h1-header">Dashboard#startup</h1>
 

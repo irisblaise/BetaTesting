@@ -6,6 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  def empty_profile?
+    startup.company_name.nil? &&
+    startup.url.nil? &&
+    startup.description.nil? &&
+    startup.sector.nil?
+  end
 
   def is_tester?
     return !self.tester.nil?
