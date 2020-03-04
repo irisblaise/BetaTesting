@@ -4,15 +4,21 @@
 
 .main-container{
   // margin-bottom: 100px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+
 }
 
 .user-profile{
   width: 30%;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 0px 5px;
+  height: 460px;
+}
 
+// changes made to settings in tester dash
+.user-profilev2{
+  width: 30%;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  margin: 0px 5px;
 }
 
 .user-contact{
@@ -33,16 +39,3 @@
 }
 
 
-
-
-@media(max-width: 992px) {
- .main-container {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media(max-width: 768px) {
-  .main-container  {
-    grid-template-columns: 1fr;
-  }
-}
