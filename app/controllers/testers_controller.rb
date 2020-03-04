@@ -14,9 +14,8 @@ class TestersController < ApplicationController
   end
 
   def update
-    @tester = Tester.find(params[:id])
+    @tester = current_user.tester
     @tester.update(tester_params)
-
     if @tester.save
       redirect_to dashboard_path
     else

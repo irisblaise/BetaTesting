@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="d-flex justify-content-between h1-header">
+  <div class="d-flex justify-content-between padding-side-30">
     <h1 class="">Dashboard#tester</h1>
     <div>
       <%= link_to "Find Tests", startups_path, {class: "card_action btn btn-primary"}  %>
@@ -26,7 +26,9 @@
       <div class="user-contact">
         <span>Email: <%= current_user.email %></span>
       </div>
-      <%= link_to "Edit Profile", testers_edit_path, {class: "card_action btn btn-primary"}  %>
+      <div class="padding-side-30">
+      <%= link_to "Edit Profile", edit_tester_path(current_user), {class: "card_action btn btn-primary"}  %>
+      </div>
     </div>
 
     <div class="stats-card-1">
@@ -37,4 +39,6 @@
       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
     </div>
   </div>
+
+
 </div>

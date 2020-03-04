@@ -4,6 +4,8 @@
 
 .main-container{
   // margin-bottom: 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .user-profile{
@@ -33,14 +35,14 @@
 
 
 
-// @media(max-width: 992px) {
-//  .main-container {
-//     grid-template-columns: 1fr 1fr;
-//   }
-// }
+@media(max-width: 992px) {
+ .main-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 
-// @media(max-width: 768px) {
-//   .main-container  {
-//     grid-template-columns: 1fr;
-//   }
-// }
+@media(max-width: 768px) {
+  .main-container  {
+    grid-template-columns: 1fr;
+  }
+}

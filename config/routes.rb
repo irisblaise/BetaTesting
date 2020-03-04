@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   get 'version/update'
   get 'version/destroy'
   get 'registrations/create'
-  get 'testers/index'
-  get 'testers/show'
-  get 'testers/edit'
-  get 'testers/update'
+  # get 'testers/index'
+  # get 'testers/show'
+  # get 'testers/edit'
+  # get 'testers/update'
 
   devise_for :users #, :controllers => {:registrations => "registrations"}
 
