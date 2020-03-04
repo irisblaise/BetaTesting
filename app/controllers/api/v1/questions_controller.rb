@@ -7,6 +7,14 @@ class Api::V1::QuestionsController < Api::V1::BaseController
     end
   end
 
+  def destroy
+    @question = Question.find params[:id]
+
+    if @question.destroy
+      head :no_content
+    end
+  end
+
   private
 
   def question_params

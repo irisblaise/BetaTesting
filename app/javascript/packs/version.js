@@ -1,6 +1,5 @@
 const newQuestion = () => {
   const button = document.querySelector(".add-question");
-
   if (button){
     button.addEventListener("click", (event) => {
       event.preventDefault()
@@ -23,14 +22,29 @@ const newQuestion = () => {
             }
           })
         })
-          .then(response => response.json())
-          .then(data => {
-            list.insertAdjacentHTML('beforeend', `<p> ${ data.question } </p>`)
-            input.value = ''
-          })
+        .then(response => response.json())
+        .then(data => {
+          list.insertAdjacentHTML('beforeend', `<p> ${ data.question } <button class="btn btn-danger delete-button">Delete</button></p>`)
+          input.value = ''
+        })
       }
     })
   }
 }
 
-export {newQuestion};
+const deleteQuestion = () => {
+  document.addEventListener('click',function(e){
+    if(e.target && e.target.classList.contains('delete-button')){
+      const id = e.target.parentNode.dataset.id
+
+      fetch(`/api/v1/questions/${id}`, {
+        method: 'DELETE'
+      })
+        .then(() => {
+          e.target.parentNode.remove()
+        })
+    }
+  })
+}
+
+export { newQuestion, deleteQuestion };
