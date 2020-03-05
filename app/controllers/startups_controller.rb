@@ -2,11 +2,12 @@ class StartupsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-      @startups = policy_scope(Startup)
+      @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
     end
 
   def show
       @startup = Startup.find(params[:id])
+      authorize @startup
   end
 
   def new
@@ -14,7 +15,7 @@ class StartupsController < ApplicationController
       redirect_to dashboard_path
       authorize @startup
     end
-  
+
 #   def new
 #       if !current_user.is_tester?
 #         startup = Startup.find_or_create_by! user_id: current_user.id
@@ -22,7 +23,7 @@ class StartupsController < ApplicationController
 
 #       redirect_to dashboard_path
 #     end
-  
+
 
     def create
       @startup = Startup.new(startup_params)

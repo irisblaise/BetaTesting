@@ -1,4 +1,7 @@
 class VersionsController < ApplicationController
+  skip_after_action :verify_authorized
+  skip_after_action :verify_policy_scoped
+
   def index
     @versions = Version.all
   end
@@ -6,7 +9,7 @@ class VersionsController < ApplicationController
   def show
       @version = Version.find(params[:id])
       @questions = @version.questions
-
+      # authorize @version
   end
 
   def create
