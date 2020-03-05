@@ -4,7 +4,7 @@
 
 .review-card {
   overflow: hidden;
-  height: 400px;
+  height: 450px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   margin: 20px;
@@ -20,7 +20,7 @@
 }
 
 .review-text{
-  height: 200px;
+  height: 100px;
 }
 
 .star-rating{
@@ -47,4 +47,8 @@
 
 #reviews-header{
   text-align: center;
+}
+
+.change-text {
+  margin-top: 26px;
 }
