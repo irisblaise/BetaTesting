@@ -5,25 +5,32 @@ class StartupsController < ApplicationController
       if params[:query].present?
         @startups = Startup.where("company_name ILIKE '%#{params[:query]}%'")
       else
-        @startups = Startup.all
-      end
+      @startups = policy_scope(Startup)
     end
 
-    def show
+  def show
       @startup = Startup.find(params[:id])
-    end
+  end
 
-    def new
-      if !current_user.is_tester?
-        startup = Startup.find_or_create_by! user_id: current_user.id
-      end
-
+  def new
+      @startup = Startup.new
       redirect_to dashboard_path
+      authorize @startup
     end
+  
+#   def new
+#       if !current_user.is_tester?
+#         startup = Startup.find_or_create_by! user_id: current_user.id
+#       end
+
+#       redirect_to dashboard_path
+#     end
+  
 
     def create
       @startup = Startup.new(startup_params)
       @startup.user = current_user
+      authorize @startup
       if @startup.save
         redirect_to dashboard_path
       else
@@ -33,12 +40,13 @@ class StartupsController < ApplicationController
 
     def edit
       @startup = current_user.startup
-
+      authorize @startup
     end
 
     def update
       @startup = current_user.startup
       @startup.update(startup_params)
+      authorize @startup
       if @startup.save
         redirect_to dashboard_path
       else

@@ -1,5 +1,5 @@
 <div class=banner2>
-  <h1 class="h1-header">Hey <%= current_user.first_name.capitalize %></h1>
+  <h1 class="h1-header">Hey <%= current_user.first_name %></h1>
   <h2>Welcome to your dashboard!</h2>
     <div class="w-100 d-flex justify-content-center">
         <button type="button" class="search-btn btn btn-outline-light">Add test</button>
@@ -33,7 +33,7 @@
       </div>
 
       <div class="user-info text-left">
-        <div>Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
+        <div>Name: <%= current_user.first_name %> <%= current_user.last_name %></div>
         <div>Age: <%= current_user.tester.age %> </div>
         <div>Sex: <%= current_user.tester.sex %></div>
         <div>Nationality: <%= current_user.tester.nationality %></div>

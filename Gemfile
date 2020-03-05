@@ -17,6 +17,7 @@ gem 'webpacker'
 gem 'devise'
 gem 'faker'
 gem 'cloudinary'
+gem 'pundit'
 gem 'letter_opener', group: :development
 gem 'postmark-rails'
 

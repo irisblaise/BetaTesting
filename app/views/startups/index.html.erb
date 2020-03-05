@@ -29,8 +29,10 @@
             <p> <strong>URL:</strong> <%= startup.url %></p>
           </div>
         </div>
-      <div>
-          <button type="button" class="btn btn-outline-success"> Test me! </button>
+
+        <div>
+          <%= link_to "Test Me",  startup_path(startup.id), {class: "btn btn-outline-success"} %>
+
         </div>
       </div>
       <% end %>
