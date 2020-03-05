@@ -6,6 +6,7 @@ class VersionsController < ApplicationController
   def show
       @version = Version.find(params[:id])
       @questions = @version.questions
+
   end
 
   def create

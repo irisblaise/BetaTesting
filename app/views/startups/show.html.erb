@@ -6,7 +6,8 @@
       <p> <strong>Sector:</strong> <%= @startup.sector %></p>
       <p> <strong>URL:</strong> <%= @startup.url %></p>
       <p> <%= cl_image_tag @startup.photo.attached? ? @startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
-      <%= link_to "Test Latest Version",  startup_versions_path(@startup), {class: "btn btn-outline-success"} %>
+      <%#= link_to "Test Latest Version",  startup_versions_path(@startup), {class: "btn btn-outline-success"} %>
+      <%= link_to "Test Latest Version",  startup_version_path(@startup), {class: "btn btn-outline-success"} %>
     </div>
   </div>
 </div>
