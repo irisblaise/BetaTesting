@@ -3,6 +3,8 @@
   <h2>Welcome to your dashboard!</h2>
     <div class="w-100 d-flex justify-content-center">
         <button type="button" class="search-btn btn btn-outline-light">Add test</button>
+        <%#= link_to "Add test!",  edit_startup_version_path, {class: "btn btn-succes"} %>
+
     </div>
 </div>
 
@@ -36,6 +38,9 @@
 
       <div class="user-contact">
         <span>Email: <%= current_user.email %></span>
+      </div>
+      <div class="padding-top-30">
+        <%= link_to "Edit Profile", edit_tester_path(current_user), {class: "card_action btn btn-primary"}  %>
       </div>
     </div>
 
