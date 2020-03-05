@@ -13,6 +13,14 @@ class User < ApplicationRecord
     startup.sector.nil?
   end
 
+  def empty_tester_profile?
+    tester.education.nil? &&
+    tester.age.nil? &&
+    tester.sex.nil? &&
+    tester.nationality.nil? &&
+    tester.profession.nil?
+  end
+
   def is_tester?
     return !self.tester.nil?
   end

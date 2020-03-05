@@ -2,9 +2,11 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @startup = Startup.find_by(user: current_user)
     @version = Version.new
 
   end
+
 
   # def index
   #   @startups = Startup.all
@@ -20,4 +22,5 @@ class DashboardsController < ApplicationController
   #     render "new"
   #   end
   # end
+
 end

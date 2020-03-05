@@ -30,10 +30,13 @@ class StartupsController < ApplicationController
     end
 
     def update
-      @startup = Startup.find(params[:id])
+      @startup = current_user.startup
       @startup.update(startup_params)
-      @startup.save
-      redirect_to user_startup_path(@startup.user)
+      if @startup.save
+        redirect_to dashboard_path
+      else
+        render "new"
+      end
     end
 
     def destroy

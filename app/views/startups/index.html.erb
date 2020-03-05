@@ -5,20 +5,24 @@
   <div class="row">
     <div class="col-8 offset-2">
       <!-- search form 3 -->
-    <div class="search-box">
-      <input type="text" placeholder=" " />
-      <span></span>
-    </div>
+      <div class="search-box">
+        <input type="text" placeholder=" " />
+        <span></span>
+      </div>
       <% @startups.each do |startup| %>
-      <div class="card-product">
-        <p><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
-        <div class="card-product-infos">
-          <h2> <%= startup.company_name %></h2>
-                 <p>  <%= startup.description %></p>
-                 <p> <strong>Sector:</strong> <%= startup.sector %></p>
-                 <p> <strong>URL:</strong> <%= startup.url %></p>
+      <div class="card-product justify-content-between">
+        <div class="d-flex">
+          <p><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
+          <div class="card-product-infos">
+            <h2> <%= startup.company_name %></h2>
+            <p>  <%= startup.description %></p>
+            <p> <strong>Sector:</strong> <%= startup.sector %></p>
+            <p> <strong>URL:</strong> <%= startup.url %></p>
+          </div>
         </div>
-                 <button type="button" class="btn btn-outline-success"> Test me! </button>
+        <div>
+          <button type="button" class="btn btn-outline-success"> Test me! </button>
+        </div>
       </div>
       <% end %>
     </div>
