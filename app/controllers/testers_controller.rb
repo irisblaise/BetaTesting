@@ -27,7 +27,7 @@ class TestersController < ApplicationController
   end
 
   def new
-    @tester = Tester.find_or_create_by! user_id: current_user.id
+    @tester = Tester.new
     redirect_to dashboard_path
     authorize @tester
   end

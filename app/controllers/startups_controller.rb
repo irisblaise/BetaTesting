@@ -5,12 +5,12 @@ class StartupsController < ApplicationController
       @startups = policy_scope(Startup)
     end
 
-    def show
-      @startup = Startup.find(params[:id])
-    end
+    # def show
+    #   @startup = Startup.find(params[:id])
+    # end
 
     def new
-      @startup = Startup.find_or_create_by! user_id: current_user.id
+      @startup = Startup.new
       redirect_to dashboard_path
       authorize @startup
     end
