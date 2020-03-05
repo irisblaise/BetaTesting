@@ -29,7 +29,7 @@ class StartupsController < ApplicationController
 
     authorize startup
     redirect_to dashboard_path
-
+  end
 
   def create
     @startup = Startup.new(startup_params)
