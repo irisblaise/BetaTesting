@@ -17,6 +17,8 @@ gem 'webpacker'
 gem 'devise'
 gem 'faker'
 gem 'cloudinary'
+gem 'letter_opener', group: :development
+gem 'postmark-rails'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
