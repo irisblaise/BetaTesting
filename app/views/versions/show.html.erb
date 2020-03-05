@@ -1,9 +1,18 @@
-<h1 class="text-center mt-5">Version Test</h1>
+
+<div class="banner2">
+  <h1 class="text-center mt-5"><%= @version.name %></h1>
+</div>
 
 <div class="version_container mt-5">
   <div class="text-left box-q-a">
-     <h1>Question</h1>
-     <p>Answer</p>
+    <%= form_tag(answers_path, method: :post) do %>
+      <% @questions.each do |question| %>
+        <%= label_tag("answers[]", question.question) %>
+        <%= text_field_tag("answers[]", value) %>
+        <%= hidden_field_tag "questions[]", question.id %>
+      <% end %>
+      <%= submit_tag("Submit") %>
+    <% end %>
   </div>
   <iframe class="frame" src="https://www.pixelstech.net/article/1532747442-How-to-check-whether-a-web-page-can-be-loaded-in-iframe" width="500" height="850" frameborder="0" marginwidth="0" marginheight="0"></iframe>
 </div>

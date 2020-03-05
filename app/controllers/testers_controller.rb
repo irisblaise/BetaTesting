@@ -26,7 +26,17 @@ class TestersController < ApplicationController
     end
   end
 
-  def new
+  
+#   def new
+#     if !current_user.is_startup?
+#       tester = Tester.find_or_create_by! user_id: current_user.id
+#     end
+
+#     redirect_to dashboard_path
+#   end
+  
+  
+def new
     @tester = Tester.new
     redirect_to dashboard_path
     authorize @tester

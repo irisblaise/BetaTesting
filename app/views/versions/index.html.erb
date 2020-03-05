@@ -1,2 +1,10 @@
-<h1>Feedback#index</h1>
-<p>Find me in app/views/feedback/index.html.erb</p>
+<h1>All Versions</h1>
+
+  <div id="version-list">
+    <% @versions.each do |version|%>
+      <p>
+        <%= version.name %>
+        <%= link_to "edit version", edit_startup_version_path(version.startup_id, version.id)%>
+      </p>
+    <% end %>
+  </div>

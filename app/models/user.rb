@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  after_create :send_welcome_email
   has_one :tester
   has_one :startup
   # Include default devise modules. Others available are:
@@ -27,5 +28,16 @@ class User < ApplicationRecord
 
   def is_startup?
     return !self.startup.nil?
+  end
+
+  private
+
+  def send_welcome_email
+    if self.is_startup?
+      UserMailer.with(user: self).welcome.deliver_now
+    elsif self.is_tester?
+
+    end
+
   end
 end
