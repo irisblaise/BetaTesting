@@ -33,6 +33,11 @@ class User < ApplicationRecord
   private
 
   def send_welcome_email
-    UserMailer.with(user: self).welcome.deliver_now
+    if self.is_startup?
+      UserMailer.with(user: self).welcome.deliver_now
+    elsif self.is_tester?
+
+    end
+
   end
 end
