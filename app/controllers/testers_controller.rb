@@ -2,20 +2,23 @@ class TestersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
-    @testers = Tester.all
+    @testers = policy_scope(Tester)
   end
 
-  def show
-    @tester = Tester.find(params[:id])
-  end
+  # def show
+  #   @tester = Tester.find_or_create_by! user_id: current_user.id
+  #   authorize @current_user.tester
+  # end
 
   def edit
     @tester = current_user.tester
+    authorize @tester
   end
 
   def update
     @tester = current_user.tester
     @tester.update(tester_params)
+    authorize @tester
     if @tester.save
       redirect_to dashboard_path
     else
@@ -23,17 +26,26 @@ class TestersController < ApplicationController
     end
   end
 
-  def new
-    if !current_user.is_startup?
-      tester = Tester.find_or_create_by! user_id: current_user.id
-    end
+  
+#   def new
+#     if !current_user.is_startup?
+#       tester = Tester.find_or_create_by! user_id: current_user.id
+#     end
 
+#     redirect_to dashboard_path
+#   end
+  
+  
+def new
+    @tester = Tester.new
     redirect_to dashboard_path
+    authorize @tester
   end
 
   def create
     @tester = Tester.new(tester_params)
     @tester.user = current_user
+    authorize @tester
     if @tester.save
 
       redirect_to dashboard_path
