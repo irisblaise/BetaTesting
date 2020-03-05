@@ -11,7 +11,10 @@ class StartupsController < ApplicationController
     end
 
     def new
-      startup = Startup.find_or_create_by! user_id: current_user.id
+      if !current_user.is_tester?
+        startup = Startup.find_or_create_by! user_id: current_user.id
+      end
+
       redirect_to dashboard_path
     end
 

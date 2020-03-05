@@ -1,6 +1,7 @@
 require 'faker'
 
 puts "Cleaning the database..."
+Version.destroy_all
 Startup.destroy_all
 Tester.destroy_all
 User.destroy_all
