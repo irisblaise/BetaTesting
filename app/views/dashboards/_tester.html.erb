@@ -1,3 +1,20 @@
+<div class=banner2>
+  <h1 class="h1-header">Hey <%= current_user.first_name.capitalize %></h1>
+  <h2>Welcome to your dashboard!</h2>
+    <div class="w-100 d-flex justify-content-center">
+        <button type="button" class="search-btn btn btn-outline-light">Add test</button>
+    </div>
+</div>
+
+<% if current_user.empty_tester_profile? %>
+  <div class="w-100 d-flex justify-content-center my-3">
+    <div class="alert-profile alert-warning" role="alert">
+      Your profile is not completed.
+      <%= link_to "update!",  edit_tester_path(current_user), {class: "btn btn-succes"} %>
+    </div>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="d-flex justify-content-between padding-top-30">
     <h1 class="">Dashboard#tester</h1>
@@ -46,19 +63,25 @@
       <!-- search form 3 -->
 
       <%# @startups.each do |startup| %>
-      <div class="card-product">
-        <p><%#= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
-        <div class="card-product-infos">
-          <h2>Company name: <%#= startup.company_name %></h2>
-          <p>Description:  <%#= startup.description %></p>
-          <p>Sector: <strong>Sector:</strong> <%#= startup.sector %></p>
-          <p>Website: <strong>URL:</strong> <%#= startup.url %></p>
+      <div class="card-product justify-content-between">
+        <div class="d-flex">
+          <p><%#= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
+          <div class="card-product-infos">
+            <h2>Company: <%=  %></h2>
+            <p>Description:  <%=  %></p>
+            <p> <strong>Sector:</strong> <%#= startup.sector %></p>
+            <p> <strong>URL:</strong> <%#= startup.url %></p>
+          </div>
         </div>
-        <button type="button" class="btn btn-outline-success"> Test me! </button>
+        <div>
+          <button type="button" class="btn btn-outline-success"> Test me! </button>
+        </div>
       </div>
       <%# end %>
     </div>
   </div>
+
+  <!-- divs and classes need tobe added to show button correctly -->
 
 
 </div>
