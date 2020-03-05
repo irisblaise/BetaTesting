@@ -8,7 +8,7 @@
     <%= form_tag(answers_path, method: :post) do %>
       <% @questions.each do |question| %>
         <%= label_tag("answers[]", question.question) %>
-        <%= text_field_tag("answers[]") %>
+        <%= text_field_tag("answers[]", value) %>
         <%= hidden_field_tag "questions[]", question.id %>
       <% end %>
       <%= submit_tag("Submit") %>
