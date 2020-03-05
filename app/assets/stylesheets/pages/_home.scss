@@ -21,15 +21,22 @@
 
 
 
-.container3 img {
+.image-tester img {
   width: 500px;
   height: 500px;
-  border-radius: 15px;
+   border-radius: 15px 0px 0px 15px;
 
   // width: auto;
   // max-width: 300px;
   // height: auto;
   // max-height: 300px;
+
+}
+
+  .image-tester2 img {
+    width: 500px;
+    height: 500px;
+   border-radius: 0px 15px 15px 0px;
 }
 
 .box-icons {
