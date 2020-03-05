@@ -2,6 +2,9 @@ class StartupsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
+      if params[:query].present?
+        @startups = Startup.where("company_name ILIKE '%#{params[:query]}%'")
+      else
       @startups = policy_scope(Startup)
     end
 

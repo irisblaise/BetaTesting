@@ -1,14 +1,23 @@
 <div class="banner2">
   <h1> what do you feel like testing today?</h1>
+
+    <div class="d-flex justify-content-center mt-4">
+      <div class="search-box ">
+          <%= form_tag startups_path, method: :get do %>
+            <%= text_field_tag :query, params[:query], placeholder: " " %>
+          <% end %>
+        <span></span>
+      </div>
+    </div>
+
+
+<!-- the list of movies -->
+
 </div>
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
       <!-- search form 3 -->
-      <div class="search-box">
-        <input type="text" placeholder=" " />
-        <span></span>
-      </div>
       <% @startups.each do |startup| %>
       <div class="card-product justify-content-between">
         <div class="d-flex">
@@ -20,8 +29,10 @@
             <p> <strong>URL:</strong> <%= startup.url %></p>
           </div>
         </div>
+
         <div>
           <%= link_to "Test Me",  startup_path(startup.id), {class: "btn btn-outline-success"} %>
+
         </div>
       </div>
       <% end %>
