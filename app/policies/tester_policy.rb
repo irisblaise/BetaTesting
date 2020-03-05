@@ -14,15 +14,16 @@ class TesterPolicy < ApplicationPolicy
     return true
   end
 
-  # def show
-  #   return true
+  def show?
+    return true
+  end
+
+#  edit calls update, so we don't need it
+  # def edit?
+  #   record.user == user
   # end
 
-  def edit?
-    if record.user? == user
-      return true
-    else
-      return false
-    end
+  def update?
+    record.user == user
   end
 end

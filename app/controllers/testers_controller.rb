@@ -12,11 +12,13 @@ class TestersController < ApplicationController
 
   def edit
     @tester = current_user.tester
+    authorize @tester
   end
 
   def update
     @tester = current_user.tester
     @tester.update(tester_params)
+    authorize @tester
     if @tester.save
       redirect_to dashboard_path
     else

@@ -2,7 +2,7 @@ class StartupsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
     def index
-      @startups = Startup.all
+      @startups = policy_scope(Startup)
     end
 
     def show
@@ -10,13 +10,15 @@ class StartupsController < ApplicationController
     end
 
     def new
-      startup = Startup.find_or_create_by! user_id: current_user.id
+      @startup = Startup.find_or_create_by! user_id: current_user.id
       redirect_to dashboard_path
+      authorize @startup
     end
 
     def create
       @startup = Startup.new(startup_params)
       @startup.user = current_user
+      authorize @startup
       if @startup.save
         redirect_to dashboard_path
       else
@@ -26,12 +28,13 @@ class StartupsController < ApplicationController
 
     def edit
       @startup = current_user.startup
-
+      authorize @startup
     end
 
     def update
       @startup = current_user.startup
       @startup.update(startup_params)
+      authorize @startup
       if @startup.save
         redirect_to dashboard_path
       else
