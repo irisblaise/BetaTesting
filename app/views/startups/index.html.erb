@@ -31,7 +31,7 @@
         </div>
 
         <div>
-          <%= link_to "Test Me",  startup_path(startup.id), {class: "btn btn-outline-success"} %>
+          <%= link_to "Test Me",  startup_version_path(startup.id, startup.versions.last), {class: "btn btn-outline-success"} %>
 
         </div>
       </div>
@@ -40,3 +40,4 @@
   </div>
 </div>
 
+          <%#= link_to "Test Me",  startup_version_path(startup.id), {class: "btn btn-outline-success"} %>

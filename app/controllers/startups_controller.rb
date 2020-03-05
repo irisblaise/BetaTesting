@@ -1,6 +1,8 @@
 class StartupsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
+#     def index
+#       @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
   def index
     if params[:query].present?
       @startups = policy_scope(Startup).where("company_name ILIKE '%#{params[:query]}%'")
@@ -10,7 +12,8 @@ class StartupsController < ApplicationController
   end
 
   def show
-    @startup = Startup.find(params[:id])
+      @startup = Startup.find(params[:id])
+      authorize @startup
   end
 
   # def new
@@ -23,9 +26,9 @@ class StartupsController < ApplicationController
     if !current_user.is_tester?
       startup = Startup.find_or_create_by! user_id: current_user.id
     end
+
     authorize startup
     redirect_to dashboard_path
-  end
 
 
   def create
