@@ -5,9 +5,9 @@ class StartupsController < ApplicationController
 #       @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
   def index
     if params[:query].present?
-      @startups = policy_scope(Startup).where("company_name ILIKE '%#{params[:query]}%'")
+      @startups = policy_scope(Startup).where("company_name ILIKE '%#{params[:query]}%'").select { |startup| startup.versions.length != 0 }
     else
-      @startups = policy_scope(Startup)
+      @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
     end
   end
 

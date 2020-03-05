@@ -3,7 +3,7 @@
   <h2>Welcome to your dashboard!</h2>
     <div class="w-100 d-flex justify-content-center">
         <button type="button" class="search-btn btn btn-outline-light">Add test</button>
-        <%#= link_to "Add test!",  edit_startup_version_path, {class: "btn btn-succes"} %>
+        <%= link_to "Add test!",  new_startup_version_path(current_user.startup), {class: "btn btn-succes"} %>
 
     </div>
 </div>
