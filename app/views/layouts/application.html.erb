@@ -11,12 +11,6 @@
   </head>
   <body>
     <div id="container-app">
-      <% if !notice.nil? %>
-        <p class="notice"><%= notice %></p>
-      <% end %>
-      <% if !alert.nil? %>
-        <p class="alert"><%= alert %></p>
-      <% end %>
       <%= render "shared/navbar" %>
       <%= render 'shared/flashes' %>
       <%= yield %>
