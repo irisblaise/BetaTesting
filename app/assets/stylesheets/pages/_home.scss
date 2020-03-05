@@ -10,3 +10,43 @@
    height: auto;
    max-height: 150px;
 }
+
+.container3 {
+  display: flex;
+  justify-content: space-around;
+  // margin-top: 60px;
+  margin: 5vh 5vw;
+
+}
+
+
+
+.container3 img {
+  width: 500px;
+  height: 500px;
+  border-radius: 15px;
+}
+
+.box-icons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  text-align: center;
+  width: 65%;
+  background-color: white;
+  border-radius: 15px;
+  padding: 30px;
+  margin-left: 15px;
+
+ }
+
+.box-text {
+  margin: 0 15px;
+}
+
+.box-text h4 {
+  font-size: 30px;
+  color: #E3BC05;
+}
+
+
