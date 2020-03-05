@@ -1,5 +1,5 @@
 <div class="container">
-  <%= simple_form_for(@version) do |f|%>
+  <%= simple_form_for([@startup, @version]) do |f|%>
     <div class="form-group">
       <%= f.input :name %>
       <%= f.button :submit, "Update version", {class: "btn btn-primary"} %>

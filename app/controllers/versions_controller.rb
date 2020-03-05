@@ -27,9 +27,9 @@ class VersionsController < ApplicationController
     @version = Version.find(params[:id])
     @startup = @version.startup
 
-      @version.update(version_params)
-      @version.save
-      redirect_to versions_path
+    @version.update(version_params)
+    @version.save
+    redirect_to startup_version_path([@startup, @version])
   end
 
       private
