@@ -2,9 +2,9 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @startup = Startup.find_or_create_by(user: current_user)
+    @startup = current_user.startup
     @version = Version.new
-    @tester = Tester.find_or_create_by(user: current_user)
+    @tester = current_user.tester
 
     authorize(:dashboard, :show?)
   end
