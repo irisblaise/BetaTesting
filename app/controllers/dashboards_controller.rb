@@ -5,6 +5,7 @@ class DashboardsController < ApplicationController
     @startup = current_user.startup
     @versions = current_user.startup.versions
     @tester = current_user.tester
+    @version = current_user.version
 
     authorize(:dashboard, :show?)
   end
