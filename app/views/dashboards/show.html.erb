@@ -2,4 +2,9 @@
   <%= render 'tester' %>
 <% elsif current_user.is_startup? %>
   <%= render 'startup' %>
+<% else %>
+  <div class="col-6 offset-3 text-center mt-5">
+    <%= link_to "I am Tester", new_tester_path  %>
+    <%= link_to "I am Startup", new_startup_path  %>
+  </div>
 <% end %>

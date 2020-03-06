@@ -38,7 +38,7 @@
         <div>Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
         <div>Company: <%= current_user.startup.company_name %> </div>
         <div>Website: <%= current_user.startup.url %></div>
-        <div>About: <%= current_user.startup.description.capitalize %></div>
+        <div>About: <%= current_user.startup.description&.capitalize %></div>
         <div>Sector: <%= current_user.startup.sector %></div>
       </div>
 
