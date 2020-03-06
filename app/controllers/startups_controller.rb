@@ -8,6 +8,7 @@ class StartupsController < ApplicationController
       @startups = policy_scope(Startup).where("company_name ILIKE '%#{params[:query]}%'")
     else
       @startups = policy_scope(Startup)
+      end
     end
   end
 
@@ -27,8 +28,14 @@ class StartupsController < ApplicationController
       startup = Startup.find_or_create_by! user_id: current_user.id
     end
 
-    authorize startup
-    redirect_to dashboard_path
+
+#   def new
+#       if !current_user.is_tester?
+#         startup = Startup.find_or_create_by! user_id: current_user.id
+#       end
+
+#       redirect_to dashboard_path
+#     end
 
 
   def create
