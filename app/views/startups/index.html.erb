@@ -23,15 +23,15 @@
         <div class="d-flex">
           <p><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
           <div class="card-product-infos">
-            <h2> <%= startup.company_name %></h2>
-            <p>  <%= startup.description %></p>
-            <p> <strong>Sector:</strong> <%= startup.sector %></p>
-            <p> <strong>URL:</strong> <%= startup.url %></p>
+            <h2>Company: <%= startup.company_name %></h2>
+            <p> <strong>Description: </strong> <%= startup.description %></p>
+            <p> <strong>Sector: </strong> <%= startup.sector %></p>
+            <p> <strong>URL: </strong> <%= startup.url %></p>
           </div>
         </div>
 
         <div>
-          <%= link_to "Test Me",  startup_version_path(startup.id, startup.versions.last.id), {class: "btn btn-outline-success"} %> --> -->
+          <%= link_to "Test Me",  startup_version_path(startup.id, startup.versions.last.id), {class: "btn btn-outline-success"} %>
 
         </div>
       </div>
