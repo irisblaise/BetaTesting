@@ -3,12 +3,10 @@ class DashboardsController < ApplicationController
 
   def show
     @startup = current_user.startup
-    @version = Version.new
+    @versions = current_user.startup.versions
     @tester = current_user.tester
+    @version = current_user.version
 
     authorize(:dashboard, :show?)
   end
-
-
-
 end
