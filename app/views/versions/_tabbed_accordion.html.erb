@@ -35,6 +35,7 @@
             </div>
             <div id="accordion_body_<%= question.id %>" class="collapse <%= index == 0 ? 'show' : '' %>" aria-labelledby="accordion_header_<%= question.id %>" data-parent="#questions-accordion">
               <div class="card-body">
+
                 <ul>
                   <% question.answers.each do |answer| %>
                     <p> <%= answer.answer %> </p>
