@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       resources :feedbacks
     end
   end
-  
+
+  resources :charges, only: [:new, :create]
+
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :questions, only: [:create, :destroy]
