@@ -4,7 +4,7 @@
     <p>Contribute to cool ideas while making money</p>
 
     <% if current_user && current_user.is_tester? %>
-      <div class='btn-cont'>
+      <div class='btn-cont d-flex justify-content-start'>
         <%= link_to startups_path, {class: "btn btn-succes"} do%>
           <p>Start Testing</p>
           <span class='line-1'></span>
@@ -14,7 +14,7 @@
         <% end %>
       </div>
     <% elsif current_user && current_user.is_startup? %>
-      <div class='btn-cont'>
+      <div class='btn-cont d-flex justify-content-start'>
          <%= link_to dashboard_path, {class: "btn btn-succes"} do %>
             <p>Dashboard</p>
             <span class='line-1'></span>
