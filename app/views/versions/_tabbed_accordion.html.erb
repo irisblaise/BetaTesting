@@ -1,0 +1,48 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <% @versions.each_with_index do |version, index|%>
+      <a
+        class="nav-item nav-link <%= index == 0 ? 'active' : '' %>"
+        id="nav-version-<%= version.id %>"
+        data-toggle="tab"
+        href="#body-version-<%= version.id %>"
+        role="tab"
+        aria-controls="nav-home"
+        aria-selected="true"
+      >
+        <%= version.name %>
+      </a>
+    <% end %>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <% @versions.each_with_index do |version, index|%>
+    <div
+      class="tab-pane fade <%= index == 0 ? 'show active' : '' %>"
+      id="body-version-<%= version.id %>"
+      role="tabpanel"
+      aria-labelledby="nav-version-<%= version.id %>"
+    >
+      <div id="questions-accordion">
+        <% version.questions.each_with_index do |question, index| %>
+          <div class="card">
+            <div class="card-header" id="accordion_header_<%= question.id %>">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#accordion_body_<%= question.id %>" aria-expanded="true" aria-controls="accordion_body_<%= question.id %>">
+                  <%= question.question %>
+                </button>
+              </h5>
+            </div>
+            <div id="accordion_body_<%= question.id %>" class="collapse <%= index == 0 ? 'show' : '' %>" aria-labelledby="accordion_header_<%= question.id %>" data-parent="#questions-accordion">
+              <div class="card-body">
+                answer 1
+                answer 2
+                answer 3
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
