@@ -67,9 +67,18 @@
       <td>Great</td><br>
     </tr>
 
-      <%= submit_tag("Submit") %>
-    <% end %>
+      <% if current_user && current_user.is_tester? %>
+        <br>
+        <%= submit_tag "Submit", class: "btn btn-success"  %>
+
+      <% else %>
+        <br>
+        <%= link_to "Quit preview", dashboard_path, {class: "btn btn-success"} %>
+
+      <% end %>
 
   </div>
   <iframe class="frame" src="https://www.pixelstech.net/article/1532747442-How-to-check-whether-a-web-page-can-be-loaded-in-iframe" width="500" height="850" frameborder="0" marginwidth="0" marginheight="0"></iframe>
 </div>
+
+<% end %>
