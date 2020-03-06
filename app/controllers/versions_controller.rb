@@ -14,6 +14,7 @@ class VersionsController < ApplicationController
   def show
       @version = Version.find(params[:id])
       @questions = @version.questions
+      @feedback = Feedback.all
       # authorize @version
   end
 
