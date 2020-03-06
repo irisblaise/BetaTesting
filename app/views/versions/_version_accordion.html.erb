@@ -1,10 +1,7 @@
-
-
   <div class="tab-pane fade show active" id="accordion<%= index %>" role="tabpanel" aria-labelledby="nav-version_<%= index %>-tab">
     <div class="accordion" id="accordion<%= index %>">
-      <% 3.times do %>
-    <%#= @version.questions.each do |question| niet vergeten toe te voegen question: question%>
-        <%= render "versions/question_accordion" %>
+   <% version.questions.each_with_index do |question, index| %>
+        <%= render partial: "versions/question_accordion", locals: { question: question, index: index}%>
       <% end %>
     </div>
   </div>

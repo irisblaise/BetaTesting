@@ -69,19 +69,20 @@
 
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-    <%= render "versions/version_tab", index: 1 %>
-    <%= render "versions/version_tab", index: 2 %>
-    <%= render "versions/version_tab", index: 3 %>
+        <% @versions.each_with_index do |version, index|  %>
+    <%= render "versions/version_tab", index: index %>
+    <% end %>
   </div>
 </nav>
+
 <div class="tab-content" id="nav-tabContent">
-  <!-- <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
-  <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
-  <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div> -->
-  <%= render "versions/version_accordion", index: 1 %>
-  <%= render "versions/version_accordion", index: 2 %>
-  <%= render "versions/version_accordion", index: 3 %>
+    <% @versions.each_with_index do |version, index|  %>
+    <%= render partial: "versions/version_accordion", locals: { version: version, index: index } %>
+    <% end %>
+  </div>
 </div>
 
-</div>
+
+<!-- render partial: "versions/version_accordion", locals: { version: version, index: index }
+
 
