@@ -6,6 +6,11 @@ class VersionsController < ApplicationController
     @versions = Version.all
   end
 
+  def new
+    @version = Version.new
+    @startup = Startup.find(params[:startup_id])
+  end
+
   def show
       @version = Version.find(params[:id])
       @questions = @version.questions
@@ -13,11 +18,11 @@ class VersionsController < ApplicationController
   end
 
   def create
-    @version = Version.new
+    @version = Version.new(version_params)
     @version.startup = current_user.startup
 
     if @version.save
-      redirect_to edit_version_path(@version)
+      redirect_to edit_startup_version_path(@version.startup, @version)
     else
     end
   end

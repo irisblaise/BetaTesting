@@ -5,10 +5,9 @@ class StartupsController < ApplicationController
 #       @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
   def index
     if params[:query].present?
-      @startups = policy_scope(Startup).where("company_name ILIKE '%#{params[:query]}%'")
+      @startups = policy_scope(Startup).where("company_name ILIKE '%#{params[:query]}%'").select { |startup| startup.versions.length != 0 }
     else
-      @startups = policy_scope(Startup)
-      end
+      @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
     end
   end
 
@@ -28,6 +27,13 @@ class StartupsController < ApplicationController
       startup = Startup.find_or_create_by! user_id: current_user.id
     end
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    authorize startup
+    redirect_to dashboard_path
+  end
+
+>>>>>>> master
 
 #   def new
 #       if !current_user.is_tester?
@@ -37,12 +43,15 @@ class StartupsController < ApplicationController
 #       redirect_to dashboard_path
 #     end
 
+<<<<<<< HEAD
 =======
 
     authorize startup
     redirect_to dashboard_path
 >>>>>>> master
 
+=======
+>>>>>>> master
 
   def create
     @startup = Startup.new(startup_params)
