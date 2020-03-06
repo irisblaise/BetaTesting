@@ -26,10 +26,14 @@ class StartupsController < ApplicationController
     if !current_user.is_tester?
       startup = Startup.find_or_create_by! user_id: current_user.id
     end
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     authorize startup
     redirect_to dashboard_path
   end
 
+>>>>>>> master
 
 #   def new
 #       if !current_user.is_tester?
@@ -39,6 +43,15 @@ class StartupsController < ApplicationController
 #       redirect_to dashboard_path
 #     end
 
+<<<<<<< HEAD
+=======
+
+    authorize startup
+    redirect_to dashboard_path
+>>>>>>> master
+
+=======
+>>>>>>> master
 
   def create
     @startup = Startup.new(startup_params)
