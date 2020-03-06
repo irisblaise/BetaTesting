@@ -1,4 +1,4 @@
-<div class="banner2">
+<div class="banner2 mb-4">
   <h1> what do you feel like testing today?</h1>
 
     <div class="d-flex justify-content-center mt-4">
@@ -31,7 +31,7 @@
         </div>
 
         <div>
-          <%= link_to "Test Me",  startup_path(startup.id), {class: "btn btn-outline-success"} %>
+          <%= link_to "Test Me",  startup_version_path(startup.id, startup.versions.last), {class: "btn btn-outline-success"} %>
 
         </div>
       </div>
@@ -40,3 +40,4 @@
   </div>
 </div>
 
+          <%#= link_to "Test Me",  startup_version_path(startup.id), {class: "btn btn-outline-success"} %>

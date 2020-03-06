@@ -44,9 +44,11 @@
       <div class="user-contact text-left">
         <span>Email: <%= current_user.email %></span>
       </div>
+      <% unless current_user.empty_tester_profile? %>
       <div class="padding-top-30">
         <%= link_to "Edit Profile", edit_tester_path(current_user), {class: "card_action btn btn-primary"}  %>
       </div>
+      <% end %>
     </div>
 
     <div class="stats-card-1">
