@@ -2,7 +2,7 @@
   <h1 class="h1-header">Hey <%= current_user.first_name&.capitalize %></h1>
   <h2>Welcome to your dashboard!</h2>
     <div class="w-100 d-flex justify-content-center">
-        <%= link_to "Add test!",  new_startup_version_path(current_user.startup), {class: "search-btn btn btn-outline-light"} %>
+        <%= link_to "Add test!",  new_startup_version_path(current_user.startup), {class: "search-btn btn mt-3 btn-outline-light"} %>
     </div>
 </div>
 
@@ -15,71 +15,77 @@
   </div>
 <% end %>
 
-<div class="container">
 
-  <div class="main-container d-flex text-center mt-5">
+
+
+
+
+
+
+
+<div class="container mt-5">
+
+  <div class="main-container d-flex text-center justify-content-center">
 
     <!-- user profile box, same for startup and tester -->
-    <div class="user-profile text-left">
+    <div class="user-profilev2">
 
       <div class="user-photo">
         <%= cl_image_tag current_user.startup.photo.attached? ? current_user.startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, :cloud_name => "dir0nw4ok"%>
       </div>
 
-      <div class="user-info">
-        <div>Name: <%= current_user.first_name %> <%= current_user.last_name %></div>
+      <div class="user-info text-left">
+        <div>Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
         <div>Company: <%= current_user.startup.company_name %> </div>
         <div>Website: <%= current_user.startup.url %></div>
-        <div>About: <%= current_user.startup.description %></div>
+        <div>About: <%= current_user.startup.description.capitalize %></div>
         <div>Sector: <%= current_user.startup.sector %></div>
       </div>
 
-      <div class="user-contact">
+      <div class="user-contact text-left">
         <span>Email: <%= current_user.email %></span>
       </div>
-      <div class="padding-top-30">
-        <%= link_to "Edit Profile", edit_tester_path(current_user), {class: "card_action btn btn-primary"}  %>
+      <div class="padding-top-30 ">
+        <%= link_to "Edit Profile", edit_startup_path(current_user), {class: "card_action btn btn-primary"}  %>
       </div>
     </div>
 
 
-    <div class="user-stats-container ">
+    <div class="stats-card-1">
+      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
 
-      <div class="user-stats-1 d-flex">
-        <div class="stats-card-1" id="card-1">
-          <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-
-        </div>
-        <div class="stats-card-1">
-          <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-        </div>
-      </div>
-
-
-      <div class="user-stats-2 d-flex">
-        <div class="stats-card-2">
-       <img src="https://www.investopedia.com/thmb/JEVi7j7Or6I5od0x1zXLDW8gPiU=/1806x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/bargraphexample-0f58c4489f3343b48fc6128b97153f35.jpg" alt="">
-
-        </div>
-
-      </div>
-
+    </div>
+    <div class="stats-card-1">
+      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
     </div>
   </div>
 
+
+  <!-- <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Home</a>
+      <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Profile</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+    </div>
+  </nav>
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">...</div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+    <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">...</div>
+  </div> -->
+
 <nav>
   <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <% @versions.each_with_index do |version, index|  %>
-    <%= render "versions/version_tab", index: index %>
+    <% @versions.each_with_index do |version, index|  %>
+      <%= render "versions/version_tab", index: index %>
     <% end %>
   </div>
 </nav>
 
 <div class="tab-content" id="nav-tabContent">
-    <% @versions.each_with_index do |version, index|  %>
+  <% @versions.each_with_index do |version, index|  %>
     <%= render partial: "versions/version_accordion", locals: { version: version, index: index } %>
-    <% end %>
-  </div>
+  <% end %>
 </div>
 
 

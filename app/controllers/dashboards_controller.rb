@@ -2,10 +2,12 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @startup = current_user.startup
-    @versions = current_user.startup.versions
-    @tester = current_user.tester
-    @version = current_user.version
+    if current_user.is_startup?
+      @startup = current_user.startup
+      @versions = current_user.startup.versions
+    elsif current_user.is_tester?
+      @tester = current_user.tester
+    end
 
     authorize(:dashboard, :show?)
   end
