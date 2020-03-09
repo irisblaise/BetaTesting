@@ -55,11 +55,38 @@
 
 
     <div class="stats-card-1">
-      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-
+      <%= render 'chartjs' %>
+<!--       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
+ -->
     </div>
     <div class="stats-card-1">
       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
+    </div>
+  </div>
+
+  <!-- <h1 class="text-center">OVERALL SCORE</h1> -->
+
+
+  <div class="rating-db">
+    <div>
+      <p>Website UX</p>
+      <%= Feedback.last.website_ux %>
+    </div>
+    <div>
+      <p>Website UI</p>
+      <%= Feedback.last.website_ui %>
+    </div>
+    <div>
+      <p>Website Design</p>
+      <%= Feedback.last.website_design %>
+    </div>
+    <div>
+      <p>Website Fluidity</p>
+      <%= Feedback.last.website_fluidity %>
+    </div>
+    <div>
+      <p>Website Latency</p>
+      <%= Feedback.last.website_latency %>
     </div>
   </div>
 
@@ -74,6 +101,7 @@
   <%= render 'versions/tabbed_accordion' %>
   </div>
   </div>
+
 
 
 
