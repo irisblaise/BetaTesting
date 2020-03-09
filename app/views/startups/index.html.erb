@@ -1,27 +1,38 @@
-<div class="banner2">
+<div class="banner2 mb-4">
   <h1> what do you feel like testing today?</h1>
+
+    <div class="d-flex justify-content-center mt-4">
+      <div class="search-box ">
+          <%= form_tag startups_path, method: :get do %>
+            <%= text_field_tag :query, params[:query], placeholder: " " %>
+          <% end %>
+        <span></span>
+      </div>
+    </div>
+
+
+<!-- the list of movies -->
+
 </div>
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
       <!-- search form 3 -->
-      <div class="search-box">
-        <input type="text" placeholder=" " />
-        <span></span>
-      </div>
       <% @startups.each do |startup| %>
       <div class="card-product justify-content-between">
         <div class="d-flex">
           <p><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
           <div class="card-product-infos">
-            <h2> <%= startup.company_name %></h2>
-            <p>  <%= startup.description %></p>
-            <p> <strong>Sector:</strong> <%= startup.sector %></p>
-            <p> <strong>URL:</strong> <%= startup.url %></p>
+            <h2>Company: <%= startup.company_name %></h2>
+            <p> <strong>Description: </strong> <%= startup.description %></p>
+            <p> <strong>Sector: </strong> <%= startup.sector %></p>
+            <p> <strong>URL: </strong> <%= startup.url %></p>
           </div>
         </div>
+
         <div>
-          <%= link_to "Test Me",  startup_path(startup.id), {class: "btn btn-outline-success"} %>
+          <%= link_to "Test Me",  startup_version_path(startup.id, startup.versions.last.id), {class: "btn btn-outline-success"} %>
+
         </div>
       </div>
       <% end %>
@@ -29,3 +40,4 @@
   </div>
 </div>
 
+          <%#= link_to "Test Me",  startup_version_path(startup.id), {class: "btn btn-outline-success"} %>

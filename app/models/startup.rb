@@ -1,8 +1,10 @@
 class Startup < ApplicationRecord
+  #searchkick
   has_one_attached :photo
   belongs_to :user
   has_many :feedbacks
   has_many :versions
+  has_many :reviews
 
   enum sector: SECTOR
 

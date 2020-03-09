@@ -1,9 +1,13 @@
 class Api::V1::QuestionsController < Api::V1::BaseController
-  def create
+   # skip_after_action :verify_authorized
+   before_action :authenticate_user!
+
+   def create
     @question = Question.new question_params
 
     if @question.save
       render :show
+      authorize @question
     end
   end
 
@@ -12,6 +16,7 @@ class Api::V1::QuestionsController < Api::V1::BaseController
 
     if @question.destroy
       head :no_content
+      authorize @question
     end
   end
 

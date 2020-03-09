@@ -11,18 +11,12 @@
   </head>
   <body>
     <div id="container-app">
-      <% if !notice.nil? %>
-        <p class="notice"><%= notice %></p>
-      <% end %>
-      <% if !alert.nil? %>
-        <p class="alert"><%= alert %></p>
-      <% end %>
       <%= render "shared/navbar" %>
       <%= render 'shared/flashes' %>
       <%= yield %>
       <%= render 'shared/footer' %>
-      <%= javascript_include_tag 'application' %>
-      <%= javascript_pack_tag 'application' %>
+      <%= javascript_include_tag "application" %> <!-- from app/assets/javascripts/application.js -->
+      <%= javascript_pack_tag "application" %>
     </div>
   </body>
 </html>

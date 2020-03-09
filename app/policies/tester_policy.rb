@@ -18,7 +18,6 @@ class TesterPolicy < ApplicationPolicy
     return true
   end
 
-  #  edit calls update, so we don't need it
   # def edit?
   #   record.user == user
   # end

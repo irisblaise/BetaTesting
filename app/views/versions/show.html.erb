@@ -1,12 +1,84 @@
-<h1 class="text-center mt-5">Version Test</h1>
+<div class="banner2">
+  <h1 class="text-center mt-5"><%= @version.name %></h1>
+</div>
 
 <div class="version_container mt-5">
   <div class="text-left box-q-a">
-    <% @questions.each do |question| %>
-     <h1><%= question.question  %></h1>
-    <input value="Type answer">
-    <% end %>
-    <%= link_to "Submit", "#", {class: "btn btn-outline-success"} %>
+    <%= form_tag(answers_path, method: :post) do %>
+      <% @questions.each do |question| %>
+        <%= label_tag("answers[]", question.question) %><br>
+        <%= text_field_tag("answers[]") %><br>
+        <%= hidden_field_tag "questions[]", question.id %>
+
+        <% end %><br>
+
+   <tr class="likert">
+     <td><label for="q1">Website UX</label></td><br>
+     <td>Poor</td>
+     <td><input type="radio" name="q1" value="1"> </td>
+     <td><input type="radio" name="q1" value="2"> </td>
+     <td><input type="radio" name="q1" value="3"> </td>
+     <td><input type="radio" name="q1" value="4"> </td>
+     <td><input type="radio" name="q1" value="5"> </td>
+     <td>Great</td><br>
+   </tr>
+
+   <tr class="likert">
+     <td><label for="q2">Website UI</label></td><br>
+     <td>Poor</td>
+     <td><input type="radio" name="q2" value="1"> </td>
+     <td><input type="radio" name="q2" value="2"> </td>
+     <td><input type="radio" name="q2" value="3"> </td>
+     <td><input type="radio" name="q2" value="4"> </td>
+     <td><input type="radio" name="q2" value="5"> </td>
+     <td>Great</td><br>
+   </tr>
+
+   <tr class="likert">
+     <td><label for="q3">Website Design</label></td><br>
+     <td>Poor</td>
+     <td><input type="radio" name="q3" value="1"> </td>
+     <td><input type="radio" name="q3" value="2"> </td>
+     <td><input type="radio" name="q3" value="3"> </td>
+     <td><input type="radio" name="q3" value="4"> </td>
+     <td><input type="radio" name="q3" value="5"> </td>
+     <td>Great</td><br>
+   </tr>
+
+   <tr class="likert">
+     <td><label for="q4">Website Fluidity</label></td><br>
+     <td>Poor</td>
+     <td><input type="radio" name="q4" value="1"> </td>
+     <td><input type="radio" name="q4" value="2"> </td>
+     <td><input type="radio" name="q4" value="3"> </td>
+     <td><input type="radio" name="q4" value="4"> </td>
+     <td><input type="radio" name="q4" value="5"> </td>
+     <td>Great</td><br>
+   </tr>
+
+    <tr class="likert">
+      <td><label for="q5">Website Latency</label></td><br>
+      <td>Poor</td>
+      <td><input type="radio" name="q5" value="1"> </td>
+      <td><input type="radio" name="q5" value="2"> </td>
+      <td><input type="radio" name="q5" value="3"> </td>
+      <td><input type="radio" name="q5" value="4"> </td>
+      <td><input type="radio" name="q5" value="5"> </td>
+      <td>Great</td><br>
+    </tr>
+
+      <% if current_user && current_user.is_tester? %>
+        <br>
+        <%= submit_tag "Submit", class: "btn btn-success"  %>
+
+      <% else %>
+        <br>
+        <%= link_to "Quit preview", dashboard_path, {class: "btn btn-success"} %>
+
+      <% end %>
+
   </div>
   <iframe class="frame" src="https://www.pixelstech.net/article/1532747442-How-to-check-whether-a-web-page-can-be-loaded-in-iframe" width="500" height="850" frameborder="0" marginwidth="0" marginheight="0"></iframe>
 </div>
+
+<% end %>

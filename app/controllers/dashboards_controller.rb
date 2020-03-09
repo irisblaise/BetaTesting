@@ -2,25 +2,13 @@ class DashboardsController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @startup = Startup.find_by(user: current_user)
-    @version = Version.new
+    if current_user.is_startup?
+      @startup = current_user.startup
+      @versions = current_user.startup.versions
+    elsif current_user.is_tester?
+      @tester = current_user.tester
+    end
 
+    authorize(:dashboard, :show?)
   end
-
-
-  # def index
-  #   @startups = Startup.all
-  # end
-
-  # def update
-  #   @tester = Tester.find(params[:id])
-  #   @tester.update(tester_params)
-
-  #   if @tester.save
-  #     redirect_to dashboard_path
-  #   else
-  #     render "new"
-  #   end
-  # end
-
 end
