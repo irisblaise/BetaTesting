@@ -1,6 +1,7 @@
 class Tester < ApplicationRecord
   has_one_attached :photo
   belongs_to :user, dependent: :destroy
+  has_many :reviews
 
   enum education: EDUCATION_LEVELS
   enum profession: PROFESSION
@@ -8,6 +9,11 @@ class Tester < ApplicationRecord
   enum sex: SEX
 
 
+  def avg_rating
+    # grab all reviews that belong to tester
+    # pluck the review value
+    # calc the avg
+  end
   # validates :education, presence: true
   # validates :age, presence: true
   # validates :profession, presence: true

@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :testers do
+    resources :reviews, only: [:new, :create, :index]
+  end
+
   resources :answers
 
   namespace :api, defaults: { format: :json } do

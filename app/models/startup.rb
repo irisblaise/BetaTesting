@@ -4,6 +4,7 @@ class Startup < ApplicationRecord
   belongs_to :user
   has_many :feedbacks
   has_many :versions
+  has_many :reviews
 
   enum sector: SECTOR
 
