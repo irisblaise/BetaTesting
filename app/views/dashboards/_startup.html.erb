@@ -1,18 +1,18 @@
 <div class=banner2>
   <h1 class="h1-header">Hey <%= current_user.first_name&.capitalize %></h1>
   <h2>Welcome to your dashboard!</h2>
-    <div class="w-100 d-flex justify-content-center">
-        <%= link_to "Add test!",  new_startup_version_path(current_user.startup), {class: "search-btn btn mt-3 btn-outline-light"} %>
-    </div>
+  <div class="w-100 d-flex justify-content-center">
+    <%= link_to "Add test!",  new_startup_version_path(current_user.startup), {class: "search-btn btn mt-3 btn-outline-light"} %>
+  </div>
 </div>
 
 <% if current_user.empty_profile? %>
-  <div class="w-100 d-flex justify-content-center my-3">
-    <div class="alert-profile alert-warning" role="alert">
-      Your profile is not completed.
-      <%= link_to "update!",  edit_startup_path(current_user), {class: "btn btn-succes"} %>
-    </div>
+<div class="w-100 d-flex justify-content-center my-3">
+  <div class="alert-profile alert-warning" role="alert">
+    Your profile is not completed.
+    <%= link_to "update!",  edit_startup_path(current_user), {class: "btn btn-succes"} %>
   </div>
+</div>
 <% end %>
 
 
@@ -57,40 +57,54 @@
     <div class="stats-card-1">
       <%= render 'chartjs' %>
 <!--       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
- -->
-    </div>
-    <div class="stats-card-1">
-      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-    </div>
+-->
+</div>
+<div class="stats-card-1">
+  <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
+</div>
+</div>
+
+<!-- <h1 class="text-center">OVERALL SCORE</h1> -->
+
+
+<div class="rating-db">
+  <div>
+    <p>Website UX</p>
+    <%= Feedback.last.website_ux %>
   </div>
-
-  <!-- <h1 class="text-center">OVERALL SCORE</h1> -->
-
-
-  <div class="rating-db">
-    <div>
-      <p>Website UX</p>
-      <%= Feedback.last.website_ux %>
-    </div>
-    <div>
-      <p>Website UI</p>
-      <%= Feedback.last.website_ui %>
-    </div>
-    <div>
-      <p>Website Design</p>
-      <%= Feedback.last.website_design %>
-    </div>
-    <div>
-      <p>Website Fluidity</p>
-      <%= Feedback.last.website_fluidity %>
-    </div>
-    <div>
-      <p>Website Latency</p>
-      <%= Feedback.last.website_latency %>
-    </div>
+  <div>
+    <p>Website UI</p>
+    <%= Feedback.last.website_ui %>
   </div>
+  <div>
+    <p>Website Design</p>
+    <%= Feedback.last.website_design %>
+  </div>
+  <div>
+    <p>Website Fluidity</p>
+    <%= Feedback.last.website_fluidity %>
+  </div>
+  <div>
+    <p>Website Latency</p>
+    <%= Feedback.last.website_latency %>
+  </div>
+</div>
 
 
+<div id="tabs-container">
+  <ul class="tabs-menu">
+    <li class="current"><a href="#tab-1">Tab 1</a></li>
+    <li><a href="#tab-2">Tab 2</a></li>
+    <li><a href="#tab-3">Tab 3</a></li>
+    <li><a href="#tab-4">Tab 4</a></li>
+  </ul>
+  <div class="tab">
+    <div id="tab-1" class="tab-content">tab 1 content</div>
+    <div id="tab-2" class="tab-content">tab 2 content</div>
+    <div id="tab-3" class="tab-content">tab 3 content</div>
+    <div id="tab-4" class="tab-content">tab 4 content</div>
+  </div>
+</div>
 
 <div >
   <h3>#Answers per tester - title to be adjusted</h3>
@@ -99,13 +113,5 @@
 <div>
   <h3>#Answers per question - title to be adjusted</h3>
   <%= render 'versions/tabbed_accordion' %>
-  </div>
-  </div>
-
-
-
-
-
-
-
-
+</div>
+</div>

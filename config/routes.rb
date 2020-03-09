@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   end
 
 resources :orders, only: [:show, :index]
- 
+
 resources :feedbacks, only: [:show] do
     resources :reviews, only: [:new, :create, :index]
       end
