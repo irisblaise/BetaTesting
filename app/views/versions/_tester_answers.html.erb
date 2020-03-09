@@ -36,6 +36,7 @@
                 </button>
               </h5>
               <div>
+                <!-- Review button will only show if review has not been given yet -->
                   <% if feedback.review.nil? %>
                   <%= link_to "Review", new_feedback_review_path(feedback), {class: "card_action btn btn-primary"}  %>
                 <% else %>
