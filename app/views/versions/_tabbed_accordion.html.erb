@@ -38,8 +38,10 @@
 
                 <ul>
                   <% question.answers.each do |answer| %>
+                  <li>
                   <%= cl_image_tag answer.feedback.tester.photo.attached? ? answer.feedback.tester.photo.key : "injcuuecln8fvf2vo2zg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, :cloud_name => "dir0nw4ok"%>
                     <%= answer.feedback.tester.user.first_name.capitalize %> : <%= answer.answer %>
+                 </li>
                   <% end %>
                 </ul>
               </div>
