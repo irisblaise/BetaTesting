@@ -24,22 +24,27 @@
       aria-labelledby="nav-version-<%= version.id %>"
     >
       <div id="questions-accordion">
-        <% version.questions.each_with_index do |question, index| %>
+
+
+        <% version.feedbacks.each_with_index do |feedback, index| %>
           <div class="card">
-            <div class="card-header" id="accordion_header_<%= question.id %>">
+            <div class="card-header" id="accordion_header_<%= feedback.id %>">
               <h5 class="mb-0">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#accordion_body_<%= question.id %>" aria-expanded="true" aria-controls="accordion_body_<%= question.id %>">
-                  <%= question.question %>
+                <button class="btn btn-link" data-toggle="collapse" data-target="#accordion_per_tester_<%= feedback.id %>" aria-expanded="true" aria-controls="accordion_per_tester_<%= feedback.id %>">
+                  <%= cl_image_tag feedback.tester.photo.attached? ? feedback.tester.photo.key : "injcuuecln8fvf2vo2zg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, :cloud_name => "dir0nw4ok"%>
+                  <%= feedback.tester.user.first_name %>
                 </button>
               </h5>
             </div>
-            <div id="accordion_body_<%= question.id %>" class="collapse <%= index == 0 ? 'show' : '' %>" aria-labelledby="accordion_header_<%= question.id %>" data-parent="#questions-accordion">
+            <div id="accordion_per_tester_<%= feedback.id %>" class="collapse <%= index == 0 ? 'show' : '' %>" aria-labelledby="accordion_header_<%= feedback.id %>" data-parent="#questions-accordion">
               <div class="card-body">
 
                 <ul>
-                  <% question.answers.each do |answer| %>
-                  <%= cl_image_tag answer.feedback.tester.photo.attached? ? answer.feedback.tester.photo.key : "injcuuecln8fvf2vo2zg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, :cloud_name => "dir0nw4ok"%>
-                    <%= answer.feedback.tester.user.first_name.capitalize %> : <%= answer.answer %>
+                  <% feedback.answers.each do |answer| %>
+                  <li>
+                  <%= answer.question.question %>
+                    <%= answer.answer %>
+                    </li>
                   <% end %>
                 </ul>
               </div>
@@ -50,6 +55,11 @@
     </div>
   <% end %>
 </div>
+
+
 <br>
 <br>
 <br>
+
+
+
