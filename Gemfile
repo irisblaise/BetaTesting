@@ -9,6 +9,8 @@ gem 'rails', '5.2.4.1'
 gem 'redis'
 gem 'money-rails'
 gem 'stripe'
+gem 'stripe_event'
+
 
 
 gem 'autoprefixer-rails'

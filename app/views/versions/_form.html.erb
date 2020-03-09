@@ -6,6 +6,9 @@
     <div class="form-group">
       <%= f.input :name %>
       <%= f.input :quantity %>
+
+      <p>The estimate price would be: <%= humanized_money_with_symbol(Version.current_price) %></p>
+
       <%= f.button :submit, "Update version", {class: "btn btn-primary"} %>
     </div>
   <% end %>
