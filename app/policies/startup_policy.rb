@@ -5,30 +5,17 @@ class StartupPolicy < ApplicationPolicy
       @scope = scope
     end
 
-    # def resolve
-      # if current_user.is_startup?
-        # scope.all
-      # if current_user.is_tester?
-        # scope.joins ?
-
-        # SELECT "tester".*
-        # FROM "testers"
-        # WHERE "age" BETWEEN XX AND XX;
-
-        # SELECT "tester".*
-        # FROM "testers"
-        # WHERE "profession" BETWEEN XX AND XX;
-    # end
     def resolve
       if user.is_startup?
-        byebug
         scope.all
       else
-        byebug
         startups = scope.all
-
-        # startups = startups.by_tester_age(user.tester.age)
-        # scope.where(published: true)
+        startups = startups.by_tester_profession(user.tester.profession) &&
+        startups = startups.by_tester_education(user.tester.education) &&
+        startups = startups.by_tester_age(user.tester.age) &&
+        startups = startups.by_tester_sex(user.tester.sex) &&
+        startups = startups.by_tester_nationality(user.tester.nationality) &&
+        startups = startups.by_tester_rating(user.tester.rating)
       end
     end
 
