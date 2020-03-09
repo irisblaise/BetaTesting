@@ -51,11 +51,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_103432) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "version_id"
-    t.integer "website_ux"
-    t.integer "website_ui"
-    t.integer "website_design"
-    t.integer "website_fluidity"
-    t.integer "website_latency"
     t.index ["tester_id"], name: "index_feedbacks_on_tester_id"
     t.index ["version_id"], name: "index_feedbacks_on_version_id"
   end
