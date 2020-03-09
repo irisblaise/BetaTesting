@@ -9,9 +9,18 @@ class ReviewsController < ApplicationController
 
   def new
     @tester = Tester.find(params[:tester_id])
+    @review = Review.new
   end
 
   def create
+    @tester = Tester.find(params[:tester_id])
+    @review = Review.new(review_params)
+    @review = @review.tester_id
+    if @review.save
+      redirect_to dashboard_path
+    else
+      render :new
+    end
   end
 
 

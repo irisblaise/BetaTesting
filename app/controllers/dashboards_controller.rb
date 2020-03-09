@@ -4,8 +4,6 @@ class DashboardsController < ApplicationController
   def show
     if current_user.is_startup?
       @startup = current_user.startup
-      #  ??????
-      # @tester = tester
       @versions = current_user.startup.versions
     elsif current_user.is_tester?
       @tester = current_user.tester
