@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   get "/dashboard", to: "dashboards#show"
   get "/about_us", to: 'pages#about_us'
+  get "/help_and_support", to: 'pages#help_and_support'
 
 
   resources :testers
