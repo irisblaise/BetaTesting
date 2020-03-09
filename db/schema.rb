@@ -99,6 +99,12 @@ ActiveRecord::Schema.define(version: 2020_03_09_103432) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "target_education", default: [], array: true
+    t.text "target_age", default: [], array: true
+    t.text "target_profession", default: [], array: true
+    t.text "target_rating", default: [], array: true
+    t.text "target_nationality", default: [], array: true
+    t.text "target_sex", default: [], array: true
     t.index ["user_id"], name: "index_startups_on_user_id"
   end
 
