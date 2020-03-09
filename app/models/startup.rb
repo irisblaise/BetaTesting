@@ -5,6 +5,8 @@ class Startup < ApplicationRecord
   has_many :feedbacks
   has_many :versions
   has_many :reviews
+  has_many :orders
+
 
   enum sector: SECTOR
 
