@@ -3,4 +3,7 @@ class Version < ApplicationRecord
   has_many :questions
   monetize :price_cents
 
+  def self.current_price
+    20
+  end
 end
