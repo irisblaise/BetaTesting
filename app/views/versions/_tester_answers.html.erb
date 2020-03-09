@@ -28,13 +28,16 @@
 
         <% version.feedbacks.each_with_index do |feedback, index| %>
           <div class="card">
-            <div class="card-header" id="accordion_header_<%= feedback.id %>">
+            <div class="card-header d-flex justify-content-between" id="accordion_header_<%= feedback.id %>">
               <h5 class="mb-0">
                 <button class="btn btn-link" data-toggle="collapse" data-target="#accordion_per_tester_<%= feedback.id %>" aria-expanded="true" aria-controls="accordion_per_tester_<%= feedback.id %>">
                   <%= cl_image_tag feedback.tester.photo.attached? ? feedback.tester.photo.key : "injcuuecln8fvf2vo2zg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, :cloud_name => "dir0nw4ok"%>
                   <%= feedback.tester.user.first_name %>
                 </button>
               </h5>
+              <div>
+                  <%= link_to "Review", edit_startup_path(current_user), {class: "card_action btn btn-primary"}  %>
+              </div>
             </div>
             <div id="accordion_per_tester_<%= feedback.id %>" class="collapse <%= index == 0 ? 'show' : '' %>" aria-labelledby="accordion_header_<%= feedback.id %>" data-parent="#questions-accordion">
               <div class="card-body">
@@ -44,7 +47,7 @@
                   <li>
                   <%= answer.question.question %>
                     <%= answer.answer %>
-                    </li>
+                  </li>
                   <% end %>
                 </ul>
               </div>
