@@ -1,10 +1,10 @@
 class AddTargetGroupsToStartUp < ActiveRecord::Migration[5.2]
   def change
-  add_column :startups, :target_eduction, :integer
-  add_column :startups, :target_age, :integer
-  add_column :startups, :target_profession, :integer
-  add_column :startups, :target_rating, :integer
-  add_column :startups, :target_nationality, :integer
-  add_column :startups, :target_sex, :integer
+  add_column :startups, :target_education, :text, array:true, default: [], nil: []
+  add_column :startups, :target_age, :text, array:true, default: [], nil: []
+  add_column :startups, :target_profession, :text, array:true, default: [], nil: []
+  add_column :startups, :target_rating, :text, array:true, default: [], nil: []
+  add_column :startups, :target_nationality, :text, array:true, default: [], nil: []
+  add_column :startups, :target_sex, :text, array:true, default: [], nil: []
   end
 end

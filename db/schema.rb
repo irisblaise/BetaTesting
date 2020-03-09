@@ -71,12 +71,12 @@ ActiveRecord::Schema.define(version: 2020_03_09_083255) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "target_eduction"
-    t.integer "target_age"
-    t.integer "target_profession"
-    t.integer "target_rating"
-    t.integer "target_nationality"
-    t.integer "target_sex"
+    t.text "target_education", default: [], array: true
+    t.text "target_age", default: [], array: true
+    t.text "target_profession", default: [], array: true
+    t.text "target_rating", default: [], array: true
+    t.text "target_nationality", default: [], array: true
+    t.text "target_sex", default: [], array: true
     t.index ["user_id"], name: "index_startups_on_user_id"
   end
 

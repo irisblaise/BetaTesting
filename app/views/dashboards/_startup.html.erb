@@ -15,14 +15,6 @@
   </div>
 <% end %>
 
-
-
-
-
-
-
-
-
 <div class="container mt-5">
 
   <div class="main-container d-flex text-center justify-content-center">
@@ -35,11 +27,20 @@
       </div>
 
       <div class="user-info text-left">
+        <h6 style="font-weight:700">Company information</h6>
         <div>Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
         <div>Company: <%= current_user.startup.company_name %> </div>
         <div>Website: <%= current_user.startup.url %></div>
         <div>About: <%= current_user.startup.description&.capitalize %></div>
         <div>Sector: <%= current_user.startup.sector %></div>
+
+        <h6 style="font-weight:700">Your target market</h6>
+        <p>Age: <%= current_user.startup.target_age.join(", ") %></p>
+        <p>Eduction: <%= current_user.startup.target_education.join(", ") %></p>
+        <p>Nationality: <%= current_user.startup.target_nationality.join(", ") %></p>
+        <p>Rating: <%= current_user.startup.target_rating.join(", ") %></p>
+        <p>Profession: <%= current_user.startup.target_profession.join(", ") %></p>
+        <p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p>
       </div>
 
       <div class="user-contact text-left">
