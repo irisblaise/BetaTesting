@@ -12,5 +12,5 @@ import { chart } from './chart'
 activateSearchBar()
 newQuestion()
 deleteQuestion()
-myFunction()
+toggle()
 chart()

@@ -1,13 +1,23 @@
-// function myFunction() {
-//   var x = document.getElementById("myDIV");
-//   if (x.style.display === "none") {
-//     x.style.display = "block";
-//   } else {
-//     x.style.display = "none";
-//   }
-// }
+const toggle = () => {
 
-// export myFunction
+$(document).ready(function(){
 
+  $('.tabs-menu a').click(function(event) {
+    event.preventDefault();
 
-// does not work at the moment
+    // Toggle active class on tab buttons
+    $(this).parent().addClass("current");
+    $(this).parent().siblings().removeClass("current");
+
+    // display only active tab content
+    var activeTab = $(this).attr("href");
+    $('.tab-content').not(activeTab).css("display","none");
+    $(activeTab).fadeIn();
+
+  });
+
+});
+
+};
+
+export {toggle}
