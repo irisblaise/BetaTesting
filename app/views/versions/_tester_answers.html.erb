@@ -36,7 +36,7 @@
                 </button>
               </h5>
               <div>
-                  <%= link_to "Review", edit_startup_path(current_user), {class: "card_action btn btn-primary"}  %>
+                  <%= link_to "Review", new_tester_review_path(tester), {class: "card_action btn btn-primary"}  %>
               </div>
             </div>
             <div id="accordion_per_tester_<%= feedback.id %>" class="collapse <%= index == 0 ? 'show' : '' %>" aria-labelledby="accordion_header_<%= feedback.id %>" data-parent="#questions-accordion">
@@ -45,7 +45,7 @@
                 <ul>
                   <% feedback.answers.each do |answer| %>
                   <li>
-                  <%= answer.question.question %>
+                  <%= answer.question.question %> :
                     <%= answer.answer %>
                   </li>
                   <% end %>

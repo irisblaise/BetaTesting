@@ -1,2 +1,6 @@
-<h1>Reviews#new</h1>
-<p>Find me in app/views/reviews/new.html.erb</p>
+<div class=banner2>
+  <h1 class="h1-header">Hey <%= current_user.first_name&.capitalize %></h1>
+  <h2>Give a rating to the tester.</h2>
+</div>
+
+<%= render 'form' %>
