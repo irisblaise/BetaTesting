@@ -2,6 +2,8 @@ class StartupPolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       scope.all
+
+      # select the startups that match the current tester filters
     end
   end
 

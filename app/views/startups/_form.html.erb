@@ -8,6 +8,14 @@
   <%= f.input :photo, as: :file %>
   <!--           f.input :photo, as: :file -->
   <!--           f.input :availability -->
+  <h3>Who is your target market?</h3>
+  <%= f.input :target_age, :collection => 0..100, input_html: { class: 'multiselectuser', multiple: true}, :prompt => "Select your age"  %>
+  <%= f.input :target_sex, collection: SEX, input_html: { class: 'multiselectuser', multiple: true}, prompt: "What kind of gender?" %>
+  <%= f.input :target_profession, collection: PROFESSION, input_html: { class: 'multiselectuser', multiple: true}, prompt: "What kind of profession?" %>
+  <%= f.input :target_nationality, collection: NATIONALITY, input_html: { class: 'multiselectuser', multiple: true}, prompt: "What kind of nationality?" %>
+  <%= f.input :target_eduction, collection: EDUCATION_LEVELS, input_html: { class: 'multiselectuser', multiple: true}, prompt: 'What kind of educiton level?' %>
+  <%= f.input :target_rating %>
+
   <div class="justify-content-between d-flex padding-top-30">
     <%= link_to "Back", dashboard_path, {class: "card_action btn btn-primary"}  %>
     <%= f.button :submit, "Update Profile", {class: "btn btn-primary"} %>
