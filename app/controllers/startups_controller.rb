@@ -59,6 +59,7 @@ class StartupsController < ApplicationController
   end
 
   def update
+    byebug
     @startup = current_user.startup
     @startup.update(startup_params)
     authorize @startup
@@ -78,6 +79,6 @@ class StartupsController < ApplicationController
   private
 
   def startup_params
-    params.require(:startup).permit(:company_name, :url, :description, :sector, :photo)
+    params.require(:startup).permit(:company_name, :url, :description, :sector, :photo, target_age: [], target_education: [], target_nationality: [], target_rating: [], target_age: [], target_profession: [], target_sex: [])
   end
 end

@@ -9,6 +9,7 @@ class VersionsController < ApplicationController
   def new
     @version = Version.new
     @startup = Startup.find(params[:startup_id])
+    # create an order with a stripe session
   end
 
   def show
@@ -23,7 +24,9 @@ class VersionsController < ApplicationController
     @version.startup = current_user.startup
 
     if @version.save
-      redirect_to edit_startup_version_path(@version.startup, @version)
+      order = Order.initialize_with_stripe_session(@version)
+      redirect_to order_path(order)
+      # edit_startup_version_path(@version.startup, @version)
     else
     end
   end
@@ -31,6 +34,10 @@ class VersionsController < ApplicationController
   def edit
     @version = Version.find(params[:id])
     @startup = @version.startup
+
+    if @version.order.state == 'pending'
+      redirect_to order_path @version.order
+    end
   end
 
   def update
@@ -45,7 +52,7 @@ class VersionsController < ApplicationController
       private
 
     def version_params
-      params.require(:version).permit(:name)
+      params.require(:version).permit(:name, :quantity)
     end
 
 end
