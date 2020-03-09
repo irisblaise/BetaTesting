@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2020_03_09_090427) do
+ActiveRecord::Schema.define(version: 2020_03_09_103432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,19 @@ ActiveRecord::Schema.define(version: 2020_03_09_090427) do
     t.index ["version_id"], name: "index_feedbacks_on_version_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.integer "quantity"
+    t.string "checkout_session_id"
+    t.bigint "startup_id"
+    t.bigint "version_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["startup_id"], name: "index_orders_on_startup_id"
+    t.index ["version_id"], name: "index_orders_on_version_id"
+  end
+
   create_table "questions", force: :cascade do |t|
     t.string "question"
     t.datetime "created_at", null: false
@@ -87,6 +100,12 @@ ActiveRecord::Schema.define(version: 2020_03_09_090427) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "target_education", default: [], array: true
+    t.text "target_age", default: [], array: true
+    t.text "target_profession", default: [], array: true
+    t.text "target_rating", default: [], array: true
+    t.text "target_nationality", default: [], array: true
+    t.text "target_sex", default: [], array: true
     t.index ["user_id"], name: "index_startups_on_user_id"
   end
 
@@ -122,6 +141,7 @@ ActiveRecord::Schema.define(version: 2020_03_09_090427) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "quantity"
     t.index ["startup_id"], name: "index_versions_on_startup_id"
   end
 
@@ -130,6 +150,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_090427) do
   add_foreign_key "answers", "questions"
   add_foreign_key "feedbacks", "testers"
   add_foreign_key "feedbacks", "versions"
+  add_foreign_key "orders", "startups"
+  add_foreign_key "orders", "versions"
   add_foreign_key "questions", "versions"
   add_foreign_key "reviews", "startups"
   add_foreign_key "reviews", "testers"

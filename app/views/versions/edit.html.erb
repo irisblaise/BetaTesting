@@ -1,15 +1,15 @@
 <div class=banner2>
-  <h1 class="h1-header">Hey <%= current_user.first_name&.capitalize %></h1>
-  <h2>Add questions to your test.</h2>
+
+  <h1> <%= @version.startup.company_name %> || <%= @version.startup.url %></h1>
+  <br>
+  <h2 class="h1-header">Hey <%= current_user.first_name&.capitalize %></h2>
+  <h4>Add questions to your <%= @version.name %>.</h4>
 </div>
 
 <div class="container mt-5">
   <div class="container">
-  <%= @version.startup.company_name %>
-  <%= @version.startup.url %>
   </div>
 
-  <%= @version.name %>
   <%= render 'form' %>
 
   <div id="question-list" data-version="<%= @version.id %>">
@@ -34,8 +34,6 @@
 <div class="container d-flex justify-content-center">
 <%= link_to "submit", startup_version_path, {class: "card_action btn btn-primary"} %>
 </div>
-
-
 
 <!-- 1. simple_form_for versions#create -->
 <!-- 2. List of existing questions -->

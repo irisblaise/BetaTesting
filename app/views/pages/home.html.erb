@@ -1,7 +1,7 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(<%= image_path "Lampje.png"%>)">
   <div class="container">
     <h1>BetaTesting</h1>
-    <p>Contribute to cool ideas while making money</p>
+    <p id="slogan">Contribute to cool ideas while making money</p>
 
     <% if current_user && current_user.is_tester? %>
       <div class='btn-cont d-flex justify-content-start'>
@@ -16,7 +16,7 @@
     <% elsif current_user && current_user.is_startup? %>
       <div class='btn-cont d-flex justify-content-start'>
          <%= link_to dashboard_path, {class: "btn btn-succes"} do %>
-            <p>Dashboard</p>
+            <p class="hp-btn">Dashboard</p>
             <span class='line-1'></span>
             <span class='line-2'></span>
             <span class='line-3'></span>
@@ -29,7 +29,7 @@
     <div class="d-flex justify-content-start ">
       <div class='btn-cont'>
          <%= link_to new_tester_path, {class: "btn btn-succes"} do %>
-          <p>I am a tester</p>
+          <p class="hp-btn">I am a tester</p>
           <span class='line-1'></span>
           <span class='line-2'></span>
           <span class='line-3'></span>
@@ -39,7 +39,7 @@
 
       <div class='btn-cont ml-3'>
          <%= link_to new_startup_path, {class: "btn btn-succes"} do %>
-          <p>I am a startup</p>
+          <p class="hp-btn">I am a startup</p>
           <span class='line-1'></span>
           <span class='line-2'></span>
           <span class='line-3'></span>
@@ -50,7 +50,6 @@
 <% end %>
   </div>
 </div>
-
 
 <h1 class="text-center mt-5">An Efficient Solution for Startups</h1>
 
@@ -164,6 +163,3 @@
     </div>
   </div>
 </div>
-
-
-
