@@ -14,9 +14,14 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :testers do
+  resources :feedbacks, only: [:show] do
+
     resources :reviews, only: [:new, :create, :index]
-  end
+      end
+
+
+
+
 
   resources :answers
 

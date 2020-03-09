@@ -8,14 +8,17 @@ class ReviewsController < ApplicationController
   end
 
   def new
-    @tester = Tester.find(params[:tester_id])
+    @feedback = Feedback.find(params[:feedback_id])
+    @tester = @feedback.tester
     @review = Review.new
   end
 
   def create
-    @tester = Tester.find(params[:tester_id])
+    @feedback = Feedback.find(params[:feedback_id])
     @review = Review.new(review_params)
-    @review = @review.tester_id
+    @review.feedback = @feedback
+    @startup = current_user.startup
+    @review.startup = @startup
     if @review.save
       redirect_to dashboard_path
     else

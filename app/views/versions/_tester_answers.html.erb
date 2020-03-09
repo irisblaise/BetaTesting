@@ -36,7 +36,11 @@
                 </button>
               </h5>
               <div>
-                  <%= link_to "Review", new_tester_review_path(feedback.tester_id), {class: "card_action btn btn-primary"}  %>
+                  <% if feedback.review.nil? %>
+                  <%= link_to "Review", new_feedback_review_path(feedback), {class: "card_action btn btn-primary"}  %>
+                <% else %>
+                <%= feedback.review.rating %>
+                <% end %>
               </div>
             </div>
             <div id="accordion_per_tester_<%= feedback.id %>" class="collapse <%= index == 0 ? 'show' : '' %>" aria-labelledby="accordion_header_<%= feedback.id %>" data-parent="#questions-accordion">

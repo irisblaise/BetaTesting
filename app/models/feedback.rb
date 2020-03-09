@@ -4,4 +4,5 @@ class Feedback < ApplicationRecord
 
   has_many :questions, through: :version
   has_many :answers
+  has_one :review
 end
