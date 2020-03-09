@@ -1,4 +1,7 @@
 class TestersController < ApplicationController
+  skip_after_action :verify_authorized
+  skip_after_action :verify_policy_scoped
+
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
@@ -28,9 +31,9 @@ class TestersController < ApplicationController
 
   def new
     if !current_user.is_startup?
-      @tester = Tester.find_or_create_by! user_id: current_user.id
+      @tester = version.tester Tester.find_or_create_by! user_id: current_user.id
     end
-    authorize @tester
+    # authorize @tester
     redirect_to dashboard_path
   end
 

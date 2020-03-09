@@ -11,7 +11,8 @@
 # It's strongly recommended that you check this file into your version control system.
 
 
-ActiveRecord::Schema.define(version: 2020_03_09_103432) do
+ActiveRecord::Schema.define(version: 2020_03_09_151716) do
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,12 +80,12 @@ ActiveRecord::Schema.define(version: 2020_03_09_103432) do
 
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
-    t.bigint "tester_id"
     t.bigint "startup_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "feedback_id"
+    t.index ["feedback_id"], name: "index_reviews_on_feedback_id"
     t.index ["startup_id"], name: "index_reviews_on_startup_id"
-    t.index ["tester_id"], name: "index_reviews_on_tester_id"
   end
 
   create_table "startups", force: :cascade do |t|
@@ -149,7 +150,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_103432) do
   add_foreign_key "orders", "versions"
   add_foreign_key "questions", "versions"
   add_foreign_key "reviews", "startups"
-  add_foreign_key "reviews", "testers"
   add_foreign_key "startups", "users"
   add_foreign_key "testers", "users"
   add_foreign_key "versions", "startups"
