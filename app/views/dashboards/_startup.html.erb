@@ -15,6 +15,7 @@
   </div>
 <% end %>
 
+
 <div class="container mt-5">
 
   <div class="main-container d-flex text-center justify-content-center">
@@ -27,8 +28,9 @@
       </div>
 
       <div class="user-info text-left">
+
         <h6 style="font-weight:700">Company information</h6>
-        <div>Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
+        <div>Owner: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
         <div>Company: <%= current_user.startup.company_name %> </div>
         <div>Website: <%= current_user.startup.url %></div>
         <div>About: <%= current_user.startup.description&.capitalize %></div>
@@ -89,8 +91,21 @@
   </div> -->
 
 
+
+<div >
+  <h3>#Answers per tester - title to be adjusted</h3>
+  <%= render 'versions/tester_answers' %>
+</div>
+<div>
+  <h3>#Answers per question - title to be adjusted</h3>
   <%= render 'versions/tabbed_accordion' %>
-<!-- render partial: "versions/version_accordion", locals: { version: version, index: index }
+  </div>
+  </div>
+
+
+
+
+
 
 
 

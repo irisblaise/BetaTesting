@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'reviews/index'
+  get 'reviews/new'
+  get 'reviews/create'
   devise_for :users #, :controllers => {:registrations => "registrations"}
   root to: 'pages#home'
   get "/dashboard", to: "dashboards#show"
@@ -13,11 +16,15 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :orders, only: [:show, :index]
-
-  resources :testers do
+resources :orders, only: [:show, :index]
+ 
+resources :feedbacks, only: [:show] do
     resources :reviews, only: [:new, :create, :index]
-  end
+      end
+
+
+
+
 
   resources :answers
 
