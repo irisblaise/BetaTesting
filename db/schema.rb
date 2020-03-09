@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_03_09_085540) do
+=======
+ActiveRecord::Schema.define(version: 2020_03_09_090427) do
+>>>>>>> master
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -68,6 +72,16 @@ ActiveRecord::Schema.define(version: 2020_03_09_085540) do
     t.index ["version_id"], name: "index_questions_on_version_id"
   end
 
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.bigint "tester_id"
+    t.bigint "startup_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["startup_id"], name: "index_reviews_on_startup_id"
+    t.index ["tester_id"], name: "index_reviews_on_tester_id"
+  end
+
   create_table "startups", force: :cascade do |t|
     t.string "company_name"
     t.string "url"
@@ -85,7 +99,6 @@ ActiveRecord::Schema.define(version: 2020_03_09_085540) do
     t.integer "age"
     t.integer "profession"
     t.integer "sex"
-    t.integer "rating"
     t.integer "nationality"
     t.integer "account_balance"
     t.datetime "created_at", null: false
@@ -121,6 +134,8 @@ ActiveRecord::Schema.define(version: 2020_03_09_085540) do
   add_foreign_key "feedbacks", "testers"
   add_foreign_key "feedbacks", "versions"
   add_foreign_key "questions", "versions"
+  add_foreign_key "reviews", "startups"
+  add_foreign_key "reviews", "testers"
   add_foreign_key "startups", "users"
   add_foreign_key "testers", "users"
   add_foreign_key "versions", "startups"
