@@ -38,7 +38,7 @@
 
                 <ul>
                   <% question.answers.each do |answer| %>
-                    <p> <%= answer.answer %> </p>
+                    <%= answer.feedback.tester.user.first_name %> : <%= answer.answer %>
                   <% end %>
                 </ul>
               </div>
