@@ -15,7 +15,6 @@ class VersionPolicy < ApplicationPolicy
 
   def show?
     return true
-
   end
 
 end
