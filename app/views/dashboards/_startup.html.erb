@@ -95,10 +95,10 @@
 
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
-    <button class="card_action btn">
+    <button id="answers-per-user-button" class="card_action btn">
     <li role="presentation"><a href="#answers-per-user" aria-controls="answers-per-user" role="tab" data-toggle="tab">Anwers per user</a></li>
     </button>
-    <button class="card_action btn">
+    <button id="answers-per-question-button" class="card_action btn" hidden>
     <li role="presentation"><a href="#answers-per-question" aria-controls="answers-per-question" role="tab" data-toggle="tab">Answers per question</a></li>
   </button>
   </ul>
@@ -106,10 +106,36 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
+    <div id="answers-per-user" hidden>
     <div role="tabpanel" class="tab-pane" id="answers-per-user"><%= render 'versions/tester_answers' %></div>
+    </div>
+    <div id="answers-per-question" >
     <div role="tabpanel" class="tab-pane" id="answers-per-question"><%= render 'versions/tabbed_accordion' %></div>
+  </div>
   </div>
 
 </div>
+
+<!-- <div id="welcome" class="panel">
+  <h1>Welcome to Foobar.com!</h1>
+  <p>By clicking "OK" you agree to be awesome every day!</p>
+  <button class="button" id="okButton">OK</button>
+</div> -->
+
+<script>
+  document.getElementById("answers-per-user-button").addEventListener("click", function() {
+    document.getElementById("answers-per-user").hidden = false;
+    document.getElementById("answers-per-question").hidden = true;
+    document.getElementById("answers-per-user-button").hidden = true;
+    document.getElementById("answers-per-question-button").hidden = false;
+  }, false);
+
+  document.getElementById("answers-per-question-button").addEventListener("click", function() {
+    document.getElementById("answers-per-user").hidden = true;
+    document.getElementById("answers-per-question").hidden = false;
+    document.getElementById("answers-per-user-button").hidden = false;
+    document.getElementById("answers-per-question-button").hidden = true;
+  }, false);
+</script>
 
 
