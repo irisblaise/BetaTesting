@@ -40,7 +40,7 @@
                   <% if feedback.review.nil? %>
                   <%= link_to "Review", new_feedback_review_path(feedback), {class: "card_action btn btn-primary"}  %>
                 <% else %>
-                <%= feedback.review.rating %>
+                your review: <%= feedback.review.rating %>
                 <% end %>
               </div>
             </div>

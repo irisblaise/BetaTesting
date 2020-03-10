@@ -1,18 +1,18 @@
 <div class=banner2>
   <h1 class="h1-header">Hey <%= current_user.first_name&.capitalize %></h1>
   <h2>Welcome to your dashboard!</h2>
-    <div class="w-100 d-flex justify-content-center">
-        <%= link_to "Add test!",  new_startup_version_path(current_user.startup), {class: "search-btn btn mt-3 btn-outline-light"} %>
-    </div>
+  <div class="w-100 d-flex justify-content-center">
+    <%= link_to "Add test!",  new_startup_version_path(current_user.startup), {class: "search-btn btn mt-3 btn-outline-light"} %>
+  </div>
 </div>
 
 <% if current_user.empty_profile? %>
-  <div class="w-100 d-flex justify-content-center my-3">
-    <div class="alert-profile alert-warning" role="alert">
-      Your profile is not completed.
-      <%= link_to "update!",  edit_startup_path(current_user), {class: "btn btn-succes"} %>
-    </div>
+<div class="w-100 d-flex justify-content-center my-3">
+  <div class="alert-profile alert-warning" role="alert">
+    Your profile is not completed.
+    <%= link_to "update!",  edit_startup_path(current_user), {class: "btn btn-succes"} %>
   </div>
+</div>
 <% end %>
 
 
@@ -57,14 +57,15 @@
     <div class="stats-card-1">
       <%= render 'chartjs' %>
 <!--       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
- -->
-    </div>
-    <div class="stats-card-1">
-      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-    </div>
-  </div>
+-->
+</div>
+<div class="stats-card-1">
+  <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
+</div>
+</div>
 
-  <!-- <h1 class="text-center">OVERALL SCORE</h1> -->
+<!-- <h1 class="text-center">OVERALL SCORE</h1> -->
+
 
 
 <!--   <div class="rating-db">
@@ -91,21 +92,45 @@
   </div> -->
 
 
-
-<div >
-  <h3>#Answers per tester - title to be adjusted</h3>
-  <%= render 'versions/tester_answers' %>
-</div>
 <div>
-  <h3>#Answers per question - title to be adjusted</h3>
-  <%= render 'versions/tabbed_accordion' %>
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <button id="answers-per-user-button" class="card_action btn btn-primary">
+    <li role="presentation"><a href="#answers-per-user" aria-controls="answers-per-user" role="tab" data-toggle="tab">Anwers per user</a></li>
+    </button>
+    <button id="answers-per-question-button" class="card_action btn btn-primary" hidden>
+    <li role="presentation"><a href="#answers-per-question" aria-controls="answers-per-question" role="tab" data-toggle="tab">Answers per question</a></li>
+  </button>
+  </ul>
+  <br>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="answers-per-user" hidden>
+    <div role="tabpanel" class="tab-pane" id="answers-per-user"><%= render 'versions/tester_answers' %></div>
+    </div>
+    <div id="answers-per-question" >
+    <div role="tabpanel" class="tab-pane" id="answers-per-question"><%= render 'versions/tabbed_accordion' %></div>
   </div>
   </div>
+</div>
 
+<!-- script that toggles between buttons and hides the answers per question button
+when that view is selected, and vice versa -->
+<script>
+  document.getElementById("answers-per-user-button").addEventListener("click", function() {
+    document.getElementById("answers-per-user").hidden = false;
+    document.getElementById("answers-per-question").hidden = true;
+    document.getElementById("answers-per-user-button").hidden = true;
+    document.getElementById("answers-per-question-button").hidden = false;
+  }, false);
 
-
-
-
-
+  document.getElementById("answers-per-question-button").addEventListener("click", function() {
+    document.getElementById("answers-per-user").hidden = true;
+    document.getElementById("answers-per-question").hidden = false;
+    document.getElementById("answers-per-user-button").hidden = false;
+    document.getElementById("answers-per-question-button").hidden = true;
+  }, false);
+</script>
 
 
