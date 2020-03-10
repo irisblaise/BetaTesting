@@ -14,7 +14,7 @@ class StartupsController < ApplicationController
 
   def show
       @startup = Startup.find(params[:id])
-      authorize @startup
+      authorize @version
       # authorize @tester
   end
 

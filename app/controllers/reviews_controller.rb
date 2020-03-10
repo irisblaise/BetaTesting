@@ -9,8 +9,8 @@ class ReviewsController < ApplicationController
     @feedback = Feedback.find(params[:feedback_id])
     @tester = @feedback.tester
     @review = Review.new
-        @startup = current_user.startup
 
+    @startup = current_user.startup
     authorize @startup
   end
 

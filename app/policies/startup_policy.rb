@@ -32,7 +32,7 @@ class StartupPolicy < ApplicationPolicy
   # end
 
   def update?
-    record.user == user
+    record.user.startup == user
   end
 
 end

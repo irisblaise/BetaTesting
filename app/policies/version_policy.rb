@@ -14,7 +14,11 @@ class VersionPolicy < ApplicationPolicy
   end
 
   def show?
-    return true
+    record.startup.user == user
+  end
+
+  def destroy?
+    record.startup.user == user
   end
 
 end

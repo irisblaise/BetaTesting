@@ -56,6 +56,7 @@ class VersionsController < ApplicationController
   def destroy
     @version = Version.find(params[:id])
     @version.destroy
+    authorize @version
     redirect_to dashboard_path
   end
 
