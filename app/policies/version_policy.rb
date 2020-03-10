@@ -9,4 +9,13 @@ class VersionPolicy < ApplicationPolicy
     return true
   end
 
+  def update?
+    record.user == user
+  end
+
+  def show?
+    return true
+
+  end
+
 end

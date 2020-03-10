@@ -18,12 +18,13 @@ class VersionsController < ApplicationController
       @version = Version.find(params[:id])
       @questions = @version.questions
       @feedback = Feedback.all
-      # authorize @version
+      authorize @version
   end
 
   def create
     @version = Version.new(version_params)
     @version.startup = current_user.startup
+    authorize @version
 
     if @version.save
       order = Order.initialize_with_stripe_session(@version)
@@ -36,6 +37,7 @@ class VersionsController < ApplicationController
   def edit
     @version = Version.find(params[:id])
     @startup = @version.startup
+    authorize @startup
 
     if @version.order.state == 'pending'
       redirect_to order_path @version.order
@@ -45,7 +47,7 @@ class VersionsController < ApplicationController
   def update
     @version = Version.find(params[:id])
     @startup = @version.startup
-
+    authorize @version
     @version.update(version_params)
     @version.save
     redirect_to startup_version_path([@startup, @version])

@@ -1,6 +1,5 @@
 class AnswersController < ApplicationController
-  skip_after_action :verify_authorized
-  skip_after_action :verify_policy_scoped
+
 
   def create
     all_answers = []
@@ -16,7 +15,7 @@ class AnswersController < ApplicationController
         answer: params[:answers][index]
       })
     end
-
+    # authorize ?????
     @feedback.update(feedback_params)
     @feedback.save
 
@@ -28,7 +27,7 @@ class AnswersController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:website_ux, :website_ui, :website_latency, :website_fluidity, :website_design)
+    params.require(:feedback).permit(:answer, :website_ux, :website_ui, :website_latency, :website_fluidity, :website_design)
   end
 
 
