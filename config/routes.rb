@@ -18,7 +18,14 @@ Rails.application.routes.draw do
     end
   end
 
+
+
+resources :feedbacks, only: [:show] do
+    resources :reviews, only: [:new, :create, :index]
+      end
+
   resources :orders, only: [:show, :index, :update]
+
 
   resources :feedbacks, only: [:show] do
     resources :reviews, only: [:new, :create, :index]

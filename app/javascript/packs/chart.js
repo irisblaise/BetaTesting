@@ -1,65 +1,57 @@
 import chart from 'chart.js'
 
 // Bar chart
+const colors = {
+  website_ux: 'blue',
+  website_ui: 'red',
+  website_latency: 'pink',
+  website_fluidity: 'yellow',
+  website_design: 'green'
+}
+
+const formatDataSet = (data) => {
+  // data = [{ website_ux: 1, website_ui: 1}, { website_ux: 2, website_uid: 2}]
+
+  // isolate the keys -> ['website_ux', 'website_ui']
+  const keys = Object.keys(data[0])
+
+  // create an empty object to push data to
+  const dataset = {}
+
+  // for each key
+  keys.forEach(key => {
+    // create a new property -> { website_ux: null }
+    //
+    dataset[key] = data.map(d => d[key])
+  })
+
+  return Object.keys(dataset).map(key => {
+    return {
+      label: key,
+      backgroundColor: colors[key],
+      data: dataset[key]
+    }
+  })
+}
+
 const charts = () => {
   const ctx = document.getElementById("myChart");
+
   const labels = JSON.parse(ctx.dataset.labels);
-  //const data = JSON.parse(ctx.dataset.data);
-  const myChart = new Chart(ctx, {
+  let data = JSON.parse(ctx.dataset.data);
+
+  data = data.map(d => JSON.parse(d))
+
+  const datasets = formatDataSet(data)
+
+  const mixedChart = new Chart(ctx, {
     type: 'bar',
     data: {
       labels,
-      datasets: [{
-        label: 'average rating',
-        data: [12, 19, 3, 5, 2, 3, 20, 3, 5, 6, 2, 1],
-        backgroundColor: [
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)',
-          'rgba(255, 99, 132, 0.2)',
-          'rgba(54, 162, 235, 0.2)',
-          'rgba(255, 206, 86, 0.2)',
-          'rgba(75, 192, 192, 0.2)',
-          'rgba(153, 102, 255, 0.2)',
-          'rgba(255, 159, 64, 0.2)'
-        ],
-        borderColor: [
-          'rgba(255,99,132,1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)',
-          'rgba(255,99,132,1)',
-          'rgba(54, 162, 235, 1)',
-          'rgba(255, 206, 86, 1)',
-          'rgba(75, 192, 192, 1)',
-          'rgba(153, 102, 255, 1)',
-          'rgba(255, 159, 64, 1)'
-        ],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: false,
-      scales: {
-        xAxes: [{
-          ticks: {
-            maxRotation: 90,
-            minRotation: 80
-          }
-        }],
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      }
+      datasets
     }
-  });
+});
+
 }
 
 export { charts }
