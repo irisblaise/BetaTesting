@@ -4,13 +4,11 @@ import 'bootstrap';
 import { activateSearchBar } from './searchBar'
 import { newQuestion, deleteQuestion } from "./version"
 
-import { myFunction} from './toggle'
-import { chart } from './chart'
+import { charts } from './chart'
 
 
 
 activateSearchBar()
 newQuestion()
 deleteQuestion()
-myFunction()
-chart()
+charts()

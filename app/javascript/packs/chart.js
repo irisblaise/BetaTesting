@@ -1,15 +1,16 @@
-import Chart from 'chart.js'
+import chart from 'chart.js'
 
 // Bar chart
-const chart = () => {
+const charts = () => {
   const ctx = document.getElementById("myChart");
-  const labels = JSON.parse(ctx.dataset.labels)
+  const labels = JSON.parse(ctx.dataset.labels);
+  //const data = JSON.parse(ctx.dataset.data);
   const myChart = new Chart(ctx, {
-    type: 'line',
+    type: 'bar',
     data: {
       labels,
       datasets: [{
-        label: '# of Tomatoes',
+        label: 'average rating',
         data: [12, 19, 3, 5, 2, 3, 20, 3, 5, 6, 2, 1],
         backgroundColor: [
           'rgba(255, 99, 132, 0.2)',
@@ -61,4 +62,4 @@ const chart = () => {
   });
 }
 
-export { chart }
+export { charts }
