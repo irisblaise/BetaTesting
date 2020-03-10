@@ -3,7 +3,10 @@ class VersionsController < ApplicationController
   skip_after_action :verify_policy_scoped
 
   def index
-    @versions = Version.all
+    # get access to the startup
+    @startup = Startup.find params[:startup_id]
+
+    @versions = @startup.versions
   end
 
   def new

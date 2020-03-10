@@ -1,10 +1,12 @@
-<h1>All Versions</h1>
-
-  <div id="version-list">
-    <% @versions.each do |version|%>
-      <p>
-        <%= version.name %>
-        <%= link_to "edit version", edit_startup_version_path(version.startup_id, version.id)%>
-      </p>
-    <% end %>
+<div class=banner2>
+  <h1 class="h1-header m-2">Hey <%= current_user.first_name&.capitalize %></h1>
+  <h2> These are all your versions</h2>
+</div>
+<div id="version-list">
+  <% @versions.each do |version|%>
+  <div class="container d-flex justify-content-center">
+    <p class="m-3"><%= version.name %></p>
+    <p class="m-3 btn btn-danger button-delete"><%= link_to "edit version", edit_startup_version_path(version.startup_id, version.id)%></p>
   </div>
+  <% end %>
+</div>
