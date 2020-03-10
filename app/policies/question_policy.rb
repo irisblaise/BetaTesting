@@ -6,10 +6,10 @@ class QuestionPolicy < ApplicationPolicy
   end
 
   def create?
-    true
+    record.version.startup == user.startup
   end
 
   def destroy?
-    true
+    record.version.startup == user.startup
   end
 end

@@ -15,8 +15,8 @@ class AnswersController < ApplicationController
         answer: params[:answers][index]
       })
     end
-    # authorize ?????
-    @feedback.update(feedback_params)
+    authorize @feedback.tester
+    @feedback.update(feedback_params) if params[:feedback]
     @feedback.save
 
     Answer.create(all_answers)
@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
   private
 
   def feedback_params
-    params.require(:feedback).permit(:answer, :website_ux, :website_ui, :website_latency, :website_fluidity, :website_design)
+    params.require(:feedback).permit(:website_ux, :website_ui, :website_latency, :website_fluidity, :website_design)
   end
 
 

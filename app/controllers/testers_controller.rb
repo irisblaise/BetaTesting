@@ -6,11 +6,6 @@ class TestersController < ApplicationController
     @testers = policy_scope(Tester)
   end
 
-  # def show
-  #   @tester = Tester.find_or_create_by! user_id: current_user.id
-  #   authorize @current_user.tester
-  # end
-
   def edit
     @tester = current_user.tester
     authorize @tester

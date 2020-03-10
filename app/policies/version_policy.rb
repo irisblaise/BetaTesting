@@ -10,7 +10,7 @@ class VersionPolicy < ApplicationPolicy
   end
 
   def update?
-    record.user == user
+    record.startup.user == user
   end
 
   def show?

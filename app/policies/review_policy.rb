@@ -6,7 +6,7 @@ class ReviewPolicy < ApplicationPolicy
   end
 
   def create?
-    return true
+    record.feedback.startup == user.startup
   end
 
 end
