@@ -4,7 +4,6 @@
 </div>
 <div id="version-list">
   <% @versions.each do |version|%>
-  <%= raise %>
   <div class="container d-flex justify-content-center">
     <p class="m-3"><%= version.name %></p>
     <p class="m-3 btn btn-danger button-delete"><%= link_to "edit version", edit_startup_version_path(version.startup_id, version.id)%></p>
