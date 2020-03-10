@@ -49,6 +49,12 @@ class VersionsController < ApplicationController
     redirect_to startup_version_path([@startup, @version])
   end
 
+  def destroy
+    @version = Version.find(params[:id])
+    @version.destroy
+    redirect_to dashboard_path
+  end
+
       private
 
     def version_params

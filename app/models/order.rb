@@ -1,5 +1,5 @@
 class Order < ApplicationRecord
-  belongs_to :startup
+  belongs_to :startup, optional: true
   belongs_to :version
   monetize :amount_cents
 
