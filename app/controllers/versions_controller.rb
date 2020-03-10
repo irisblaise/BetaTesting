@@ -11,6 +11,7 @@ class VersionsController < ApplicationController
     @version = Version.new
     @startup = Startup.find(params[:startup_id])
     # create an order with a stripe session
+    authorize @startup
   end
 
   def show
