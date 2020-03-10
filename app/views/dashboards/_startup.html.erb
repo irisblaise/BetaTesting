@@ -23,49 +23,59 @@
     <!-- user profile box, same for startup and tester -->
     <div class="user-profilev2">
 
-      <div class="user-photo">
-        <%= cl_image_tag current_user.startup.photo.attached? ? current_user.startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, :cloud_name => "dir0nw4ok"%>
-      </div>
+        <div class="user-photo">
+          <%= cl_image_tag current_user.startup.photo.attached? ? current_user.startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, :cloud_name => "dir0nw4ok"%>
+        </div>
 
-      <div class="user-info text-left">
+        <div class="user-info text-left">
 
-        <h6 style="font-weight:700">Company information</h6>
-        <div>Owner: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
-        <div>Company: <%= current_user.startup.company_name %> </div>
-        <div>Website: <%= current_user.startup.url %></div>
-        <div>About: <%= current_user.startup.description&.capitalize %></div>
-        <div>Sector: <%= current_user.startup.sector %></div>
+          <h6 style="font-weight:700">Company information</h6>
+          <div>Owner: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
+          <div>Company: <%= current_user.startup.company_name %> </div>
+          <div>Website: <%= current_user.startup.url %></div>
+          <div>About: <%= current_user.startup.description&.capitalize %></div>
+          <div>Sector: <%= current_user.startup.sector %></div>
 
-        <h6 style="font-weight:700">Your target market</h6>
-        <p>Age: <%= current_user.startup.target_age.join(", ") %></p>
-        <p>Eduction: <%= current_user.startup.target_education.join(", ") %></p>
-        <p>Nationality: <%= current_user.startup.target_nationality.join(", ") %></p>
-        <p>Rating: <%= current_user.startup.target_rating.join(", ") %></p>
-        <p>Profession: <%= current_user.startup.target_profession.join(", ") %></p>
-        <p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p>
-      </div>
+          <h6 style="font-weight:700">Your target market</h6>
+          <p>Age: <%= current_user.startup.target_age.join(", ") %></p>
+          <p>Eduction: <%= current_user.startup.target_education.join(", ") %></p>
+          <p>Nationality: <%= current_user.startup.target_nationality.join(", ") %></p>
+          <p>Rating: <%= current_user.startup.target_rating.join(", ") %></p>
+          <p>Profession: <%= current_user.startup.target_profession.join(", ") %></p>
+          <p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p>
+        </div>
 
-      <div class="user-contact text-left">
-        <span>Email: <%= current_user.email %></span>
-      </div>
-      <div class="padding-top-30 ">
-        <%= link_to "Edit Profile", edit_startup_path(current_user), {class: "card_action btn btn-primary"}  %>
-      </div>
+        <div class="user-contact text-left">
+          <span>Email: <%= current_user.email %></span>
+        </div>
+        <div class="padding-top-30 ">
+          <%= link_to "Edit Profile", edit_startup_path(current_user), {class: "card_action btn btn-primary"}  %>
+        </div>
     </div>
 
-    <div class="stats-card-1" style="height:300px">
-      <h1>Total Number of Testers: <%= @versions.last.testers.count %></h1>
-    </div>
+    <div>
+      <div class="main-container d-flex text-center justify-content-center">
+        <div class="stats-card-1 box-text box-icons4" style="height:300px">
+          <br>
+          <h2><%= @versions.last.testers.count %></h2>
+          <div><%= image_tag "team.png"%></div>
+        </div>
 
-    <div class="stats-card-1" style="height:300px">
-      <h1>Average Score: <%= @versions.last.feedbacks.count %></h1>
-    </div>
+        <div class="stats-card-1 box-text box-icons4" style="height:300px">
+          <br>
+          <div>
+          <h2><%= @versions.last.feedbacks.count %></h2>
+          <%= image_tag "star.png"%>
+          </div>
+        </div>
+      </div>
 
+      <div class="stats-card-3" style="">
+        <%= render 'chartjs' %>
+      </div>
+    </div>
   </div>
 
-    <div class="stats-card-1">
-      <%= render 'chartjs' %>
-    </div>
 
 
 <div>
