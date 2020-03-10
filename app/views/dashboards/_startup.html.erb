@@ -17,7 +17,8 @@
 
 
 <div class="container mt-5">
-
+  <h1>Total Number of Testers: <%= @versions.last.testers.count %></h1>
+  <h1>Average Score: <%= Feedback.last.count %></h1>
   <div class="main-container d-flex text-center justify-content-center">
 
     <!-- user profile box, same for startup and tester -->
