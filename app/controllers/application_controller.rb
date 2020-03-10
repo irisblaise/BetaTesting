@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   private
 
   def default_url_options
-  { host: ENV["www.betavision.rocks"] || "localhost:3000" }
+  { host: ENV["DOMAIN"] || "localhost:3000" }
   end
 
   def configure_permitted_parameters
