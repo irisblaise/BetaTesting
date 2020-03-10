@@ -113,15 +113,10 @@
     <div role="tabpanel" class="tab-pane" id="answers-per-question"><%= render 'versions/tabbed_accordion' %></div>
   </div>
   </div>
-
 </div>
 
-<!-- <div id="welcome" class="panel">
-  <h1>Welcome to Foobar.com!</h1>
-  <p>By clicking "OK" you agree to be awesome every day!</p>
-  <button class="button" id="okButton">OK</button>
-</div> -->
-
+<!-- script that toggles between buttons and hides the answers per question button
+when that view is selected, and vice versa -->
 <script>
   document.getElementById("answers-per-user-button").addEventListener("click", function() {
     document.getElementById("answers-per-user").hidden = false;
