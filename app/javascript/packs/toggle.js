@@ -1,23 +1,22 @@
-const toggle = () => {
+function openCity(evt, cityName) {
+  // Declare all variables
+  var i, tabcontent, tablinks;
 
-$(document).ready(function(){
+  // Get all elements with class="tabcontent" and hide them
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
 
-  $('.tabs-menu a').click(function(event) {
-    event.preventDefault();
+  // Get all elements with class="tablinks" and remove the class "active"
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
 
-    // Toggle active class on tab buttons
-    $(this).parent().addClass("current");
-    $(this).parent().siblings().removeClass("current");
+  // Show the current tab, and add an "active" class to the button that opened the tab
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
 
-    // display only active tab content
-    var activeTab = $(this).attr("href");
-    $('.tab-content').not(activeTab).css("display","none");
-    $(activeTab).fadeIn();
-
-  });
-
-});
-
-};
-
-export {toggle}
+export {openCity}
