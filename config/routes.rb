@@ -9,11 +9,6 @@ Rails.application.routes.draw do
   get "/about_us", to: 'pages#about_us'
   get "/help_and_support", to: 'pages#help_and_support'
 
-  get '/404' , to: 'errors#not_found'
-  get '/422' , to: 'errors#unacceptable'
-  get '/500' , to: 'errors#server_errors'
-
-
   resources :testers
 
   resources :startups do
