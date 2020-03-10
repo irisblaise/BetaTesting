@@ -11,21 +11,18 @@ Rails.application.routes.draw do
 
 
   resources :testers
+
   resources :startups do
     resources :versions do
       resources :feedbacks
     end
   end
 
-resources :orders, only: [:show, :index]
- 
-resources :feedbacks, only: [:show] do
+  resources :orders, only: [:show, :index, :update]
+
+  resources :feedbacks, only: [:show] do
     resources :reviews, only: [:new, :create, :index]
-      end
-
-
-
-
+  end
 
   resources :answers
 
@@ -36,8 +33,5 @@ resources :feedbacks, only: [:show] do
   end
 
   mount StripeEvent::Engine, at: '/stripe-webhooks'
-
-
   # routes for testing / feedback
-
 end
