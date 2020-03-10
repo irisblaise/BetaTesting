@@ -4,7 +4,7 @@ import 'bootstrap';
 import { activateSearchBar } from './searchBar'
 import { newQuestion, deleteQuestion } from "./version"
 
-import { openCity} from './toggle'
+// import { myFunction} from './toggle'
 import { chart } from './chart'
 
 
@@ -12,5 +12,5 @@ import { chart } from './chart'
 activateSearchBar()
 newQuestion()
 deleteQuestion()
-openCity()
+// myFunction()
 chart()
