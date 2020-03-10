@@ -91,14 +91,25 @@
 </div>
 
 
-
-
-<div >
-  <h3>#Answers per tester - title to be adjusted</h3>
-  <%= render 'versions/tester_answers' %>
-</div>
 <div>
-  <h3>#Answers per question - title to be adjusted</h3>
-  <%= render 'versions/tabbed_accordion' %>
+
+  <!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist">
+    <button class="card_action btn" onclick="myFunction()">
+    <li role="presentation" class="active"><a href="#answers-per-user" aria-controls="answers-per-user" role="tab" data-toggle="tab">Anwers per user</a></li>
+    </button>
+    <button class="card_action btn" onclick="myFunction()">
+    <li role="presentation"><a href="#answers-per-question" aria-controls="answers-per-question" role="tab" data-toggle="tab">Answers per question</a></li>
+  </button>
+  </ul>
+  <br>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="answers-per-user"><%= render 'versions/tester_answers' %></div>
+    <div role="tabpanel" class="tab-pane" id="answers-per-question"><%= render 'versions/tabbed_accordion' %></div>
+  </div>
+
 </div>
-</div>
+
+
