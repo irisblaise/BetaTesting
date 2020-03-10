@@ -1,5 +1,12 @@
-<div class=banner2>
 
+
+<!-- <div class=banner2>
+  <h1 class="h1-header m-2">Hey <%= current_user.first_name&.capitalize %></h1>
+  <h2> This is version: <%= @version.name %></h2>
+  <h2>Add questions to your test.</h2>
+</div> -->
+
+<div class="container mt-5">
   <h1> <%= @version.startup.company_name %> || <%= @version.startup.url %></h1>
   <br>
   <h2 class="h1-header">Hey <%= current_user.first_name&.capitalize %></h2>
@@ -8,19 +15,18 @@
 
 <div class="container mt-5">
   <div class="container">
-  <%= @version.startup.company_name %>
+    <%= @version.startup.company_name %>
   <%#= @version.startup.url %>
-
   </div>
-
   <%= render 'form' %>
+<div class="container">
 
   <div id="question-list" data-version="<%= @version.id %>">
     <% @version.questions.each do |question|%>
-      <p data-id="<%= question.id %>">
-        <%= question.question %>
-        <button class="btn btn-danger delete-button">Delete</button>
-      </p>
+    <p data-id="<%= question.id %>">
+      <%= question.question %>
+      <button class="btn btn-danger delete-button">Delete</button>
+    </p>
     <% end %>
   </div>
 
@@ -30,16 +36,12 @@
       <button class="add-question btn btn-primary">+</button>
     </div>
   </form>
-<%= link_to "go back", dashboard_path, {class: "card_action btn btn-primary mt-5"} %>
 </div>
 
+</div>
 
 <div class="container d-flex justify-content-center">
-<%= link_to "submit", startup_version_path, {class: "card_action btn btn-primary"} %>
+  <%= link_to "go back", dashboard_path, {class: "card_action btn btn-primary m-1"} %>
+  <%= link_to "submit", startup_version_path, {class: "card_action btn btn-primary m-1"} %>
 </div>
-
-<!-- 1. simple_form_for versions#create -->
-<!-- 2. List of existing questions -->
-<!-- 3. Text field and a button to add more text fields -->
-<!-- 4. Submit button to create questions -->
 

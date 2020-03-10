@@ -3,12 +3,16 @@ import 'bootstrap';
 
 import { activateSearchBar } from './searchBar'
 import { newQuestion, deleteQuestion } from "./version"
+import { calculatePricePreview } from "./calculatePricePreview"
 
-import { chart } from './chart'
+
+import { charts } from './chart'
 
 
 
 activateSearchBar()
 newQuestion()
 deleteQuestion()
-chart()
+calculatePricePreview()
+charts()
+
