@@ -30,9 +30,12 @@ class StartupPolicy < ApplicationPolicy
   # def show?
   #   return true
   # end
+  def edit?
+    record.user == user
+  end
 
   def update?
-    record.user.startup == user
+    record.user == user
   end
 
 end

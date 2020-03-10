@@ -14,7 +14,7 @@ class VersionPolicy < ApplicationPolicy
   end
 
   def show?
-    record.startup.user == user
+    record.startup.user == user || user.tester
   end
 
   def destroy?
