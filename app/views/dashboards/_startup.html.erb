@@ -17,8 +17,7 @@
 
 
 <div class="container mt-5">
-  <h1>Total Number of Testers: <%= @versions.last.testers.count %></h1>
-  <h1>Average Score: <%= Feedback.last.count %></h1>
+
   <div class="main-container d-flex text-center justify-content-center">
 
     <!-- user profile box, same for startup and tester -->
@@ -54,84 +53,59 @@
       </div>
     </div>
 
+    <div class="stats-card-1" style="height:300px">
+      <h1>Total Number of Testers: <%= @versions.last.testers.count %></h1>
+    </div>
+
+    <div class="stats-card-1" style="height:300px">
+      <h1>Average Score: <%= @versions.last.feedbacks.count %></h1>
+    </div>
+
+  </div>
 
     <div class="stats-card-1">
       <%= render 'chartjs' %>
-<!--       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
--->
-</div>
-<div class="stats-card-1">
-  <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-</div>
-</div>
-
-<!-- <h1 class="text-center">OVERALL SCORE</h1> -->
-
-
-
-<!--   <div class="rating-db">
-    <div>
-      <p>Website UX</p>
-      <%#= Feedback.last.website_ux %>
     </div>
-    <div>
-      <p>Website UI</p>
-      <%#= Feedback.last.website_ui %>
-    </div>
-    <div>
-      <p>Website Design</p>
-      <%#= Feedback.last.website_design %>
-    </div>
-    <div>
-      <p>Website Fluidity</p>
-      <%#= Feedback.last.website_fluidity %>
-    </div>
-    <div>
-      <p>Website Latency</p>
-      <%#= Feedback.last.website_latency %>
-    </div>
-  </div> -->
 
 
 <div>
   <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <button id="answers-per-user-button" class="card_action btn btn-primary">
-    <li role="presentation"><a href="#answers-per-user" aria-controls="answers-per-user" role="tab" data-toggle="tab">Anwers per user</a></li>
+      <li role="presentation"><a href="#answers-per-user" aria-controls="answers-per-user" role="tab" data-toggle="tab">Anwers per user</a></li>
     </button>
     <button id="answers-per-question-button" class="card_action btn btn-primary" hidden>
-    <li role="presentation"><a href="#answers-per-question" aria-controls="answers-per-question" role="tab" data-toggle="tab">Answers per question</a></li>
-  </button>
+      <li role="presentation"><a href="#answers-per-question" aria-controls="answers-per-question" role="tab" data-toggle="tab">Answers per question</a></li>
+    </button>
   </ul>
   <br>
 
   <!-- Tab panes -->
   <div class="tab-content">
     <div id="answers-per-user" hidden>
-    <div role="tabpanel" class="tab-pane" id="answers-per-user"><%= render 'versions/tester_answers' %></div>
+      <div role="tabpanel" class="tab-pane" id="answers-per-user"><%= render 'versions/tester_answers' %></div>
     </div>
     <div id="answers-per-question" >
-    <div role="tabpanel" class="tab-pane" id="answers-per-question"><%= render 'versions/tabbed_accordion' %></div>
-  </div>
+      <div role="tabpanel" class="tab-pane" id="answers-per-question"><%= render 'versions/tabbed_accordion' %></div>
+    </div>
   </div>
 </div>
 
 <!-- script that toggles between buttons and hides the answers per question button
-when that view is selected, and vice versa -->
-<script>
-  document.getElementById("answers-per-user-button").addEventListener("click", function() {
-    document.getElementById("answers-per-user").hidden = false;
-    document.getElementById("answers-per-question").hidden = true;
-    document.getElementById("answers-per-user-button").hidden = true;
-    document.getElementById("answers-per-question-button").hidden = false;
-  }, false);
+  when that view is selected, and vice versa -->
+  <script>
+    document.getElementById("answers-per-user-button").addEventListener("click", function() {
+      document.getElementById("answers-per-user").hidden = false;
+      document.getElementById("answers-per-question").hidden = true;
+      document.getElementById("answers-per-user-button").hidden = true;
+      document.getElementById("answers-per-question-button").hidden = false;
+    }, false);
 
-  document.getElementById("answers-per-question-button").addEventListener("click", function() {
-    document.getElementById("answers-per-user").hidden = true;
-    document.getElementById("answers-per-question").hidden = false;
-    document.getElementById("answers-per-user-button").hidden = false;
-    document.getElementById("answers-per-question-button").hidden = true;
-  }, false);
-</script>
-
-
+    document.getElementById("answers-per-question-button").addEventListener("click", function() {
+      document.getElementById("answers-per-user").hidden = true;
+      document.getElementById("answers-per-question").hidden = false;
+      document.getElementById("answers-per-user-button").hidden = false;
+      document.getElementById("answers-per-question-button").hidden = true;
+    }, false);
+  </script>
+</div>
