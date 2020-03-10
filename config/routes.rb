@@ -1,21 +1,26 @@
 Rails.application.routes.draw do
 
+  get 'reviews/index'
+  get 'reviews/new'
+  get 'reviews/create'
   devise_for :users #, :controllers => {:registrations => "registrations"}
   root to: 'pages#home'
   get "/dashboard", to: "dashboards#show"
   get "/about_us", to: 'pages#about_us'
+  get "/help_and_support", to: 'pages#help_and_support'
 
 
   resources :testers
+
   resources :startups do
     resources :versions do
       resources :feedbacks
     end
   end
 
-  resources :orders, only: [:show, :index]
+  resources :orders, only: [:show, :index, :update]
 
-  resources :testers do
+  resources :feedbacks, only: [:show] do
     resources :reviews, only: [:new, :create, :index]
   end
 
@@ -28,8 +33,5 @@ Rails.application.routes.draw do
   end
 
   mount StripeEvent::Engine, at: '/stripe-webhooks'
-
-
   # routes for testing / feedback
-
 end

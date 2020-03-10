@@ -1,6 +1,7 @@
 class Order < ApplicationRecord
   belongs_to :startup, optional: true
-  belongs_to :version
+  belongs_to :version, optional: true
+
   monetize :amount_cents
 
 

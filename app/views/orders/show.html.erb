@@ -8,18 +8,23 @@
   <div class="container">
     <div class="row py-4">
       <div class="col">
-        <div class= "text-center">
-          <p>
-            Purchase of <strong><%= @order.version.name %></strong>
-            for <strong><%= humanized_money_with_symbol @order.amount %></strong>
-            x <%= @order.quantity %> testers
-          </p>
-          <p>
-            Total: <strong> <%= @order.amount * @order.quantity %> </strong>
-          </p>
-          <button id="pay" class="btn btn-primary">Pay</button>
-        </div>
-
+        <% if Rails.env.development? %>
+          <div class= "text-center">
+            <%= link_to "Pay", order_path(@order), method: 'patch', class: 'btn btn-primary' %>
+          </div>
+        <% else %>
+          <div class= "text-center">
+            <p>
+              Purchase of <strong><%= @order.version.name %></strong>
+              for <strong><%= humanized_money_with_symbol @order.amount %></strong>
+              x <%= @order.quantity %> testers
+            </p>
+            <p>
+              Total: <strong> <%= @order.amount * @order.quantity %> </strong>
+            </p>
+            <button id="pay" class="btn btn-primary">Pay</button>
+          </div>
+        <% end %>
         <script src="https://js.stripe.com/v3/"></script>
         <script>
           const paymentButton = document.getElementById('pay');

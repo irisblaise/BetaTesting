@@ -1,0 +1,73 @@
+<nav>
+  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+    <% @versions.each_with_index do |version, index|%>
+      <a
+        class="nav-item nav-link <%= index == 0 ? 'active' : '' %>"
+        id="nav-version-<%= version.id %>"
+        data-toggle="tab"
+        href="#body-version-<%= version.id %>"
+        role="tab"
+        aria-controls="nav-home"
+        aria-selected="true"
+      >
+        <%= version.name %>
+      </a>
+    <% end %>
+  </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+  <% @versions.each_with_index do |version, index|%>
+    <div
+      class="tab-pane fade <%= index == 0 ? 'show active' : '' %>"
+      id="body-version-<%= version.id %>"
+      role="tabpanel"
+      aria-labelledby="nav-version-<%= version.id %>"
+    >
+      <div id="questions-accordion">
+
+
+        <% version.feedbacks.each_with_index do |feedback, index| %>
+          <div class="card">
+            <div class="card-header d-flex justify-content-between" id="accordion_header_<%= feedback.id %>">
+              <h5 class="mb-0">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#accordion_per_tester_<%= feedback.id %>" aria-expanded="true" aria-controls="accordion_per_tester_<%= feedback.id %>">
+                  <%= cl_image_tag feedback.tester.photo.attached? ? feedback.tester.photo.key : "injcuuecln8fvf2vo2zg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, :cloud_name => "dir0nw4ok"%>
+                  <%= feedback.tester.user.first_name %>
+                </button>
+              </h5>
+              <div>
+                <!-- Review button will only show if review has not been given yet -->
+                  <% if feedback.review.nil? %>
+                  <%= link_to "Review", new_feedback_review_path(feedback), {class: "card_action btn btn-primary"}  %>
+                <% else %>
+                <%= feedback.review.rating %>
+                <% end %>
+              </div>
+            </div>
+            <div id="accordion_per_tester_<%= feedback.id %>" class="collapse <%= index == 0 ? 'show' : '' %>" aria-labelledby="accordion_header_<%= feedback.id %>" data-parent="#questions-accordion">
+              <div class="card-body">
+
+                <ul>
+                  <% feedback.answers.each do |answer| %>
+                  <li>
+                  <%= answer.question.question %> :
+                    <%= answer.answer %>
+                  </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<br>
+<br>
+<br>
+
+
+

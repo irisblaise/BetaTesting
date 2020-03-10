@@ -16,13 +16,6 @@
 <% end %>
 
 
-
-
-
-
-
-
-
 <div class="container mt-5">
 
   <div class="main-container d-flex text-center justify-content-center">
@@ -35,11 +28,21 @@
       </div>
 
       <div class="user-info text-left">
-        <div>Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
+
+        <h6 style="font-weight:700">Company information</h6>
+        <div>Owner: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %></div>
         <div>Company: <%= current_user.startup.company_name %> </div>
         <div>Website: <%= current_user.startup.url %></div>
         <div>About: <%= current_user.startup.description&.capitalize %></div>
         <div>Sector: <%= current_user.startup.sector %></div>
+
+        <h6 style="font-weight:700">Your target market</h6>
+        <p>Age: <%= current_user.startup.target_age.join(", ") %></p>
+        <p>Eduction: <%= current_user.startup.target_education.join(", ") %></p>
+        <p>Nationality: <%= current_user.startup.target_nationality.join(", ") %></p>
+        <p>Rating: <%= current_user.startup.target_rating.join(", ") %></p>
+        <p>Profession: <%= current_user.startup.target_profession.join(", ") %></p>
+        <p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p>
       </div>
 
       <div class="user-contact text-left">
@@ -52,16 +55,57 @@
 
 
     <div class="stats-card-1">
-      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
-
+      <%= render 'chartjs' %>
+<!--       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
+ -->
     </div>
     <div class="stats-card-1">
       <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
     </div>
   </div>
 
+  <!-- <h1 class="text-center">OVERALL SCORE</h1> -->
 
+
+<!--   <div class="rating-db">
+    <div>
+      <p>Website UX</p>
+      <%#= Feedback.last.website_ux %>
+    </div>
+    <div>
+      <p>Website UI</p>
+      <%#= Feedback.last.website_ui %>
+    </div>
+    <div>
+      <p>Website Design</p>
+      <%#= Feedback.last.website_design %>
+    </div>
+    <div>
+      <p>Website Fluidity</p>
+      <%#= Feedback.last.website_fluidity %>
+    </div>
+    <div>
+      <p>Website Latency</p>
+      <%#= Feedback.last.website_latency %>
+    </div>
+  </div> -->
+
+
+
+<div >
+  <h3>#Answers per tester - title to be adjusted</h3>
+  <%= render 'versions/tester_answers' %>
+</div>
+<div>
+  <h3>#Answers per question - title to be adjusted</h3>
   <%= render 'versions/tabbed_accordion' %>
-<!-- render partial: "versions/version_accordion", locals: { version: version, index: index }
+  </div>
+  </div>
+
+
+
+
+
+
 
 

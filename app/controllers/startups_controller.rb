@@ -1,4 +1,6 @@
 class StartupsController < ApplicationController
+  skip_after_action :verify_authorized
+  skip_after_action :verify_policy_scoped
   skip_before_action :authenticate_user!, only: [:index, :show]
 
 #     def index
@@ -16,12 +18,6 @@ class StartupsController < ApplicationController
       authorize @startup
   end
 
-  # def new
-  #     @startup = Startup.new
-  #     redirect_to dashboard_path
-  #     authorize @startup
-  #   end
-
   def new
     if !current_user.is_tester?
       startup = Startup.find_or_create_by! user_id: current_user.id
@@ -30,15 +26,6 @@ class StartupsController < ApplicationController
     authorize startup
     redirect_to dashboard_path
   end
-
-#   def new
-#       if !current_user.is_tester?
-#         startup = Startup.find_or_create_by! user_id: current_user.id
-#       end
-
-#       redirect_to dashboard_path
-#     end
-
 
   def create
     @startup = Startup.new(startup_params)
@@ -76,6 +63,10 @@ class StartupsController < ApplicationController
   private
 
   def startup_params
-    params.require(:startup).permit(:company_name, :url, :description, :sector, :photo)
+    lala = params.require(:startup).permit(:company_name, :url, :description, :sector, :photo, target_age: [], target_education: [], target_nationality: [], target_rating: [], target_age: [], target_profession: [], target_sex: [])
+    %w(target_age target_education target_nationality target_rating target_age target_profession target_sex).each do |key|
+      lala[key] = lala[key].reject(&:empty?)
+    end
+    lala
   end
 end

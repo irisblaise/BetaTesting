@@ -1,0 +1,6 @@
+<%= simple_form_for [@feedback, @review] do |f| %>
+<div class="form-group">
+  <%= f.input :rating, collection: 1..5 %>
+  <%= f.button :submit, {class: "btn btn-primary"}%>
+</div>
+<% end %>
