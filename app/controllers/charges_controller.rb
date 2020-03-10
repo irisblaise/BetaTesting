@@ -9,6 +9,7 @@ class ChargesController < ApplicationController
       redirect_to new_charge_path
     else
       render "new"
+    end
   end
 
   private

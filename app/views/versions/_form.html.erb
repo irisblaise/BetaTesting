@@ -1,13 +1,10 @@
 
-
-
 <div class="container mt-5">
   <%= simple_form_for([@startup, @version]) do |f|%>
     <div class="form-group">
       <%= f.input :name %>
-      <%= f.input :quantity %>
-
-      <p>The estimate price would be: <%= humanized_money_with_symbol(Version.current_price) %></p>
+      <%= f.input :quantity, imput_html: { id: "num1" } %>
+      <p id="values"></p>
 
       <%= f.button :submit, "Update version", {class: "btn btn-primary"} %>
     </div>
