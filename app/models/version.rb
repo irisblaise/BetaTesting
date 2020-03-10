@@ -1,16 +1,23 @@
 class Version < ApplicationRecord
   belongs_to :startup
-  has_many :questions
-  has_many :feedbacks
+  has_many :questions, dependent: :destroy
+  has_many :feedbacks, dependent: :destroy
   has_many :testers, through: :feedbacks
-  has_one :order
 
+  has_one :order
+  
   QUESTION_TYPES = %i[website_ux website_ui website_design website_fluidity website_latency].freeze
 
+  before_destroy :remove_foreign_key_from_order
+  
+  def remove_foreign_key_from_order
+    order.update version_id: nil
+  end
 
   def self.current_price
     20
   end
+
 
   def calculate_avg_score
     score = {}
@@ -25,18 +32,7 @@ class Version < ApplicationRecord
         score[question] = sum_all/count_all
       end
     end
-
     score.to_json
   end
 
-  # def calulate_avg_score_ui
-  #   sum_all = feedbacks.map{|feedback| feedback.website_ui}.sum
-  #   count_all = feedbacks.map{|feedback| feedback.website_ui}.count
-
-  #   if count_all == 0
-  #     average_ui = 0
-  #   else
-  #     average_ui = sum_all/count_all
-  #   end
-  # end
 end

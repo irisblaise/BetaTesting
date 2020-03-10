@@ -71,7 +71,10 @@
         <%= submit_tag "Submit", class: "btn btn-success"  %>
       <% else %>
         <br>
-        <%= link_to "Quit preview", dashboard_path, {class: "btn btn-success"} %>
+        <div class="container d-flex">
+        <%= link_to "Quit preview", dashboard_path, class: "btn btn-success m-1" %>
+        <%= link_to "Destroy version", startup_version_path, method: :delete, class: 'btn btn-danger m-1' %>
+        </div>
       <% end %>
 
   </div>
