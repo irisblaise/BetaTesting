@@ -17,63 +17,55 @@
 
 <div class="container mt-5">
 
-  <div class="main-container d-flex text-center justify-content-center">
+  <div class="main-container text-center">
 
     <!-- user profile box, same for startup and tester -->
-    <div class="user-profilev2">
-
+    <div class="user-profilev2 dashboard-card">
       <div class="user-photo">
-        <%= cl_image_tag current_user.tester.photo.attached? ? current_user.tester.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, :cloud_name => "dir0nw4ok"%>
+        <%= cl_image_tag current_user.tester.photo.attached? ? current_user.tester.photo.key : "injcuuecln8fvf2vo2zg", width: '100%', height: 200, :cloud_name => "dir0nw4ok" %>
       </div>
 
       <div class="user-info text-left">
-        <div>Name: <%= current_user.first_name %> <%= current_user.last_name %></div>
-        <div>Age: <%= current_user.tester.age %> </div>
-        <div>Sex: <%= current_user.tester.sex %></div>
-        <div>Nationality: <%= current_user.tester.nationality %></div>
-        <div>Education: <%= current_user.tester.education %></div>
-        <div>Job: <%= current_user.tester.profession %></div>
+
+        <h6 style="font-weight:700"><% "Company information" %></h6>
+        <div class="profile_icons d-flex"><%= image_tag "party.png"%><p> Age: <%= current_user.tester.age.nil? ? "Your age" : current_user.tester.age.join(", ") %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "university.png"%><p>Education: <%= current_user.tester.education.nil? ? "Your education" : current_user.tester.education  %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "world.png"%><p>Nationality: <%= current_user.tester.nationality.nil? ? "your nationality" : current_user.tester.nationality %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "love.png"%><p>Gender: <%= current_user.tester.sex.nil? ? "Your gender" : current_user.tester.sex %> </p></div>
+        <div class="profile_icons d-flex"><%= image_tag "bag.png"%><p>Profession: <%= current_user.tester.profession.nil? ? "Your profession" : current_user.tester.profession %></p></div>
+
       </div>
 
       <div class="user-contact text-left">
-        <span>Email: <%= current_user.email %></span>
+
       </div>
-      <div class="padding-top-30">
+      <div class="padding-top-30 ">
         <%= link_to "Edit Profile", edit_tester_path(current_user), {class: "card_action btn btn-primary"}  %>
       </div>
     </div>
 
-    <div class="stats-card-1">
-      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
 
+    <div class="stats-card-1 box-text box-icons4 dashboard-card">
+      <br>
+      <p>Total money earnt</p>
+      <h2></h2>
+       <%= image_tag "pig.png"%>
     </div>
-    <div class="stats-card-1">
-      <img src="https://labdeck.com/wp-content/uploads/2017/01/2d-graph-graph-title.png" alt="">
+
+    <div class="stats-card-1 box-text box-icons4 dashboard-card">
+      <br>
+      <p>Your rating</p>
+      <h2></h2>
+      <%= image_tag "scoreboard.png"%>
+      <div>
+
+      </div>
+    </div>
+
+    <div class="stats-card-3 dashboard-card">
+      <%=%>
     </div>
   </div>
-<!--
-  <div class="row">
-    <div class="col-8 offset-2">
-      <!-- search form 3 -->
-
-      <%# @startups.each do |startup| %>
-      <!-- <div class="card-product justify-content-between">
-        <div class="d-flex">
-          <p><%#= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
-          <div class="card-product-infos">
-            <h2>Company: <%=  %></h2>
-            <p>Description:  <%=  %></p>
-            <p> <strong>Sector:</strong> <%#= startup.sector %></p>
-            <p> <strong>URL:</strong> <%#= startup.url %></p>
-          </div>
-        </div>
-        <div>
-          <button type="button" class="btn btn-outline-success"> Test me! </button>
-        </div>
-      </div>
-      <%# end %>
-    </div>
-  </div> -->
 
 
-</div>
+
