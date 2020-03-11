@@ -34,10 +34,13 @@
   }
 }
 
+
+
 .box-icons4 {
     justify-content: space-between;
     align-items: center;
     text-align: center;
+
 
 
   h2 {
@@ -56,6 +59,26 @@
   }
 }
 
+
+.box-icons5 {
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+  h2 {
+    font-size: 50px;
+    font-weight: 900;
+    color: #E3BC05;
+    text-shadow: 5px 5px #555555;
+    padding: 18px;
+  }
+  p {
+    font-size: 20px;
+    font-weight: 500;
+    color: #212529c2;
+    text-shadow: 1px 1px #55555945;
+    margin-bottom: -1rem;
+  }
+}
 
 
 #card-1{
