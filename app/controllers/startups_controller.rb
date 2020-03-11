@@ -1,6 +1,7 @@
 class StartupsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_after_action :verify_authorized, only: [:new]
 
 #     def index
 #       @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
@@ -10,6 +11,8 @@ class StartupsController < ApplicationController
     else
       @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
     end
+
+    @all_startups = Startup.select { |startup| startup.versions.length != 0 }
   end
 
   def show
