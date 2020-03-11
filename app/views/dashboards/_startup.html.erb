@@ -19,85 +19,81 @@
 
 <div class="container mt-5">
 
-  <div class="main-container d-flex text-center justify-content-center">
+  <div class="main-container text-center">
 
     <!-- user profile box, same for startup and tester -->
-    <div class="user-profilev2">
-        <div class="company_name"> <h6> <%= current_user.startup.company_name %> </h6></div>
-        <div class="user-photo">
-          <%= cl_image_tag current_user.startup.photo.attached? ? current_user.startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, :cloud_name => "dir0nw4ok"%>
-        </div>
+    <div class="user-profilev2 dashboard-card">
+      <div class="user-photo">
+        <%= cl_image_tag current_user.startup.photo.attached? ? current_user.startup.photo.key : "injcuuecln8fvf2vo2zg", width: '100%', height: 200, :cloud_name => "dir0nw4ok" %>
+      </div>
 
-        <div class="user-info text-left">
+      <div class="user-info text-left">
 
-          <h6 style="font-weight:700">Company information</h6>
-          <div class="profile_icons d-flex"><%= image_tag "user.png"%> <p> <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %> </p> </div>
-          <div class="profile_icons d-flex"><%= image_tag "internet.png"%> <p> <%= current_user.startup.url %></p> </div>
-          <div class="profile_icons d-flex"><%= image_tag "heart.png"%> <p> <%= current_user.startup.description&.capitalize %></p> </div>
-          <div class="profile_icons d-flex"><%= image_tag "information.png"%> <p> <%= current_user.startup.sector %></p> </div>
-          <br>
+        <h6 style="font-weight:700"><%= current_user.startup.company_name ? current_user.startup.company_name : "Company information" %></h6>
+        <div class="profile_icons d-flex"><%= image_tag "user.png"%> <p> <%= current_user.full_name %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "internet.png"%> <p><%= current_user.startup.url&.empty? ?  "Your email" : current_user.startup.url %> </p> </div>
+        <div class="profile_icons d-flex"><%= image_tag "heart.png"%> <p> <%= current_user.startup.description&.empty? ? "Your discription" : current_user.startup.description&.capitalize %></p> </div>
+        <div class="profile_icons d-flex"><%= image_tag "information.png"%> <p> <%= current_user.startup.sector&.empty? ? "Your information" : current_user.startup.sector %></p> </div>
+        <div class="profile_icons d-flex"><%= image_tag "email.png"%> <p><%= current_user.email&.empty? ? "Your email" : current_user.email %> </p></div>
+        <br>
 
-          <h6 style="font-weight:700">Your target market</h6>
-          <div class="profile_icons d-flex"><%= image_tag "party.png"%><p> Age: <%= current_user.startup.target_age.join(", ") %></p></div>
-          <div class="profile_icons d-flex"><%= image_tag "university.png"%><p>Eduction: <%= current_user.startup.target_education.join(", ") %></p></div>
-          <div class="profile_icons d-flex"><%= image_tag "world.png"%><p>Nationality: <%= current_user.startup.target_nationality.join(", ") %></p></div>
-          <div class="profile_icons d-flex"><%= image_tag "love.png"%><p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p></div>
-          <div class="profile_icons d-flex"><%= image_tag "bag.png"%><p>Profession: <%= current_user.startup.target_profession.join(", ") %></p></div>
-          <div class="profile_icons d-flex"><%= image_tag "scoreboard.png"%> <p>Rating: <%= current_user.startup.target_rating.join(", ") %></p></div>
-        </div>
+        <h6 style="font-weight:700">Your target market</h6>
+        <div class="profile_icons d-flex"><%= image_tag "party.png"%><p> Age: <%= current_user.startup.target_age.empty? ? "N/A" : current_user.startup.target_age.join(", ") %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "university.png"%><p>Education: <%= current_user.startup.target_education.empty? ? "N/A" : current_user.startup.target_education.join(", ")  %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "world.png"%><p>Nationality: <%= current_user.startup.target_nationality.empty? ? "N/A" : current_user.startup.target_nationality.join(", ") %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "love.png"%><p>Gender: <%= current_user.startup.target_sex.empty? ? "N/A" : current_user.startup.target_sex.join(", ") %> </p></div>
+        <div class="profile_icons d-flex"><%= image_tag "bag.png"%><p>Profession: <%= current_user.startup.target_profession.empty? ? "N/A" : current_user.startup.target_profession.join(", ") %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "scoreboard.png"%> <p>Rating: <%= current_user.startup.target_rating.empty? ? "N/A" : current_user.startup.target_rating.join(", ") %></p></div>
+      </div>
 
-        <div class="user-contact text-left">
+      <div class="user-contact text-left">
 
-          <div class="profile_icons d-flex"><%= image_tag "email.png"%> <p><%= current_user.email%></p></div>
-        </div>
-        <div class="padding-top-30 ">
-          <%= link_to "Edit Profile", edit_startup_path(current_user), {class: "card_action btn btn-primary"}  %>
-        </div>
+      </div>
+      <div class="padding-top-30 ">
+        <%= link_to "Edit Profile", edit_startup_path(current_user), {class: "card_action btn btn-primary"}  %>
+      </div>
     </div>
 
-    <div>
-      <div class="main-container d-flex text-center justify-content-center">
-        <div class="stats-card-1 box-text box-icons4" style="height:300px">
-          <br>
-          <% if !@versions.nil? %>
-            <p># of testers</p>
-            <h2>0</h2>
-            <div><%= image_tag "team.png"%></div>
-          <% else %>
-            <p># of testers</p>
-            <h2><%= @versions.last&.testers&.count %></h2>
-            <div><%= image_tag "team.png"%></div>
-          <% end %>
-        </div>
 
-        <div class="stats-card-1 box-text box-icons4" style="height:300px">
-          <br>
-          <div>
-          <% if !@versions.nil? %>
-             <p>Average rating</p>
-             <br>
-             <br>
-            <%= image_tag "question.png"%>
-          <% else %>
-            <p>Average rating</p>
-            <%#  (@versions.last&.feedback&.website_ux + @versions.last&.feedback&.website_ui.all + @versions.last&.feedback&.website_design + @versions.last&.feedback&.website_fluidity + @versions.last&.feedback&.website_fluidity)/<%= @versions.last&.feedback&.count %>
-            <%= @versions.last&.feedback&.count %></h2>
-            <%= image_tag "star.png"%>
-          <% end %>
-          </div>
-        </div>
+    <div class="stats-card-1 box-text box-icons4 dashboard-card">
+      <br>
+      <% if @versions.empty? %>
+      <p># of testers</p>
+      <h2>0</h2>
+      <div><%= image_tag "team.png"%></div>
+      <% else %>
+      <p># of testers</p>
+      <h2><%= @versions.last&.testers&.count %></h2>
+      <div><%= image_tag "team.png"%></div>
+      <% end %>
+    </div>
+      
+      
+    <div class="stats-card-1 box-text box-icons4 dashboard-card">
+      <br>
+      <div>
+        <% if @versions.empty? %>
+        <p>Average rating</p>
+        <br>
+        <br>
+        <%= image_tag "question.png"%>
+        <% else %>
+        <p>Average rating</p>
+        <h2><%= @versions.last.total_calculate_avg_score %></h2>
+        <%= image_tag "star.png"%>
+        <% end %>
       </div>
+    </div>
 
-      <div class="stats-card-3" style="">
-        <%= render 'chartjs' %>
-      </div>
+    <div class="stats-card-3 dashboard-card">
+      <%= render 'chartjs' %>
     </div>
   </div>
 
 
 
-<div>
-  <!-- Nav tabs -->
+  <div>
+    <!-- Nav tabs -->
   <ul class="nav nav-tabs" role="tablist">
     <button id="answers-per-user-button" class="card_action btn btn-primary">
       <li role="presentation"><a href="#answers-per-user" aria-controls="answers-per-user" role="tab" data-toggle="tab">Anwers per user</a></li>
@@ -115,9 +111,9 @@
     </div>
     <div id="answers-per-question" hidden>
       <div role="tabpanel" class="tab-pane" id="answers-per-question"><%= render 'versions/tabbed_accordion' %></div>
+      </div>
     </div>
   </div>
-</div>
 
 <!-- script that toggles between buttons and hides the answers per question button
   when that view is selected, and vice versa -->

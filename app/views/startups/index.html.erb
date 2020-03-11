@@ -1,32 +1,47 @@
 <div class="banner2 mb-4">
   <h1> what do you feel like testing today?</h1>
 
-    <div class="d-flex justify-content-center mt-4">
-      <div class="search-box ">
-          <%= form_tag startups_path, method: :get do %>
-            <%= text_field_tag :query, params[:query], placeholder: " " %>
-          <% end %>
-        <span></span>
-      </div>
+  <div class="d-flex justify-content-center mt-4">
+    <div class="search-box ">
+      <%= form_tag startups_path, method: :get do %>
+      <%= text_field_tag :query, params[:query], placeholder: " " %>
+      <% end %>
+      <span></span>
     </div>
+  </div>
 
 
-<!-- the list of movies -->
+  <!-- the list of movies -->
 
 </div>
 <div class="container">
   <div class="row">
     <div class="col-8 offset-2">
+      <h4 class="text-center mb-4">Matching Your Profile</h4>
       <!-- search form 3 -->
       <% @startups.each do |startup| %>
       <div class="card-product justify-content-between">
         <div class="d-flex">
           <p class="photo-index"><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
           <div class="card-product-infos">
-            <h2 class="mt-2">Company: <%= startup.company_name %></h2>
-            <p> <strong>Description: </strong> <%= startup.description %></p>
-            <p> <strong>Sector: </strong> <%= startup.sector %></p>
-            <p> <strong>URL: </strong> <%= startup.url %></p>
+            <h2 class="mt-2"><%= startup.company_name %></h2>
+            <p><%= startup.description %></p>
+            <% if startup.sector == "Pharmaceutical" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/415/415839.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Banking" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/683/683259.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Consultancy" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/829/829243.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Retail" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/2552/2552168.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Law" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/1208/1208198.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Consumer Goods" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/1069/1069102.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Marketing" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/1170/1170591.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% end  %>
+            <p><img src="https://image.flaticon.com/icons/svg/2525/2525768.svg" style="width: 15px; height: 15px" alt="">  <%= startup.url %></p>
           </div>
         </div>
 
@@ -42,4 +57,49 @@
   </div>
 </div>
 
-          <%#= link_to "Test Me",  startup_version_path(startup.id), {class: "btn btn-outline-success"} %>
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-2">
+      <h4 class="text-center mb-4">Not Matching Your Profile</h4>
+      <!-- search form 3 -->
+      <% @all_startups.each do |startup| %>
+      <div class="card-product justify-content-between">
+        <div class="d-flex">
+          <p class="photo-index"><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
+          <div class="card-product-infos">
+
+            <h2 class="mt-2"><%= startup.company_name %></h2>
+            <p><%= startup.description %></p>
+            <% if startup.sector == "Pharmaceutical" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/415/415839.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Banking" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/683/683259.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Consultancy" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/829/829243.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Retail" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/2552/2552168.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Law" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/1208/1208198.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Consumer Goods" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/1069/1069102.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% elsif startup.sector == "Marketing" %>
+            <p> <img src="https://image.flaticon.com/icons/svg/1170/1170591.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+            <% end  %>
+            <p><img src="https://image.flaticon.com/icons/svg/2525/2525768.svg" style="width: 15px; height: 15px" alt="">  <%= startup.url %></p>
+
+          </div>
+
+
+        </div>
+
+        <div>
+          <!-- hide test me button if user is startup -->
+
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<%#= link_to "Test Me",  startup_version_path(startup.id), {class: "btn btn-outline-success"} %>

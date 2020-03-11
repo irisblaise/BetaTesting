@@ -3,6 +3,9 @@ class Tester < ApplicationRecord
 
   belongs_to :user, dependent: :destroy
 
+  has_many :feedbacks
+  has_many :reviews, through: :feedbacks
+
   enum education: EDUCATION_LEVELS
   enum profession: PROFESSION
   enum nationality: NATIONALITY
@@ -10,13 +13,16 @@ class Tester < ApplicationRecord
 
 
   def avg_rating
-    # grab all reviews that belong to tester
-    # pluck the review value
-    # calc the avg
+    self.reviews.average(:rating).to_f.round(2)
   end
   # validates :education, presence: true
   # validates :age, presence: true
   # validates :profession, presence: true
   # validates :nationality, presence: true
-  # validates :sex, presence: true
+  # validates :sex, presence:
+
+  def total_money
+    self
+  end
+
 end

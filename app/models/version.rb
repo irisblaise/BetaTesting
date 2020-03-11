@@ -29,10 +29,15 @@ class Version < ApplicationRecord
       if count_all == 0
         score[question] = 0
       else
-        score[question] = sum_all/count_all
+        score[question] = sum_all.to_f/count_all
       end
     end
     score.to_json
   end
 
+  def total_calculate_avg_score
+
+    score = JSON.parse(calculate_avg_score)
+    (score.values.sum/score.count).round(2)
+  end
 end
