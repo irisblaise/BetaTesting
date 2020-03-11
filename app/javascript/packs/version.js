@@ -34,7 +34,7 @@ const newQuestion = () => {
 
 const deleteQuestion = () => {
   document.addEventListener('click',function(e){
-    if(e.target && e.target.classList.contains('delete-button')){
+    if(e.target && e.target.parentNode.classList.contains('delete-button')){
       const id = e.target.parentNode.dataset.id
 
       fetch(`/api/v1/questions/${id}`, {
