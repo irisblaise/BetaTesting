@@ -24,10 +24,24 @@
         <div class="d-flex">
           <p class="photo-index"><%= cl_image_tag startup.photo.attached? ? startup.photo.key : "injcuuecln8fvf2vo2zg", width: 500, height: 350, crop: :fill, :cloud_name => "dir0nw4ok"%></p>
           <div class="card-product-infos">
-            <h2 class="mt-2">Company: <%= startup.company_name %></h2>
-            <p> <strong>Description: </strong> <%= startup.description %></p>
-            <p> <strong>Sector: </strong> <%= startup.sector %></p>
-            <p> <strong>URL: </strong> <%= startup.url %></p>
+            <h2 class="mt-2"><%= startup.company_name %></h2>
+            <p><%= startup.description %></p>
+              <% if startup.sector == "Pharmaceutical" %>
+                <p> <img src="https://image.flaticon.com/icons/svg/415/415839.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+              <% elsif startup.sector == "Banking" %>
+                <p> <img src="https://image.flaticon.com/icons/svg/683/683259.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+              <% elsif startup.sector == "Consultancy" %>
+                <p> <img src="https://image.flaticon.com/icons/svg/829/829243.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+              <% elsif startup.sector == "Retail" %>
+                <p> <img src="https://image.flaticon.com/icons/svg/2552/2552168.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+              <% elsif startup.sector == "Law" %>
+                <p> <img src="https://image.flaticon.com/icons/svg/1208/1208198.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+              <% elsif startup.sector == "Consumer Goods" %>
+                <p> <img src="https://image.flaticon.com/icons/svg/1069/1069102.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+              <% elsif startup.sector == "Marketing" %>
+                <p> <img src="https://image.flaticon.com/icons/svg/1170/1170591.svg" style="width: 15px; height: 15px" alt="">  <%= startup.sector %></p>
+              <% end  %>
+            <p><img src="https://image.flaticon.com/icons/svg/2525/2525768.svg" style="width: 15px; height: 15px" alt="">  <%= startup.url %></p>
           </div>
         </div>
 
