@@ -1,7 +1,7 @@
 class Tester < ApplicationRecord
   has_one_attached :photo
+
   belongs_to :user, dependent: :destroy
-  has_many :reviews
 
   enum education: EDUCATION_LEVELS
   enum profession: PROFESSION
