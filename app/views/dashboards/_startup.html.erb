@@ -102,7 +102,7 @@
     <button id="answers-per-user-button" class="card_action btn btn-primary">
       <li role="presentation"><a href="#answers-per-user" aria-controls="answers-per-user" role="tab" data-toggle="tab">Anwers per user</a></li>
     </button>
-    <button id="answers-per-question-button" class="card_action btn btn-primary" hidden>
+    <button id="answers-per-question-button" class="card_action btn btn-primary">
       <li role="presentation"><a href="#answers-per-question" aria-controls="answers-per-question" role="tab" data-toggle="tab">Answers per question</a></li>
     </button>
   </ul>
@@ -110,7 +110,7 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
-    <div id="answers-per-user" hidden>
+    <div id="answers-per-user">
       <div role="tabpanel" class="tab-pane" id="answers-per-user"><%= render 'versions/tester_answers' %></div>
     </div>
     <div id="answers-per-question" >
