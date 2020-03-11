@@ -1,6 +1,27 @@
 .staff-img {
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   background-size: cover;
 }
+
+.bulb {
+  position: relative;
+  width: 330px;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.team {
+  position: absolute;
+  top: 127px;
+}
+
+//     position: absolute;
+//     bottom: -177px;
+//     right: 49px;
+//     z-index: 100;
+// }
