@@ -35,13 +35,14 @@
           <div class="profile_icons d-flex"><%= image_tag "heart.png"%> <p> <%= current_user.startup.description&.capitalize %></p> </div>
           <div class="profile_icons d-flex"><%= image_tag "information.png"%> <p> <%= current_user.startup.sector %></p> </div>
           <br>
+
           <h6 style="font-weight:700">Your target market</h6>
-          <p>Age: <%= current_user.startup.target_age.join(", ") %></p>
-          <p>Eduction: <%= current_user.startup.target_education.join(", ") %></p>
-          <p>Nationality: <%= current_user.startup.target_nationality.join(", ") %></p>
-          <p>Rating: <%= current_user.startup.target_rating.join(", ") %></p>
-          <p>Profession: <%= current_user.startup.target_profession.join(", ") %></p>
-          <p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p>
+          <div class="profile_icons d-flex"><%= image_tag "party.png"%><p> Age: <%= current_user.startup.target_age.join(", ") %></p></div>
+          <div class="profile_icons d-flex"><%= image_tag "university.png"%><p>Eduction: <%= current_user.startup.target_education.join(", ") %></p></div>
+          <div class="profile_icons d-flex"><%= image_tag "world.png"%><p>Nationality: <%= current_user.startup.target_nationality.join(", ") %></p></div>
+          <div class="profile_icons d-flex"><%= image_tag "bag.png"%><p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p></div>
+          <div class="profile_icons d-flex"><%= image_tag "love.png"%><p>Profession: <%= current_user.startup.target_profession.join(", ") %></p></div>
+          <div class="profile_icons d-flex"><%= image_tag "scoreboard.png"%> <p>Rating: <%= current_user.startup.target_rating.join(", ") %></p></div>
         </div>
 
         <div class="user-contact text-left">
