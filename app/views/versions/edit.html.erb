@@ -16,11 +16,11 @@
         <div id="question-list" data-version="<%= @version.id %>">
           <% @version.questions.each do |question|%>
           <p data-id="<%= question.id %>" class="text-left">
-            <%= question.question.capitalize    %>
-<!--             <button class="btn btn-danger delete-button">Delete</button>
- -->        <%= link_to  api_v1_question_path(question), method: :delete, class: 'delete-button', data: { confirm: "Are you sure?" } do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
+            <%= question.question.capitalize %>
+            <i class="fas fa-trash-alt delete-button"></i>
+        <%#= link_to  api_v1_question_path(question), method: :delete, class: 'delete-button', data: { confirm: "Are you sure?" } do %>
+            <!-- <i class="fas fa-trash-alt"></i> -->
+          <%# end %>
           </p>
           <% end %>
         </div>

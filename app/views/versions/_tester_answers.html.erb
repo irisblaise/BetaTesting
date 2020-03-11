@@ -24,15 +24,13 @@
       aria-labelledby="nav-version-<%= version.id %>"
     >
       <div id="questions-accordion">
-
-
         <% version.feedbacks.each_with_index do |feedback, index| %>
           <div class="card">
             <div class="card-header d-flex justify-content-between" id="accordion_header_<%= feedback.id %>">
               <h5 class="mb-0">
                 <button class="btn btn-link" data-toggle="collapse" data-target="#accordion_per_tester_<%= feedback.id %>" aria-expanded="true" aria-controls="accordion_per_tester_<%= feedback.id %>">
                   <%= cl_image_tag feedback.tester.photo.attached? ? feedback.tester.photo.key : "injcuuecln8fvf2vo2zg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, :cloud_name => "dir0nw4ok"%>
-                  <%= feedback.tester.user.first_name %>
+                  <%= feedback.tester.user.first_name.capitalize %>
                 </button>
               </h5>
               <div>
@@ -40,7 +38,7 @@
                   <% if feedback.review.nil? %>
                   <%= link_to "Review", new_feedback_review_path(feedback), {class: "card_action btn btn-primary"}  %>
                 <% else %>
-                your review: <%= feedback.review.rating %>
+                You reviewed this user: <%= feedback.review.rating %>
                 <% end %>
               </div>
             </div>
