@@ -11,29 +11,26 @@
   <%= render 'form' %>
   <div class="container">
 
-<!--     <div class="container w-75">
--->
-<div id="question-list" data-version="<%= @version.id %>">
-  <% @version.questions.each do |question|%>
-  <p data-id="<%= question.id %>" class="text-right">
-    <%= question.question %>
-    <button class="btn btn-danger delete-button">Delete</button>
-  </p>
-  <% end %>
-</div>
-<!--     </div>
--->
-<div class="row">
-    <div class="col-6 offset-3">
-<form id="questions-form">
-  <div class="form-group d-flex">
-    <input type="text" class="form-control question-input">
-    <button class="add-question btn btn-primary">+</button>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div id="question-list" data-version="<%= @version.id %>">
+          <% @version.questions.each do |question|%>
+          <p data-id="<%= question.id %>" class="text-right">
+            <%= question.question.capitalize %>
+            <button class="btn btn-danger delete-button">Delete</button>
+          </p>
+          <% end %>
+        </div>
+
+        <form id="questions-form">
+          <div class="form-group d-flex">
+            <input type="text" class="form-control question-input">
+            <button class="add-question btn btn-primary">+</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
-</form>
-</div>
-</div>
-</div>
 </div>
 
 
