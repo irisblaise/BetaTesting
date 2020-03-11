@@ -1,7 +1,8 @@
 class User < ApplicationRecord
   after_create :send_welcome_email
-  has_one :tester
-  has_one :startup
+
+  has_one :tester, dependent: :destroy
+  has_one :startup, dependent: :destroy
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
