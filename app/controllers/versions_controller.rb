@@ -5,6 +5,7 @@ class VersionsController < ApplicationController
     @startup = Startup.find params[:startup_id]
 
     @versions = @startup.versions
+    @versions = policy_scope(@versions)
   end
 
   def new
