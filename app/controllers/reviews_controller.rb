@@ -1,7 +1,5 @@
 class ReviewsController < ApplicationController
 
-  skip_after_action :verify_authorized
-  skip_after_action :verify_policy_scoped
 
   def index
     @reviews = Review.all
@@ -11,6 +9,9 @@ class ReviewsController < ApplicationController
     @feedback = Feedback.find(params[:feedback_id])
     @tester = @feedback.tester
     @review = Review.new
+
+    @startup = current_user.startup
+    authorize @startup
   end
 
   def create
@@ -19,6 +20,7 @@ class ReviewsController < ApplicationController
     @review.feedback = @feedback
     @startup = current_user.startup
     @review.startup = @startup
+    authorize @startup
     if @review.save
       redirect_to dashboard_path
     else

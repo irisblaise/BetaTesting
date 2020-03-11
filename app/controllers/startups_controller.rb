@@ -1,6 +1,5 @@
 class StartupsController < ApplicationController
-  skip_after_action :verify_authorized
-  skip_after_action :verify_policy_scoped
+
   skip_before_action :authenticate_user!, only: [:index, :show]
 
 #     def index
@@ -15,7 +14,8 @@ class StartupsController < ApplicationController
 
   def show
       @startup = Startup.find(params[:id])
-      authorize @startup
+      authorize @version
+      # authorize @tester
   end
 
   def new

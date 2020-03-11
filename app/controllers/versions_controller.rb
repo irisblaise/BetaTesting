@@ -1,6 +1,4 @@
 class VersionsController < ApplicationController
-  skip_after_action :verify_authorized
-  skip_after_action :verify_policy_scoped
 
   def index
     # get access to the startup
@@ -13,18 +11,20 @@ class VersionsController < ApplicationController
     @version = Version.new
     @startup = Startup.find(params[:startup_id])
     # create an order with a stripe session
+    authorize @version
   end
 
   def show
       @version = Version.find(params[:id])
       @questions = @version.questions
       @feedback = Feedback.all
-      # authorize @version
+      authorize @version
   end
 
   def create
     @version = Version.new(version_params)
     @version.startup = current_user.startup
+    authorize @version
 
     if @version.save
       order = Order.initialize_with_stripe_session(@version)
@@ -37,6 +37,7 @@ class VersionsController < ApplicationController
   def edit
     @version = Version.find(params[:id])
     @startup = @version.startup
+    authorize @startup
 
     if @version.order.state == 'pending'
       redirect_to order_path @version.order
@@ -46,7 +47,7 @@ class VersionsController < ApplicationController
   def update
     @version = Version.find(params[:id])
     @startup = @version.startup
-
+    authorize @version
     @version.update(version_params)
     @version.save
     redirect_to startup_version_path([@startup, @version])
@@ -55,6 +56,7 @@ class VersionsController < ApplicationController
   def destroy
     @version = Version.find(params[:id])
     @version.destroy
+    authorize @version
     redirect_to dashboard_path
   end
 

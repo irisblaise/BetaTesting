@@ -10,6 +10,8 @@
         <%= text_field_tag("answers[]") %><br>
         <%= hidden_field_tag "questions[]", question.id %>
       <% end %><br>
+      <%= hidden_field_tag "version_id", @version.id %>
+
 
       <tr class="likert">
        <td><label for="website_ux">Website UX</label></td><br>

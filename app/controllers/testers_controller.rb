@@ -1,17 +1,10 @@
 class TestersController < ApplicationController
-  skip_after_action :verify_authorized
-  skip_after_action :verify_policy_scoped
 
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @testers = policy_scope(Tester)
   end
-
-  # def show
-  #   @tester = Tester.find_or_create_by! user_id: current_user.id
-  #   authorize @current_user.tester
-  # end
 
   def edit
     @tester = current_user.tester

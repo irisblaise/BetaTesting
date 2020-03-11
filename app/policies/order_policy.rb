@@ -6,10 +6,10 @@ class OrderPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    record.startup.user == user
   end
 
   def update?
-    true
+    record.startup.user == user
   end
 end
