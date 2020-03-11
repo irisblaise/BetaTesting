@@ -46,7 +46,7 @@ const formatDataSet = (data) => {
 
 const charts = () => {
   const ctx = document.getElementById("myChart");
-
+  
   const labels = JSON.parse(ctx.dataset.labels);
   let data = JSON.parse(ctx.dataset.data);
 
