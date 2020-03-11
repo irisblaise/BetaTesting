@@ -30,6 +30,12 @@ class User < ApplicationRecord
     return !self.startup.nil?
   end
 
+  def full_name
+    name = "#{self&.first_name&.capitalize} #{self&.last_name&.capitalize}"
+
+    name.strip.empty? ? "Your Name" : name
+  end
+
   private
 
   def send_welcome_email
