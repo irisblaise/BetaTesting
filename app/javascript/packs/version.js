@@ -24,7 +24,7 @@ const newQuestion = () => {
         })
         .then(response => response.json())
         .then(data => {
-          list.insertAdjacentHTML('beforeend', `<p class="text-right"> ${ data.question } <button class="btn btn-danger delete-button">Delete</button></p>`)
+          list.insertAdjacentHTML('beforeend', `<p class="text-left"> ${ data.question } <button class="btn btn-danger delete-button">Delete</button></p>`)
           input.value = ''
         })
       }
