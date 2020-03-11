@@ -24,7 +24,7 @@ const newQuestion = () => {
         })
         .then(response => response.json())
         .then(data => {
-          list.insertAdjacentHTML('beforeend', `<p class="text-right"> ${ data.question } <button class="btn btn-danger delete-button">Delete</button></p>`)
+          list.insertAdjacentHTML('beforeend', `<p data-id="${data.id}" class="text-left"> ${ data.question } <i class="fas fa-trash-alt delete-button"></i></p>`)
           input.value = ''
         })
       }
@@ -36,7 +36,7 @@ const deleteQuestion = () => {
   document.addEventListener('click',function(e){
     if(e.target && e.target.classList.contains('delete-button')){
       const id = e.target.parentNode.dataset.id
-
+      console.log(e.target)
       fetch(`/api/v1/questions/${id}`, {
         method: 'DELETE'
       })

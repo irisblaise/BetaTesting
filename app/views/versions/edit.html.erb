@@ -7,28 +7,35 @@
 </div>
 
 <div class="container mt-5">
+
   <%= render 'form' %>
   <div class="container">
-    <div class="container w-75">
 
-      <div id="question-list" data-version="<%= @version.id %>">
-        <% @version.questions.each do |question|%>
-        <p data-id="<%= question.id %>" class="text-right">
-          <%= question.question %>
-          <button class="btn btn-danger delete-button">Delete</button>
-        </p>
-        <% end %>
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div id="question-list" data-version="<%= @version.id %>">
+          <% @version.questions.each do |question|%>
+          <p data-id="<%= question.id %>" class="text-left">
+            <%= question.question.capitalize %>
+            <i class="fas fa-trash-alt delete-button"></i>
+        <%#= link_to  api_v1_question_path(question), method: :delete, class: 'delete-button', data: { confirm: "Are you sure?" } do %>
+            <!-- <i class="fas fa-trash-alt"></i> -->
+          <%# end %>
+          </p>
+          <% end %>
+        </div>
+
+        <form id="questions-form">
+          <div class="form-group d-flex">
+            <input type="text" class="form-control question-input">
+            <button class="add-question btn btn-primary">+</button>
+          </div>
+        </form>
       </div>
     </div>
-
-    <form id="questions-form">
-      <div class="form-group d-flex">
-        <input type="text" class="form-control question-input">
-        <button class="add-question btn btn-primary">+</button>
-      </div>
-    </form>
   </div>
 </div>
+
 
 <div class="container d-flex justify-content-center">
   <%= link_to "go back", dashboard_path, {class: "card_action btn btn-primary m-1"} %>

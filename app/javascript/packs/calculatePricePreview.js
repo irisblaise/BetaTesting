@@ -4,7 +4,7 @@ const calculatePricePreview = () => {
   if (testersQuantity) {
     testersQuantity.addEventListener('keyup', (e) => {
       const result = testersQuantity.value * 20;
-      document.querySelector('#values').innerHTML = `The estimate price would be: ${result}`;
+      document.querySelector('#values').innerHTML = `Your total price: € ${result}`;
     })
   }
 }
