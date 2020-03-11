@@ -41,13 +41,14 @@
           <div class="profile_icons d-flex"><%= image_tag "party.png"%><p> Age: <%= current_user.startup.target_age.join(", ") %></p></div>
           <div class="profile_icons d-flex"><%= image_tag "university.png"%><p>Eduction: <%= current_user.startup.target_education.join(", ") %></p></div>
           <div class="profile_icons d-flex"><%= image_tag "world.png"%><p>Nationality: <%= current_user.startup.target_nationality.join(", ") %></p></div>
-          <div class="profile_icons d-flex"><%= image_tag "bag.png"%><p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p></div>
-          <div class="profile_icons d-flex"><%= image_tag "love.png"%><p>Profession: <%= current_user.startup.target_profession.join(", ") %></p></div>
+          <div class="profile_icons d-flex"><%= image_tag "love.png"%><p>Gender: <%= current_user.startup.target_sex.join(", ") %> </p></div>
+          <div class="profile_icons d-flex"><%= image_tag "bag.png"%><p>Profession: <%= current_user.startup.target_profession.join(", ") %></p></div>
           <div class="profile_icons d-flex"><%= image_tag "scoreboard.png"%> <p>Rating: <%= current_user.startup.target_rating.join(", ") %></p></div>
         </div>
 
         <div class="user-contact text-left">
-          <span>Email: <%= current_user.email %></span>
+
+          <div class="profile_icons d-flex"><%= image_tag "email.png"%> <p><%= current_user.email%></p></div>
         </div>
         <div class="padding-top-30 ">
           <%= link_to "Edit Profile", edit_startup_path(current_user), {class: "card_action btn btn-primary"}  %>
@@ -58,17 +59,31 @@
       <div class="main-container d-flex text-center justify-content-center">
         <div class="stats-card-1 box-text box-icons4" style="height:300px">
           <br>
-          <p># of testers</p>
-          <h2><%= @versions.last.testers.count %></h2>
-          <div><%= image_tag "team.png"%></div>
+          <% if !@versions.nil? %>
+            <p># of testers</p>
+            <h2>0</h2>
+            <div><%= image_tag "team.png"%></div>
+          <% else %>
+            <p># of testers</p>
+            <h2><%= @versions.last&.testers&.count %></h2>
+            <div><%= image_tag "team.png"%></div>
+          <% end %>
         </div>
 
         <div class="stats-card-1 box-text box-icons4" style="height:300px">
           <br>
           <div>
+          <% if !@versions.nil? %>
+             <p>Average rating</p>
+             <br>
+             <br>
+            <%= image_tag "question.png"%>
+          <% else %>
             <p>Average rating</p>
-          <h2><%= @versions.last.feedbacks.count %></h2>
-          <%= image_tag "star.png"%>
+            <%#  (@versions.last&.feedback&.website_ux + @versions.last&.feedback&.website_ui.all + @versions.last&.feedback&.website_design + @versions.last&.feedback&.website_fluidity + @versions.last&.feedback&.website_fluidity)/<%= @versions.last&.feedback&.count %>
+            <%= @versions.last&.feedback&.count %></h2>
+            <%= image_tag "star.png"%>
+          <% end %>
           </div>
         </div>
       </div>
