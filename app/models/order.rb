@@ -22,8 +22,8 @@ class Order < ApplicationRecord
         currency: 'eur',
         quantity: order.quantity
       }],
-      success_url: Rails.application.routes.url_helpers.edit_startup_version_url(version.startup, version, :host => "http://localhost:3000"),
-      cancel_url: Rails.application.routes.url_helpers.dashboard_url(host: "http://localhost:3000")
+      success_url: Rails.application.routes.url_helpers.edit_startup_version_url(version.startup, version, :host => ENV["DOMAIN"]),
+      cancel_url: Rails.application.routes.url_helpers.dashboard_url(host: ENV["DOMAIN"])
     )
 
     order.update(checkout_session_id: session.id)
