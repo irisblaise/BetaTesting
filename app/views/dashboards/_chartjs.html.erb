@@ -1,7 +1,6 @@
 <canvas
   id="myChart"
-  width="400"
-  height="400"
+  width="100%"
   data-labels="<%= @versions.map{|version| version.name} %>"
   data-data= "<%= @versions.map{|version| version.calculate_avg_score } %>"
 ></canvas>

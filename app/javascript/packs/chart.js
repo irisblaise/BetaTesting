@@ -2,11 +2,19 @@ import chart from 'chart.js'
 
 // Bar chart
 const colors = {
-  website_ux: 'blue',
-  website_ui: 'red',
-  website_latency: 'pink',
-  website_fluidity: 'yellow',
-  website_design: 'green'
+  website_ux: 'rgba(255, 99, 132, 0.2)',
+  website_ui: 'rgba(54, 162, 235, 0.2)',
+  website_latency: 'rgba(255, 206, 86, 0.2)',
+  website_fluidity: 'rgba(75, 192, 192, 0.2)',
+  website_design: 'rgba(153, 102, 255, 0.2)'
+}
+
+const border_colors = {
+  website_ux: 'rgba(255, 99, 132, 1)',
+  website_ui: 'rgba(54, 162, 235, 1)',
+  website_latency: 'rgba(255, 206, 86, 1)',
+  website_fluidity: 'rgba(75, 192, 192, 1)',
+  website_design: 'rgba(153, 102, 255, 1)'
 }
 
 const formatDataSet = (data) => {
@@ -29,6 +37,8 @@ const formatDataSet = (data) => {
     return {
       label: key,
       backgroundColor: colors[key],
+      borderColor: border_colors[key],
+      borderWidth: 1,
       data: dataset[key]
     }
   })
@@ -36,23 +46,21 @@ const formatDataSet = (data) => {
 
 const charts = () => {
   const ctx = document.getElementById("myChart");
+  
+  const labels = JSON.parse(ctx.dataset.labels);
+  let data = JSON.parse(ctx.dataset.data);
 
-  if (ctx) {
-    const labels = JSON.parse(ctx.dataset.labels);
-    let data = JSON.parse(ctx.dataset.data);
+  data = data.map(d => JSON.parse(d))
 
-    data = data.map(d => JSON.parse(d))
+  const datasets = formatDataSet(data)
+  const mixedChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels,
+      datasets
+    }
+});
 
-    const datasets = formatDataSet(data)
-
-    const mixedChart = new Chart(ctx, {
-      type: 'bar',
-      data: {
-        labels,
-        datasets
-      }
-    });
-  }
 }
 
 export { charts }

@@ -1,5 +1,4 @@
 .user-stats-container{
- width: 65%;
  margin: 0px 10px;
 }
 
@@ -16,21 +15,19 @@
 }
 
 .stats-card-1{
-  width: 80%;
-  margin: 0px 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
+  border-radius: 0px 10px 0px 0px;
+  margin: 0;
   img{
     padding: 0px 20px;
   }
 }
 
 .stats-card-3{
-  margin: 0px 5px;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   position: relative;
-  height: 59%;
-  width: 466px;
+  grid-column: 2 / span 2;
 
   img{
     width: 100%;
@@ -44,15 +41,16 @@
 
 
   h2 {
-    font-size: 80px;
+    font-size: 120px;
     font-weight: 900;
     color: #E3BC05;
     text-shadow: 5px 5px #555555;
+    padding: 18px;
   }
   p {
     font-size: 20px;
     font-weight: 500;
-    color: #E3BC05;
+    color: #212529c2;
     text-shadow: 1px 1px #55555945;
     margin-bottom: -1rem;
   }

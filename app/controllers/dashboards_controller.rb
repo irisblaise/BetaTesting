@@ -11,12 +11,4 @@ class DashboardsController < ApplicationController
     authorize(:dashboard, :show?)
   end
 
-
-    def calculate_avg_score
-      @versions = current_user.startup.versions
-      @versions.feedbacks.each do |feedback|
-      all = feedback.website_ux.sum
-      average = all/feedback.count
-    end
-  end
 end
