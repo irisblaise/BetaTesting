@@ -64,6 +64,16 @@
    border-radius: 0px 15px 15px 0px;
 }
 
+  .image-tester-phone img {
+    width: auto;
+    max-width: 400px;
+    height: auto;
+    max-height: 400px;
+    // width: 500px;
+    // height: 500px;
+   border-radius: 5px 5px 5px 5px;
+}
+
 .box-icons {
   display: flex;
   justify-content: space-around;
@@ -92,6 +102,21 @@
 
   }
 
+ .box-icon-phone {
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+   text-align: center;
+   width: 65%;
+   height: 270px;
+   background-color: white;
+   // border-radius: 15px;
+   border-radius: 5px 5px 5px 5px;
+   // padding: 30px;
+   // margin-left: 15px;
+
+  }
+
   .box-icons3 {
     justify-content: space-between;
     align-items: center;
@@ -113,6 +138,25 @@
   p {
     font-size: 12px;
   }
+}
+
+.box-text-phone {
+  margin: 0 15px;
+
+  p {
+    font-size: 12px;
+  }
+}
+
+.box-text-phone img {
+  width: 120px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.box-text-phone h4 {
+  font-size: 25px;
+  color: #E3BC05;
 }
 
 .box-text h4 {
