@@ -5,11 +5,11 @@ class Version < ApplicationRecord
   has_many :testers, through: :feedbacks
 
   has_one :order
-  
+
   QUESTION_TYPES = %i[website_ux website_ui website_design website_fluidity website_latency].freeze
 
   before_destroy :remove_foreign_key_from_order
-  
+
   def remove_foreign_key_from_order
     order.update version_id: nil
   end
