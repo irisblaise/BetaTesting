@@ -81,7 +81,7 @@
 
   </div>
   <% if @version.iframe_connection %>
-    <iframe class="frame" src="<%= @version.iframe %>" width="500" height="850" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+    <iframe class="frame" src="<%= @version.iframe_url %>" width="500" height="850" frameborder="0" marginwidth="0" marginheight="0"></iframe>
   <% else %>
       <%  flash[:notice] = "your website could not be loaded. Check your website security settings. "%>
       <a href="<%= @version.iframe %>" target="_blank" class="btn btn-primary w-25 h-50"> Go directly to the product </a>
