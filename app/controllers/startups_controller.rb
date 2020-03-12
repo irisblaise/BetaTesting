@@ -22,13 +22,11 @@ class StartupsController < ApplicationController
   end
 
   def new
-    if current_user.is_tester?
-      redirect_to new_tester_path
-    else
+    unless current_user.is_tester?
       startup = Startup.find_or_create_by! user_id: current_user.id
       authorize startup
-      redirect_to dashboard_path
     end
+    redirect_to dashboard_path
   end
 
   def create

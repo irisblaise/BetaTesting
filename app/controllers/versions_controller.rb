@@ -3,9 +3,9 @@ class VersionsController < ApplicationController
   def index
     # get access to the startup
     @startup = Startup.find params[:startup_id]
-
     @versions = @startup.versions
     @versions = policy_scope(@versions)
+
   end
 
   def new
