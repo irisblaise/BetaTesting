@@ -15,8 +15,8 @@ class StartupPolicy < ApplicationPolicy
         startups = startups.by_tester_education(user.tester.education) &&
         startups = startups.by_tester_age(user.tester.age) &&
         startups = startups.by_tester_sex(user.tester.sex) &&
-        startups = startups.by_tester_nationality(user.tester.nationality)
-        startups = startups.by_tester_rating(user.tester.rating) if user.tester.reviews.count > 0
+        startups = startups.by_tester_nationality(user.tester.nationality) &&
+        startups = startups.by_tester_rating(user.tester.avg_rating.round) if user.tester.reviews.count > 0
 
 
       else
