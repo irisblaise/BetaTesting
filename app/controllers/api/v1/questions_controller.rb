@@ -20,12 +20,6 @@ class Api::V1::QuestionsController < Api::V1::BaseController
     end
   end
 
-  def rating
-    # @question = Question.find params[:id]
-    # stars = params[:stars]
-
-  end
-
   private
 
   def question_params

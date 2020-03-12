@@ -35,6 +35,7 @@ resources :feedbacks, only: [:show] do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :questions, only: [:create, :destroy]
+      post "feedbacks/:id/review", to: "feedbacks#review"
     end
   end
 
