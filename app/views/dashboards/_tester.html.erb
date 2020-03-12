@@ -1,5 +1,6 @@
 <div class=banner2>
   <h1 class="h1-header">Hey <%= current_user.first_name.capitalize %></h1>
+  <br>
   <h2>Welcome to your dashboard!</h2>
   <div class="w-100 d-flex justify-content-center">
     <%= link_to "Find Tests!", startups_path, {class: "search-btn btn mt-3 btn-outline-light"} %>
@@ -10,7 +11,7 @@
 <div class="w-100 d-flex justify-content-center my-3">
   <div class="alert-profile alert-warning" role="alert">
     Your profile is not completed.
-    <%= link_to "update!",  edit_tester_path(current_user), {class: "btn btn-succes"} %>
+    <%= link_to "Update!",  edit_tester_path(current_user), {class: "btn btn-succes"} %>
   </div>
 </div>
 <% end %>
@@ -30,7 +31,7 @@
         <h6 style="font-weight:700"><% "Company information" %></h6>
         <div class="profile_icons d-flex"><%= image_tag "party.png"%><p> <%= current_user.tester.age.nil? ? "Your age" : current_user.tester.age %></p></div>
         <div class="profile_icons d-flex"><%= image_tag "university.png"%><p> <%= current_user.tester.education.nil? ? "Your education" : current_user.tester.education  %></p></div>
-        <div class="profile_icons d-flex"><%= image_tag "world.png"%><p> <%= current_user.tester.nationality.nil? ? "your nationality" : current_user.tester.nationality %></p></div>
+        <div class="profile_icons d-flex"><%= image_tag "world.png"%><p> <%= current_user.tester.nationality.nil? ? "Your nationality" : current_user.tester.nationality %></p></div>
         <div class="profile_icons d-flex"><%= image_tag "love.png"%><p> <%= current_user.tester.sex.nil? ? "Your gender" : current_user.tester.sex %> </p></div>
         <div class="profile_icons d-flex"><%= image_tag "bag.png"%><p> <%= current_user.tester.profession.nil? ? "Your profession" : current_user.tester.profession %></p></div>
 
