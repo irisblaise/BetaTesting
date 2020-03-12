@@ -18,16 +18,13 @@
           <p data-id="<%= question.id %>" class="text-left">
             <%= question.question.capitalize %>
             <i class="fas fa-trash-alt delete-button"></i>
-        <%#= link_to  api_v1_question_path(question), method: :delete, class: 'delete-button', data: { confirm: "Are you sure?" } do %>
-            <!-- <i class="fas fa-trash-alt"></i> -->
-          <%# end %>
           </p>
           <% end %>
         </div>
 
         <form id="questions-form">
           <div class="form-group d-flex">
-            <input type="text" class="form-control question-input">
+            <input type="text" class="form-control question-input" placeholder="Add a question here">
             <button class="add-question btn btn-primary">+</button>
           </div>
         </form>

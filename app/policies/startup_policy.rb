@@ -6,15 +6,18 @@ class StartupPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.is_startup?
+      if user&.is_startup?
         scope.all
-      else
+      elsif user&.is_tester?
+        # user is tester
         startups = scope.all
         startups = startups.by_tester_profession(user.tester.profession) &&
         startups = startups.by_tester_education(user.tester.education) &&
         startups = startups.by_tester_age(user.tester.age) &&
         startups = startups.by_tester_sex(user.tester.sex) &&
         startups = startups.by_tester_nationality(user.tester.nationality)
+      else
+        scope.all
       end
     end
 

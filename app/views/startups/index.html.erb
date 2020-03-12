@@ -47,7 +47,7 @@
 
         <div>
           <!-- hide test me button if user is startup -->
-          <% if !current_user.is_startup? %>
+          <% if !current_user&.is_startup? %>
           <%= link_to "Test Me",  startup_version_path(startup.id, startup.versions.last.id), {class: "btn btn-outline-success"} %>
           <% end %>
         </div>
