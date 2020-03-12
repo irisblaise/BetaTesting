@@ -16,6 +16,9 @@ class StartupPolicy < ApplicationPolicy
         startups = startups.by_tester_age(user.tester.age) &&
         startups = startups.by_tester_sex(user.tester.sex) &&
         startups = startups.by_tester_nationality(user.tester.nationality)
+        startups = startups.by_tester_rating(user.tester.rating) if user.tester.reviews.count > 0
+
+
       else
         scope.all
       end
@@ -30,9 +33,6 @@ class StartupPolicy < ApplicationPolicy
     return true
   end
 
-  # def show?
-  #   return true
-  # end
   def edit?
     record.user == user
   end

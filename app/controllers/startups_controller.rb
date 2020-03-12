@@ -12,7 +12,7 @@ class StartupsController < ApplicationController
       @startups = policy_scope(Startup).select { |startup| startup.versions.length != 0 }
     end
 
-    @all_startups = Startup.select { |startup| startup.versions.length != 0 }
+    @all_startups = Startup.select { |startup| startup.versions.length != 0 } - @startups
   end
 
   def show
