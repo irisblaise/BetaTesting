@@ -3,6 +3,10 @@ import chart from 'chart.js'
 
 export const lineCharts = () => {
   const ctx = document.getElementById("tester-chart");
+
+  const labels = JSON.parse(ctx.dataset.labels);
+  let data = JSON.parse(ctx.dataset.data);
+
   const myLineChart = new Chart(ctx, {
     type: 'line',
     data: {
