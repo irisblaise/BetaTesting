@@ -1,0 +1,37 @@
+.box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  direction: rtl;
+}
+
+.box a {
+  font-size: 40px;
+  color: $gray;
+  transition: 0.3s all;
+}
+
+.box a:hover{
+  color: $yellow2;
+}
+
+.b1:hover ~ a{
+  color: $yellow2;
+}
+
+.b2:hover ~ a{
+  color: $yellow2;
+}
+
+.b3:hover ~ a{
+  color: $yellow2;
+}
+
+.b4:hover ~ a{
+  color: $yellow2;
+}
+
+.b5:hover ~ a{
+  color: $yellow2;
+}
