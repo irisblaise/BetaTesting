@@ -24,22 +24,22 @@ const formatDataSet = (data) => {
   const keys = Object.keys(data[0])
 
   // create an empty object to push data to
-  const dataset = {}
+  const datasets = {}
 
   // for each key
   keys.forEach(key => {
     // create a new property -> { website_ux: null }
     //
-    dataset[key] = data.map(d => d[key])
+    datasets[key] = data.map(d => d[key])
   })
 
-  return Object.keys(dataset).map(key => {
+  return Object.keys(datasets).map(key => {
     return {
       label: key,
       backgroundColor: colors[key],
       borderColor: border_colors[key],
       borderWidth: 1,
-      data: dataset[key]
+      data: datasets[key]
     }
   })
 }
@@ -47,45 +47,29 @@ const formatDataSet = (data) => {
 const charts = () => {
   const ctx = document.getElementById("myChart");
 
-
-  const labels = JSON.parse(ctx.dataset.labels);
-  let data = JSON.parse(ctx.dataset.data);
-
-
   if (ctx) {
     const labels = JSON.parse(ctx.dataset.labels);
     let data = JSON.parse(ctx.dataset.data);
 
 
-  const datasets = formatDataSet(data)
-  const mixedChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels,
-      datasets
-    },
-    options: {
-      scales: {
-        yAxes: [{
-            display: true,
-            ticks: {
-                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
-                beginAtZero: true,
-                suggestedMax: 5,   // minimum value will be 0.
-            }
-        }]
-      }
-    }
-});
-
-    data = data.map(d => JSON.parse(d))
-
-    const datasets = formatDataSet(data)
+    const dataset = formatDataSet(data)
     const mixedChart = new Chart(ctx, {
       type: 'bar',
       data: {
         labels,
-        datasets
+        datasets: dataset
+      },
+      options: {
+        scales: {
+          yAxes: [{
+              display: true,
+              ticks: {
+                  suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                  beginAtZero: true,
+                  suggestedMax: 5,   // minimum value will be 0.
+              }
+          }]
+        }
       }
     });
   }
