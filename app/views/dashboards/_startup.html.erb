@@ -86,10 +86,13 @@
     </div>
 
     <div class="stats-card-3 dashboard-card">
-      <div class="box-icons4">
+      <div class="box-icons5">
       <% if @versions.empty? %>
+      <br>
       <p >Please wait untill your Beta Version gets tested</p>
-      <div><%= image_tag "time.png"%></div>
+      <br>
+      <br>
+      <div class="clock-icon"><%= image_tag "time.png"%></div>
       </div>
       <% else %>
       <%= render 'chartjs' %>

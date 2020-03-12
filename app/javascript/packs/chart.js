@@ -46,7 +46,7 @@ const formatDataSet = (data) => {
 
 const charts = () => {
   const ctx = document.getElementById("myChart");
-  
+
   const labels = JSON.parse(ctx.dataset.labels);
   let data = JSON.parse(ctx.dataset.data);
 
@@ -58,6 +58,18 @@ const charts = () => {
     data: {
       labels,
       datasets
+    },
+    options: {
+      scales: {
+        yAxes: [{
+            display: true,
+            ticks: {
+                suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                beginAtZero: true,
+                suggestedMax: 5,   // minimum value will be 0.
+            }
+        }]
+      }
     }
 });
 
