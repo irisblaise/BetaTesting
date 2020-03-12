@@ -3,10 +3,12 @@
 
   <div class="row">
     <div class="col-6 offset-3">
+      <%= @version.inspect %>
+      <%= @version.methods %>
   <%= simple_form_for([@startup, @version]) do |f|%>
     <div class="form-group">
       <%= f.input :name, label:"Name your version" %>
-      <%= f.input :iframe, label:"What is the URL of your homepage?" %>
+      <%#= f.input :iframe, label:"What is the URL of your homepage?" %>
       <%= f.input :quantity, imput_html: { id: "testers_quantity" }, label: "Quantity of testers you want (€ 20 per tester)" %>
       <p id="values" class="text-center"></p>
       <div class="container d-flex justify-content-center">
