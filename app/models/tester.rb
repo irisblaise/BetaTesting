@@ -25,4 +25,12 @@ class Tester < ApplicationRecord
     self
   end
 
+  def tests_by_month
+    groups = self.feedbacks.
+      group_by { |m| "#{m.created_at.month}_#{m.created_at.year}" }
+
+    hash = {}
+    groups.keys.each{|k| hash[k.to_s] = groups[k].count }
+    hash
+  end
 end
