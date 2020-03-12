@@ -34,11 +34,11 @@
           </button>
         </div>
         <div class="box">
-          <a class="fas fa-star b1 star-rating" data-stars="5" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
-          <a class="fas fa-star b2 star-rating" data-stars="4" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
-          <a class="fas fa-star b3 star-rating" data-stars="3" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
-          <a class="fas fa-star b4 star-rating" data-stars="2" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
-          <a class="fas fa-star b5 star-rating" data-stars="1" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
+          <a class="fas fa-star b1 star-rating <%= 'active' if feedback.review && feedback.review.rating > 4 %> " data-stars="5" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
+          <a class="fas fa-star b2 star-rating <%= 'active' if feedback.review && feedback.review.rating > 3 %> " data-stars="4" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
+          <a class="fas fa-star b3 star-rating <%= 'active' if feedback.review && feedback.review.rating > 2 %> " data-stars="3" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
+          <a class="fas fa-star b4 star-rating <%= 'active' if feedback.review && feedback.review.rating > 1 %> " data-stars="2" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
+          <a class="fas fa-star b5 star-rating <%= 'active' if feedback.review && feedback.review.rating > 0 %> " data-stars="1" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
         </div>
 
       </div>
@@ -67,9 +67,10 @@
     const stars = event.currentTarget.dataset.stars;
     const feedbackId = event.currentTarget.dataset.feedbackId;
     const startupId = event.currentTarget.dataset.startupId;
+    const clickStars = event.currentTarget.parentNode.children
 
-    document.querySelectorAll(".star-rating.active").forEach(previous => previous.classList.remove("active"))
-    event.currentTarget.classList.add("active");
+    event.currentTarget.parentNode.querySelectorAll(".star-rating.active").forEach(previous => previous.classList.remove("active"))
+    // event.currentTarget.classList.add("active");
 
     fetch(`/api/v1/feedbacks/${feedbackId}/review`, {
       method: 'POST',
@@ -83,7 +84,11 @@
     })
     .then(response => response.json())
     .then(data => {
+      const starArray = Array.from(clickStars).reverse()
+      console.log(starArray)
+      starArray.slice(0, stars).forEach(star => star.classList += ' active')
       console.log(data);
+
     })
   });
  });

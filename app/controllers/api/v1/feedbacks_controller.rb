@@ -7,9 +7,10 @@ class Api::V1::FeedbacksController < Api::V1::BaseController
     feedback = Feedback.find(params[:id])
 
     stars = params[:stars]
-    review = Review.find_or_create_by(feedback: feedback, startup_id: current_user.startup)
+    review = Review.find_or_create_by(feedback: feedback, startup: current_user.startup)
     review.rating = stars
     review.save
+    p review.errors.full_messages
     respond_to do |format|
       format.json { render json: review }
     end
