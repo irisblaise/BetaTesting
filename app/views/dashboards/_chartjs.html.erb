@@ -2,5 +2,5 @@
   id="myChart"
   width="100%"
   data-labels="<%= @versions.map{|version| version.name} %>"
-  data-data= "<%= @versions.map{|version| version.calculate_avg_score } %>"
+  data-data= "<%= @versions.map{|version| version.calculate_avg_score }.to_json %>"
 ></canvas>

@@ -87,16 +87,16 @@
 
     <div class="stats-card-3 dashboard-card">
       <div class="box-icons5">
-      <% if @versions.empty? %>
-      <br>
-      <p >Please wait untill your Beta Vision gets tested</p>
-      <br>
-      <br>
-      <div class="clock-icon"><%= image_tag "time.png"%></div>
+        <% if @versions.empty? %>
+          <br>
+          <p >Please wait untill your Beta Vision gets tested</p>
+          <br>
+          <br>
+          <div class="clock-icon"><%= image_tag "time.png"%></div>
+        <% else %>
+          <%= render 'chartjs' %>
+        <% end %>
       </div>
-      <% else %>
-      <%= render 'chartjs' %>
-      <% end %>
     </div>
   </div>
 
@@ -121,7 +121,7 @@
     </div>
     <div id="answers-per-question" hidden>
       <div role="tabpanel" class="tab-pane" id="answers-per-question"><%= render 'versions/tabbed_accordion' %></div>
-      </div>
+    </div>
     </div>
   </div>
 

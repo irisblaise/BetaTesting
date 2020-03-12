@@ -18,28 +18,21 @@ const border_colors = {
 }
 
 const formatDataSet = (data) => {
-  // data = [{ website_ux: 1, website_ui: 1}, { website_ux: 2, website_uid: 2}]
+  const formattedData = data.map(d => JSON.parse(d))
+  const keys = Object.keys(formattedData[0])
+  const dataset = {}
 
-  // isolate the keys -> ['website_ux', 'website_ui']
-  const keys = Object.keys(data[0])
-
-  // create an empty object to push data to
-  const datasets = {}
-
-  // for each key
   keys.forEach(key => {
-    // create a new property -> { website_ux: null }
-    //
-    datasets[key] = data.map(d => d[key])
+    dataset[key] = formattedData.map(d => d[key])
   })
 
-  return Object.keys(datasets).map(key => {
+  return Object.keys(dataset).map(key => {
     return {
       label: key,
       backgroundColor: colors[key],
       borderColor: border_colors[key],
       borderWidth: 1,
-      data: datasets[key]
+      data: dataset[key]
     }
   })
 }
@@ -51,8 +44,10 @@ const charts = () => {
     const labels = JSON.parse(ctx.dataset.labels);
     let data = JSON.parse(ctx.dataset.data);
 
-
     const dataset = formatDataSet(data)
+
+    // console.log(dataset)
+
     const mixedChart = new Chart(ctx, {
       type: 'bar',
       data: {
