@@ -6,7 +6,7 @@ class Version < ApplicationRecord
 
   has_one :order
 
-  validates :iframe_url, presence: true
+  validates :iframe, presence: true
 
   QUESTION_TYPES = %i[website_ux website_ui website_design website_fluidity website_latency].freeze
 
@@ -44,7 +44,7 @@ class Version < ApplicationRecord
   end
 
   def check_iframe_connection
-    response = HTTParty.get(self.iframe_url)
+    response = HTTParty.get(self.iframe)
     self.update iframe_connection: response.headers['x-frame-options'].nil?
   end
 end

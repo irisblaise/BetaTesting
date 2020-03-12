@@ -65,7 +65,7 @@ class VersionsController < ApplicationController
       private
 
     def version_params
-      params.require(:version).permit(:name, :quantity, :iframe_url)
+      params.require(:version).permit(:name, :quantity, :iframe)
     end
 
 end
