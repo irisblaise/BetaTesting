@@ -80,7 +80,11 @@
       <% end %>
 
   </div>
-  <iframe class="frame" src="https://www.pixelstech.net/article/1532747442-How-to-check-whether-a-web-page-can-be-loaded-in-iframe" width="500" height="850" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+  <% if @version.iframe_connection %>
+    <iframe class="frame" src="<%= @version.iframe %>" width="500" height="850" frameborder="0" marginwidth="0" marginheight="0"></iframe>
+  <% else %>
+    <a href="<%= @version.iframe %>" target="_blank" class="btn btn-primary"> Go directly to the product </a>
+  <% end %>
 </div>
 
 <% end %>
