@@ -4,18 +4,18 @@ import chart from 'chart.js'
 export const lineCharts = () => {
   const ctx = document.querySelector("#tester-chart");
   const months = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December',
+  'January',
+  'February',
+  'March',
+  'April',
+  'May',
+  'June',
+  'July',
+  'August',
+  'September',
+  'October',
+  'November',
+  'December',
   ]
 
   const buildDataSet = (dataByMonth, monthsToDate) => {
@@ -47,7 +47,20 @@ export const lineCharts = () => {
           borderColor: 'rgb(255, 99, 132)',
           data: dataset
         }]
-      }
-    });
+      },
+        options: {
+          scales: {
+            yAxes: [{
+              display: true,
+              ticks: {
+                  suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
+                  beginAtZero: true,
+                  suggestedMax: 10,
+                  stepSize: 1
+                }
+              }]
+            }
+          }
+      });
   }
 };
