@@ -66,7 +66,7 @@ const charts = () => {
               ticks: {
                   suggestedMin: 0,    // minimum will be 0, unless there is a lower value.
                   beginAtZero: true,
-                  suggestedMax: 5,   // minimum value will be 0.
+                  suggestedMax: 5   // minimum value will be 0.
               }
           }]
         }

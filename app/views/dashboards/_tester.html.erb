@@ -58,30 +58,27 @@
       <p>Your rating</p>
       <h2><%= @tester.avg_rating %></h2>
       <%= image_tag "scoreboard.png"%>
-      <div>
-
-      </div>
     </div>
 
 
     <div class="stats-card-3 dashboard-card">
       <div class="box-icons5">
-      <% if  @tester.feedbacks.nil? %>
-      <br>
-      <p>What are you waiting for? Start testing! </p>
-      <br>
-      <br>
-      <div class="clock-icon"><%= image_tag "time.png"%></div>
-      </div>
-      <% else %>
+        <% if  @tester.feedbacks.nil? %>
+        <br>
+        <p>What are you waiting for? Start testing! </p>
+        <br>
+        <br>
+        <div class="clock-icon"><%= image_tag "time.png"%></div>
+        <% else %>
         <div class="stats-card-3 dashboard-card">
           <canvas
-            id="tester-chart"
-            width="100%"
-            data-data="<%= @tester.tests_by_month.to_json %>"
+          id="tester-chart"
+          style="height: 305px; width: 732px;"
+          data-data="<%= @tester.tests_by_month.to_json %>"
           ></canvas>
         </div>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
