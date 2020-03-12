@@ -9,4 +9,8 @@ class ReviewPolicy < ApplicationPolicy
     record.feedback.startup == user.startup
   end
 
+  def review?
+    create?
+  end
+
 end

@@ -17,6 +17,7 @@ class VersionsController < ApplicationController
 
   def show
       @version = Version.find(params[:id])
+      @startup = @version.startup
       @questions = @version.questions
       @feedback = Feedback.all
       authorize @version
@@ -64,7 +65,7 @@ class VersionsController < ApplicationController
       private
 
     def version_params
-      params.require(:version).permit(:name, :quantity)
+      params.require(:version).permit(:name, :quantity, :iframe)
     end
 
 end

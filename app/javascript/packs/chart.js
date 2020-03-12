@@ -47,10 +47,15 @@ const formatDataSet = (data) => {
 const charts = () => {
   const ctx = document.getElementById("myChart");
 
+
   const labels = JSON.parse(ctx.dataset.labels);
   let data = JSON.parse(ctx.dataset.data);
 
-  data = data.map(d => JSON.parse(d))
+
+  if (ctx) {
+    const labels = JSON.parse(ctx.dataset.labels);
+    let data = JSON.parse(ctx.dataset.data);
+
 
   const datasets = formatDataSet(data)
   const mixedChart = new Chart(ctx, {
@@ -73,6 +78,17 @@ const charts = () => {
     }
 });
 
+    data = data.map(d => JSON.parse(d))
+
+    const datasets = formatDataSet(data)
+    const mixedChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets
+      }
+    });
+  }
 }
 
 export { charts }
