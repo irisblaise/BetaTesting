@@ -27,15 +27,12 @@
     <% version.feedbacks.each_with_index do |feedback, index| %>
     <div class="card">
       <div class="card-header d-flex justify-content-between" id="accordion_header_<%= feedback.id %>">
-        <h5 class="mb-0">
+        <div class="mb-0">
           <button class="btn btn-link" data-toggle="collapse" data-target="#accordion_per_tester_<%= feedback.id %>" aria-expanded="true" aria-controls="accordion_per_tester_<%= feedback.id %>">
             <%= cl_image_tag feedback.tester.photo.attached? ? feedback.tester.photo.key : "injcuuecln8fvf2vo2zg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, :cloud_name => "dir0nw4ok"%>
             <%= feedback.tester.user.first_name.capitalize %>
           </button>
-        </h5>
-
-
-        <!-- Review button will only show if review has not been given yet -->
+        </div>
         <div class="box">
           <a class="fas fa-star b1 star-rating" data-stars="5" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
           <a class="fas fa-star b2 star-rating" data-stars="4" data-feedback-id="<%= feedback.id %>" data-startup-id="<%= @startup.id %>"></a>
