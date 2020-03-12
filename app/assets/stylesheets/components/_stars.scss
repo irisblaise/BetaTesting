@@ -1,0 +1,53 @@
+// #accordion_header_{
+//   position: relative;
+// }
+
+.box{
+  // position: absolute;
+  // top: 50%;
+  // left: 50%;
+  // transform: translate(-50%, -50%);
+  direction: rtl;
+padding: 0px;
+}
+
+.box a {
+  // font-size: 40px;
+  color: $gray;
+  transition: 0.3s all;
+}
+
+.box a:hover,
+.box a.active {
+  color: $yellow2;
+}
+
+.b1:hover ~ a,
+.b1.active ~ a
+{
+  color: $yellow2;
+}
+
+.b2:hover ~ a,
+.b2.active ~ a
+{
+  color: $yellow2;
+}
+
+.b3:hover ~ a,
+.b3.active ~ a
+{
+  color: $yellow2;
+}
+
+.b4:hover ~ a,
+.b4.active ~ a
+{
+  color: $yellow2;
+}
+
+.b5:hover ~ a,
+.b5.active ~ a
+{
+  color: $yellow2;
+}
