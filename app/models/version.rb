@@ -6,9 +6,12 @@ class Version < ApplicationRecord
 
   has_one :order
 
+  validates :iframe, presence: true
+
   QUESTION_TYPES = %i[website_ux website_ui website_design website_fluidity website_latency].freeze
 
   before_destroy :remove_foreign_key_from_order
+  after_create :check_iframe_connection
 
   def remove_foreign_key_from_order
     order.update version_id: nil
@@ -17,7 +20,6 @@ class Version < ApplicationRecord
   def self.current_price
     20
   end
-
 
   def calculate_avg_score
     score = {}
@@ -39,5 +41,10 @@ class Version < ApplicationRecord
 
     score = JSON.parse(calculate_avg_score)
     (score.values.sum/score.count).round(2)
+  end
+
+  def check_iframe_connection
+    response = HTTParty.get(self.iframe)
+    self.update iframe_connection: response.headers['x-frame-options'].nil?
   end
 end
