@@ -31,10 +31,10 @@
 
         <h6 style="font-weight:700"><%= current_user.startup.company_name ? current_user.startup.company_name : "Company information" %></h6>
         <div class="profile_icons d-flex"><%= image_tag "user.png"%> <p> <%= current_user.full_name %></p></div>
-        <div class="profile_icons d-flex"><%= image_tag "internet.png"%> <p><%= current_user.startup.url&.empty? ?  "Your email" : current_user.startup.url %> </p> </div>
-        <div class="profile_icons d-flex"><%= image_tag "heart.png"%> <p> <%= current_user.startup.description&.empty? ? "Your discription" : current_user.startup.description&.capitalize %></p> </div>
-        <div class="profile_icons d-flex"><%= image_tag "information.png"%> <p> <%= current_user.startup.sector&.empty? ? "Your information" : current_user.startup.sector %></p> </div>
-        <div class="profile_icons d-flex"><%= image_tag "email.png"%> <p><%= current_user.email&.empty? ? "Your email" : current_user.email %> </p></div>
+        <div class="profile_icons d-flex"><%= image_tag "internet.png"%> <p><%= current_user.startup.url.nil? ?  "Your website" : current_user.startup.url %> </p> </div>
+        <div class="profile_icons d-flex"><%= image_tag "heart.png"%> <p> <%= current_user.startup.description.nil? ? "Your discription" : current_user.startup.description&.capitalize %></p> </div>
+        <div class="profile_icons d-flex"><%= image_tag "information.png"%> <p> <%= current_user.startup.sector.nil? ? "Your information" : current_user.startup.sector %></p> </div>
+        <div class="profile_icons d-flex"><%= image_tag "email.png"%> <p><%= current_user.email.nil? ? "Your email" : current_user.email %> </p></div>
         <br>
 
         <h6 style="font-weight:700">Your target market</h6>
@@ -76,7 +76,7 @@
         <p>Average rating</p>
         <br>
         <br>
-        <%= image_tag "question.png"%>
+        <%= image_tag "question.png", width: 300   %>
         <% else %>
         <p>Average rating</p>
         <h2><%= @versions.last.total_calculate_avg_score %></h2>
@@ -86,7 +86,17 @@
     </div>
 
     <div class="stats-card-3 dashboard-card">
+      <div class="box-icons5">
+      <% if @versions.empty? %>
+      <br>
+      <p >Please wait untill your Beta Version gets tested</p>
+      <br>
+      <br>
+      <div class="clock-icon"><%= image_tag "time.png"%></div>
+      </div>
+      <% else %>
       <%= render 'chartjs' %>
+      <% end %>
     </div>
   </div>
 
